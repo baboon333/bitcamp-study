@@ -7,7 +7,7 @@ package com.eomcs.lang.ex01;
 //- 프로그램을 실행하는 시작점이라는 의미에서  "entry point" 라 부른다.
 //
 //## JVM이 클래스를 실행하는 과정
-//1) 실행할 클래스 파일을 CLASSPATH에 등록된 디렉토리 경로에서 찾는다.
+//1) 실행할 클래스 파일을 CLASSPATH에 등록된 디렉토리 경로에서 찾는다. eclipse가 자동으로 classpath 등록해줘서 class파일을 실행하면 자동으로 등록된 디렉토리 파일에 찾아가는거임. 이클립스 다 자동. 굿.
 //2) 클래스 파일이 유효한 바이트코드(bytecode) 인지 검사한다.
 //3) 메모리에 바이트코드를 적재(load)한다.
 //4) public static void main(String[] args) {} 블록을 찾는다.
@@ -15,16 +15,16 @@ package com.eomcs.lang.ex01;
 //
 
 public class Exam0400 {
-  //  public static void main(String[] args) {
-  //  }
+  public static void main(String[] args) {
+  }
 }
 
 //## 실습
 //1) 컴파일하기
-//- $ javac -d bin/main -encoding UTF-8 src/main/java/com/eomcs/lang/ex01/Exam0400.java
+//- $ javac -d bin/main -encoding UTF-8 src/main/java/com/eomcs/lang/ex01/Exam0400.java //그냥 bin 안에 있는 main에 컴파일을 해줘
 //
 //2) 실행하기
-//- $ java -cp bin/main com.eomcs.lang.ex01.Exam0400
+//- $ java -cp bin/main com.eomcs.lang.ex01.Exam0400//jvm이 찾아갈 길을 알려주는 // bin/main 폴더는 자동생성된 폴더니까 .으로 점프를 못하고  com.eomcs.lang.ex01.Exam0400는 이클립스 안에서 생성한 패키지이기 떄문에 이렇게 경로를 지정해준다. 
 //
 //* main() 메서드를 주석으로 막은 다음에 컴파일하고 실행해 보자.
 //- 실행 오류 메시지를 확인할 수 있다.

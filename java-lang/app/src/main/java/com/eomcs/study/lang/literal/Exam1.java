@@ -1,4 +1,4 @@
-//리터럴 : 자바에서 값을 표현한 것
+//리터럴 : 자바에서 값을 표현한 것  //항상 App을 실행하고 springboot로 웹에서 결과 확인!!
 package com.eomcs.study.lang.literal;
 
 import org.springframework.web.bind.annotation.GetMapping;
