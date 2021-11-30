@@ -1,3 +1,4 @@
+//리터럴 : 자바에서 값을 표현한 것
 package com.eomcs.study.lang.literal;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -5,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/lang/literal/exam1")
+@RequestMapping("/lang/literal/exam1")  //요청과 연결된 것
 public class Exam1 {
 
   @GetMapping("/test1")
@@ -27,9 +28,9 @@ public class Exam1 {
   }
 
   @GetMapping("/test4")
-  public float test4() {
+  public double test4() {
     // 부동소수점을 표현하는 방법
-    return 3.14f;
+    return 3.14;
   }
 
   @GetMapping("/test5")
