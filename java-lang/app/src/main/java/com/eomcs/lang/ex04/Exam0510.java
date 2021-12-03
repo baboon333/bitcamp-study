@@ -22,17 +22,17 @@ public class Exam0510 {
     int i1, i2, i3, i4, i5;
 
     // 배열 선언
-    int[] arr1 = new int[5]; // OK!
-    int arr2[] = new int[5]; // OK! C-style.
+    int[] arr1 = new int[5]; // OK! // java 방식
+    int arr2[] = new int[5]; // OK! C-style. //c 언어 방식
 
     // 배열의 크기는 int 타입의 최대 값에서 2를 뺀 값이다.
     // 배열의 최대 크기 = Integer.MAX_VALUE - 2
 
-    //int[] arr3 = new int[2147483647]; // 실행 오류 => VM의 배열 크기 제한을 초과
+    //int[] arr3 = new int[2147483647]; // 실행 오류(컴파일 할 때 나는게 아니라 실행할 때 나는 오류) => VM의 배열 크기 제한을 초과  //운영체제가 준 메모리보다 메모리를 더 쓴다고 하니까 실행오류가 나는 거임. 
     // Exception in thread "main" java.lang.OutOfMemoryError: Requested array size exceeds VM limit
 
-    //int[] arr3 = new int[2147483645]; // OK!
-    int[] arr3 = new int[Integer.MAX_VALUE - 2]; // OK!
+    //int[] arr3 = new int[2147483645]; // OK! //1바이트 21억개가 아니라 4byte를 21억개 만드는거니 84억개 바이트를 기가 바이트로 표현하면 8GB이니!
+    //int[] arr3 = new int[Integer.MAX_VALUE - 2]; // OK!  //integer의 최대 크기보다 2개 작은!!
 
     // 실행 오류 발생!
     // => Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
