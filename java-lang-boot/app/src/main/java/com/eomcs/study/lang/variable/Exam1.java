@@ -1,12 +1,12 @@
 //변수 : 값을 저장할 메모리를 준비시키는 명령어
-package com.eomcs.study.lang.literal.variable;
+package com.eomcs.study.lang.variable;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("lang.variable.exam1")  // 클래스 이름이 같은 경우 충돌 방지
-@RequestMapping("/lang/variable/exam1")  //요청과 연결된 것
+@RestController("lang.variable.exam1")  // 클래스 이름이 같은 경우 충돌 방지 ////스프링 부트가 클래스를 구분하기 위해서 붙이는 이름//이름 경로로 주면 구분하기 쉬우니까 그런거지 이름 아무거나 줘도 된다
+@RequestMapping("/lang/variable/exam1")  //요청과 연결된 것 // 웹브라우저가 요청과 실행할 메소드를 연결하는 주소! 웹 브라우저가 요청하는 이름! 
 public class Exam1 {
 
   //변수 선언

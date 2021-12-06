@@ -1,4 +1,4 @@
-package com.eomcs.study;
+package com.eomcs.mylist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,4 +17,4 @@ public class App {
   String hello() {
     return "Hello World!";
   }
-}//앱 클래스를 실행하면 스프링 부트를 실행하면서 서브렛 컨테이너와 웹 서버가 실행된다.
+}

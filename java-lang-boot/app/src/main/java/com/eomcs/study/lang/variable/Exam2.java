@@ -1,5 +1,5 @@
 // 배열: 같은 종류의 메모리를 여러개 만드는 명령문
-package com.eomcs.study.lang.literal.variable;
+package com.eomcs.study.lang.variable;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
