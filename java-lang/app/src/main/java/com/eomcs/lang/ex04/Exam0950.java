@@ -11,7 +11,7 @@ public class Exam0950 {
     // 4) 숫자를 문자 코드로 형변환 가능한다.
     // 그 외에는 형변환 불가!
 
-    // 예) 정수, 부동소수점 ==/==> boolean
+    // 예) 정수, 부동소수점 ==/==> boolean  안된다!
     boolean bool;
     //    bool = (boolean) 1; // 컴파일 오류!
 

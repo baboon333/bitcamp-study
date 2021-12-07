@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수 활용</title>
+</head>
+<body>
+
+<h1>계산기 : server-side rendering</h1>
+<form action="/lang/variable/exam4/test1">  <!--앞에 http://localhost:8080 생략가능! 서버주소를 생략해야 나중에 유지보수를 위해 필요하다! /lang/variable/exam4/test1 이렇게!! lang/variable/exam4/test1 이렇게만 적으면 상대경로임. 현재 위치를 기준으로 경로가 된다! 그래서 무조건 / 넣어줘야 함! / 누르면 절대경로!! 그 앞은 서버 경로로 고정되는거임. 모르겠으면 빼고 테스트해봐-->
+<input type="text" name="v1">             <!--input type="text로 하냐 number로 하냐에 따라 다르게 나타남" -->
+<select name="op">
+  <option>+</option>
+  <option>-</option>
+  <option>*</option>
+  <option>/</option>
+  <option>%</option>
+</select>
+<input type="text" name="v2">
+<button>=</button>
+</form>
+
+</body>
+</html>

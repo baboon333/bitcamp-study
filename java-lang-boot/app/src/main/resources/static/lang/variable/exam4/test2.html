@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수 활용</title>
+</head>
+<body>
+
+<h1>계산기 : client-side rendering</h1>
+<form>
+<input type="text" name="v1">         
+<select name="op">
+  <option>+</option>
+  <option>-</option>
+  <option>*</option>
+  <option>/</option>
+  <option>%</option>
+</select>
+<input type="text" name="v2">
+<button type = "button" id="x-btn">=</button>  <!-- 그냥 일반 버튼으로 가만히 있어! type을 그냥 일반 button으로 해줘야함. 기본이 submit인데 이렇게 되면 버튼을 누를 때 서버에 다시 요청하기 때문에 버튼 누르면 url이 바뀜. 무조건 type button 넣어줘야 함! 그럼 걍 일반 버튼이라 아무짓도 안함!! 우리는 버튼을 클릭하면 웹 브라우저에서 별도의 요청을 수행하고 싶으니!-->
+</form>
+
+<script>
+//입력폼의 각 태그를 찾는다.
+var xV1 = document.querySelector("input[name='v1']");  //태그를 사용할 때 찾는 문법. selector 선택자
+var xV2 = document.querySelector("input[name='v2']");
+var xOp = document.querySelector("select[name='op']");
+
+
+// 버튼을 클릭하면 웹 브라우저에서 별도의 요청을 수행한다.
+
+// 1) 버튼을 클릭했을 때 수행할 작업을 등록한다. //버튼.onclick = function() {};
+var xBtn = document.querySelector("#x-btn")  //selector를 가지고 태그를 찾아라! #은 id를 찾는거고 .은 class를 찾는거임 //x- : 뭐랑 충돌 안하려고 붙였다는데 잘 모르겠음. js에서?html/ css에서?는 이름 정할 때 단어 사이에 -를 넣는다. 자바에서는 대문자로 구분하는 것처럼! 
+xBtn.onclick = function() {         //호출될 함수를 버튼에 등록한 것
+	
+	// 서버에 요청할 때 사용할 도구를 준비한다. 그냥 외워
+	var xhr = new XMLHttpRequest();
+	
+	// 서버에서 응답을 받았을 때(load 이벤트 발생) 호출될 함수를 등록한다. //xhr.addEventListener(이벤트명, 호출될 함수); xhr은 XMLHttpRequest 줄임말. 서버에 요청할 때 사용할 도구!  addEventListener: 서버에서 응답을 받았을 때(load 이벤트 발생) 호출될 함수를 등록하는 메소드
+	xhr.addEventListener("load", function() {
+		console.log(xhr.responseText);
+	});  
+	
+	// 서버와 연결한다.
+	xhr.open(
+			"GET", // HTTP 요청 방식
+			"/lang/variable/exam4/test2?v1=" + xV1.value
+			+ "&v2=" + xV2.value
+			+	"&op=" + xOp.value,   //요청 URL
+			true); //비동기 여부 지정 
+
+			//서버에 요청 정보를 보낸다.
+			xhr.send();
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
