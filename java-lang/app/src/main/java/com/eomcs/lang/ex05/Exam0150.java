@@ -50,7 +50,7 @@ public class Exam0150 {
     //    float r9 = f + d; // 컴파일 오류!
 
     // byte + short + int + long + float + double = double
-    //long r10 = b + s + i + l + f + d; // 컴파일 오류!
+    //long r10 = b + s + i + l + f + d; // 컴파일 오류!  //최종 결과는 double인데 long에 담으려고 하니
 
     // float + int + long = float
     //    long r11 = f + i + l; // 컴파일 오류!
@@ -64,6 +64,7 @@ public class Exam0150 {
 }
 
 // 정리!
+//  최소 연산 단위는 4byte다! 
 // - 연산은 항상 같은 타입끼리만 가능하다.
 // - 다른 타입끼리 연산을 할 때는 둘 중 한개의 타입을 다른 타입을 
 //   바꿔야 한다.

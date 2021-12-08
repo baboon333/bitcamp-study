@@ -5,7 +5,7 @@ package com.eomcs.lang.ex05;
 public class Exam0421 {
   public static void main(String[] args) {
     // 음수일 경우,
-    // - 빈자리는 1로 채운다.
+    // - 빈자리는 1로 채운다.(명심)
     //
     int i = -87; // [11111111111111111111111110101001]
 

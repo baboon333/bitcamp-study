@@ -12,8 +12,8 @@ public class Exam0140 {
     //    System.out.println(true + true); // 컴파일 오류!
 
     System.out.println("Hello," + "world!"); // OK! '+' 연산자는 문자열 연결 용도로 사용된다.
-    //    System.out.println("Hello," - "o,"); // 컴파일 오류!
-    //    System.out.println("Hello," * 5); // 컴파일 오류!
+    //    System.out.println("Hello," - "o,"); // 컴파일 오류! 빼기는 안된다!  //어떤 언어는 된다. 근데 자바는 아니다
+    //    System.out.println("Hello," * 5); // 컴파일 오류!   //어떤 언어는 된다
 
     System.out.println(true && true);
     //    System.out.println(10 && 10); // 컴파일 오류!이다.

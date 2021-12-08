@@ -8,7 +8,7 @@ public class Exam0340 {
     boolean b = false;
     boolean r = a || (b = true);
     // 계산 순서:
-    // r = a || (b = true)
+    // r = a || (b = true)              //a가 이미 true면 뒤는 실행도 안함! 그렇기 때문에 b는 여전히 false인거
     // r = true || (b = true)
     // => || 왼쪽 값으로 이미 결과를 알 수 있기 때문에 
     //    || 오른쪽 문장은 실행하지 않는다.
@@ -19,7 +19,7 @@ public class Exam0340 {
     b = false;
     r = a | (b = true);
     // 계산 순서: 
-    // r = a | (b = true)
+    // r = a | (b = true)               //앞에 결과가 뭐든 일단 뒤에꺼 실행함
     // r = true | (b = true)
     // => | 왼쪽 값으로 결과를 확정할 수 있더라도 무조건 오른쪽 문장을 실행한다.
     // r = true | (b 변수에 true를 저장)

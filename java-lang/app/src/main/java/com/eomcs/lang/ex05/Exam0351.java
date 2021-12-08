@@ -5,9 +5,9 @@ package com.eomcs.lang.ex05;
 public class Exam0351 {
   public static void main(String[] args) {
 
-    System.out.println(57 % 2);
+    System.out.println(57 % 2);             //57 8bit로 나타내면 00111001   //어떤 값을 2로 나누는 나머지를 구할 때 %2대신 &1를 쓸 수 있따. %보다 &연산이 더 빠르기 때문! 홀짝 구분할 때 쓰임
     System.out.println(57 & 0b0000_0001);
-    System.out.println(57 & 1);
+    System.out.println(57 & 1);             //57을 2로 나눈 나머지와 같은 수식!
     // % 연산은 나누기 연산을 수행해야 한다.
     // 나누기 연산은 여러 번의 계산을 수행하게 된다.
     // 그에 비해 & 비트 연산은 한 번만 하면 된다.

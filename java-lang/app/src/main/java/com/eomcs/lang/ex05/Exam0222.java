@@ -9,7 +9,7 @@ public class Exam0222 {
     System.out.println(Math.abs((f1 + f2) - 13.421f) <= Float.POSITIVE_INFINITY);
     System.out.println(f1);
     System.out.println(f2);
-    System.out.println(f1 + f2);
+    System.out.println(f1 + f2);    //뒤에 쓰레기 값이 붙는다! 그니까 부동소수점 값 비교할 때 조심해라! 그니까 위 방법을 써라!!
     // 12.321
     // => 12: 1100
     // => 0.321: 01010010001011010001
@@ -43,7 +43,7 @@ public class Exam0222 {
     System.out.println((x + y) == 13.421f);
     System.out.println(x);
     System.out.println(y);
-    System.out.println(x + y); 
+    System.out.println(x + y);   //뒤에 쓰레기 값이 안붙는다! 
     // 11.221
     // => 11: 1011
     // => 0.221: 00111000100100110111

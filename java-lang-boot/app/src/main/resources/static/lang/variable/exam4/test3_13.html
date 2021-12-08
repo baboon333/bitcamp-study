@@ -20,7 +20,7 @@ xBtn.addEventListener("click", function() {
 	//서버에 요청 (90%) 그니까 이것도 알아야 돼! 우리는 유지보수 해야되니까 -> 간결하게 나온게 fetch() 이 많은 문장들이 한줄로 완성!!!!!!! 쓰다말음 복사해와
   var result = fetch("/lang/variable/exam4/test3");
 	var result2 = result.then(function(response) {                 //그 결과를 받은 다음 호출될 함수를 등록한다. then!  //js에서 함수가 호출될 때 넘어오는 값은 전부 arguments라는 배열(포장되어 오는 것)에 담긴다!
-		return response.json();                 //넘어온 값을 json 값으로 만들어줘
+		return response.json();                 //넘어온 json 값을 파싱해서 자바 어쩌구로 만들어줘
 	});
 	result2.then(function(jsonData){
 		console.log(jsonData);

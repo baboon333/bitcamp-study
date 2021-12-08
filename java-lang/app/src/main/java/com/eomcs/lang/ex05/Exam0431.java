@@ -5,7 +5,7 @@ package com.eomcs.lang.ex05;
 public class Exam0431 {
   public static void main(String[] args) {
     // 음수를 이동:
-    // - 왼쪽 빈자리는 0으로 채운다.
+    // - >>>는 >>와 다르게 왼쪽 빈자리는 0으로 채운다.
     //
 
     int i = -87; // [11111111111111111111111110101001]
