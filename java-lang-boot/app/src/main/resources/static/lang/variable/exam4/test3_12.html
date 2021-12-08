@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수 활용</title>
+</head>
+<body>
+
+<h1>배열 다루기</h1>
+<button type="button" id="x-btn">배열 가져오기</button>
+<ul id="x-namelist">
+</ul>
+
+<script>
+var xNamelist = document.querySelector("#x-namelist");
+var xBtn = document.querySelector("#x-btn");
+
+xBtn.addEventListener("click", function() {
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    // 서버에서 받은 JSON 형식의 배열을 자바스크립트 배열로 변환한다.
+    var names = JSON.parse(xhr.responseText);
+    
+    // 반복문을 직접 실행하는 대신에 그 일을 할 함수를 호출한다.
+    //쓰다말음~~~~~~~~~~~~~
+    //for each : 내가 대신 반복문 수행할게요. 첫번째는 배열, 두번째는 배열에서 값을 하나 꺼낼 때마다 작업할 수 있도록 함수를 주세요!
+    //배열에 있는 값을 꺼낼 때마다 함수를 호출함. 배열에서 꺼낸 값을 파라미터 값으로 함수에 넘어옴.
+    //개발자가 반복문을 돌릴 필요가 없음!!
+        //쓰다 말음!!!!!!!!!!!!!!!!!
+    // 배열에 들어 있는 걸 쓰는거니까 줄 필요 없는 것!!
+    // 배열에 내장된 (built-in) for each 사용하기 -> 하도 개발자들이 많이 쓰니까 자바에서 이렇게 만들어줌! 그래서 걍 이렇게 쓰면 된다!!
+    
+    
+    
+    
+    for (var name of names) {
+      var li = document.createElement("li"); // <li></li>
+      li.innerHTML = name; // <li>홍길동</li>
+      xNamelist.appendChild(li);    //원래 html에 있던 li 태그 지우고 윗줄에서 만든 li 태그 배열돌려서 넣는거임!
+    }
+  };
+  xhr.open("GET", "/lang/variable/exam4/test3", true);
+  xhr.send();
+});
+
+function forEach(arr, cb) { //내가 각각에 대해서 배열을 돌려줄게. cb는 callback의 약자. 두번째 값으로 함수를 받는다는 거임. 내가 호출하는게 아니라 for each에서 호출하는 call back 함수!
+	  for(var item of arr) {
+		  cb(item);
+	  }	
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

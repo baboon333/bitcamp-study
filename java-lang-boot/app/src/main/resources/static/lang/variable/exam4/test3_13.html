@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수 활용</title>
+</head>
+<body>
+
+<h1>배열 다루기</h1>
+<a href="/lang/variable/exam4/test3">서버에 요청하기</a>
+<button type="button" id="x-btn">배열 가져오기</button>
+<ul id="x-namelist">  <!-- unordered list  / li는 list item이다-->
+</ul>
+
+<script>
+var xNamelist = document.querySelector("#x-namelist")
+var xBtn = document.querySelector("#x-btn");
+
+xBtn.addEventListener("click", function() {
+	//서버에 요청 (90%) 그니까 이것도 알아야 돼! 우리는 유지보수 해야되니까 -> 간결하게 나온게 fetch() 이 많은 문장들이 한줄로 완성!!!!!!! 쓰다말음 복사해와
+  var result = fetch("/lang/variable/exam4/test3");
+	var result2 = result.then(function(response) {                 //그 결과를 받은 다음 호출될 함수를 등록한다. then!  //js에서 함수가 호출될 때 넘어오는 값은 전부 arguments라는 배열(포장되어 오는 것)에 담긴다!
+		return response.json();                 //넘어온 값을 json 값으로 만들어줘
+	});
+	result2.then(function(jsonData){
+		console.log(jsonData);
+	});
+	
+	
+/* 	var xhr = new XMLHttpRequest();
+  //서버에서 응답이 왔을 때 실행할 메소드를 둔다. 콜백함수! 우리가 아니라 웹 브라우저가 이 함수를 요청하는거임!
+  xhr.onload = function() {
+	  // 서버에서 받은 JSON 형식의 배열을 자바스크립트 배열로 변환한다. 
+	  var names = JSON.parse(xhr.responseText);       //parse: 해석/분석하다. 
+	  for (var name of names) {      //names 배열에 있는걸 하나씩 꺼내서 name에 넣어줌! 배열이 다 끝날 때까지!
+		  var li = document.createElement("li");  //<li></li>
+		  li.innerHTML = name;  //<li>홍길동</li>
+		  xNamelist.appendChild(li);
+	  }	  
+  };
+  //전화 연결
+  xhr.open("GET", "/lang/variable/exam4/test3", true);
+  //전화에서 얘기하는거
+  xhr.send(); */
+});
+// 서버에서 배열을 불러와서 JSON 형식으로 불러와진걸 배열로 돌리기 위해 JS로 바꾸고 배열을 돌려서 li로 나타내준다.
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
