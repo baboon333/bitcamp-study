@@ -10,7 +10,7 @@ public class Exam0250 {
     int age = keyboardScanner.nextInt();
 
     // 한 개의 토큰을 읽을 때 유용하다.
-    String name = keyboardScanner.next();
+    String name = keyboardScanner.next();  //중간에 문자읽을 때 nextLine 대신 next!!
 
     boolean working = keyboardScanner.nextBoolean();
 

@@ -8,7 +8,7 @@ public class Exam0110 {
     // 값 출력하기
     // println() = 출력 + 줄바꿈
     System.out.println(20);
-    System.out.println(3.14f);
+    System.out.println(3.14f);  //f는 부동소수점 4byte float임을 알려주는거고 출력되는게 아님.
     System.out.println("Hello");
     System.out.println('Y');
     System.out.println(true);

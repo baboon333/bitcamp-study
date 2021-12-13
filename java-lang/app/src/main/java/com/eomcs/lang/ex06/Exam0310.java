@@ -10,7 +10,7 @@ public class Exam0310 {
 
     // 문법1:
     //      while (조건) 문장;
-    // => 조건이 참인 동안 문장을 계속 실행한다.
+    // => 조건이 참인 동안 문장을 계속 실행한다.   //if는 참이면 딱 한번만 실행함!
     while (count < 5) System.out.println(count++);
 
     System.out.println("---------------------------");
@@ -22,14 +22,14 @@ public class Exam0310 {
     // => 조건이 참인 동안 문장을 계속 실행한다.
     count = 0;
     while (count < 5)
-      System.out.println(count++);
-    
+      System.out.println(count++);          //++count 이렇게도 해봐!
+
 
     System.out.println("---------------------------");
 
     // 문법3:
     //      while (조건) {}
-    // => 여러 개의 문장을 반복 실행하려면 블록으로 묶어라!
+    // => 여러 개의 문장을 반복 실행하려면 블록으로 묶어라!   //구글은 한줄을 써도 블록으로 묶으라고 되어 있음 google java style guide
     count = 0;
     while (count < 5) {
       System.out.println(count);

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>연락처</title>
+</head>
+<body>
+
+<h1>새 연락처</h1>
+
+<form>
+이름: <input id="x-name" type="text"><br>
+이메일: <input id="x-email" type="text"><br>
+전화: <input id="x-tel" type="text"><br>
+회사: <input id="x-company" type="text"><br>
+<button id="x-add-btn" type="button">등록</button>
+</form>
+<script type="text/javascript">
+  var addBtn = document.querySelector("#x-add-btn");
+  addBtn.onclick = function() {
+    var name = document.querySelector("#x-name");
+    var email = document.querySelector("#x-email");
+    var tel = document.querySelector("#x-tel");
+    var company = document.querySelector("#x-company");
+
+    fetch(`/contact/add?name=${name.value}&email=${email.value}&tel=${tel.value}&company=${company.value}`)
+      .then(function(response){
+        return response.text();   //서버에서 json이 아닌 string 문자열로 리턴해줘서! json형식 아니니까 걍 text 그대로 줘~ .text()로 받는다
+      })  //json 형식의 문자열은 양쪽에 "" 이게 붙어야함.
+      .then(function(text) {
+        console.log(text);
+      });
+  };
+</script>
+
+</body>
+</html>

@@ -12,6 +12,7 @@ public class Exam0640 {
     // 3) +, -
     // 4) =
     // 
+    // 일단 다 바꾼 다음에 연산 수행 
     // int result = 2 + i++ * i++;  => i = 3
     // int result = 2 + 3 * i++; => i = 4
     // int result = 2 + 3 * 4; => i = 5

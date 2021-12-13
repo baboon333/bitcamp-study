@@ -1,7 +1,7 @@
 package com.eomcs.lang.ex05;
 
 //# 할당(배정,대입) 연산자  : +=  -=  *=  /=  %=  &=  |=  ^=  <<=  >>=  >>>=
-//
+// 그 변수에 대해서 연산을 한 후 할당하는!
 public class Exam0710 {
   public static void main(String[] args) {
     int i = 2;

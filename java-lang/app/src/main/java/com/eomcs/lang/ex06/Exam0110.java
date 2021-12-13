@@ -6,12 +6,12 @@ public class Exam0110 {
   public static void main(String[] args) {
     int age = 17;
 
-    // => if (조건) 문장;
+    // => if (조건) 문장;   //if 다음 한칸 띄워!!
     if (age >= 19) System.out.println("성인이다.");
 
     // => 문장을 다른 줄에 놓는 경우가 많다.
-    if (age >= 19); // if 문에 빈 문장을 넣을 수 있다.
-      System.out.println("성인이다.");
+    if (age >= 19); // if 문에 빈 문장을 넣을 수 있다.  //if 뒤에 ; 넣으면 그 뒤는 빈문장으로 봐서!! 그냥 실행이 된다
+    System.out.println("성인이다."); //if 에 속한게 아니니 들여쓰기가 안되지! 이렇게 편집기에서 자동 들여쓰기 해놓으면 에러잡기가 편한 것이다.
     // 이런 경우 개발자가 오해할 수 있다.
     // if (조건) 뒤에 문자의 끝을 표시하는 세미콜론을 사용하지 않도록 조심하라!
 

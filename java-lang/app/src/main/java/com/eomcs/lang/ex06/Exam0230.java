@@ -6,7 +6,7 @@ public class Exam0230 {
   public static void main(String[] args) {
     // switch (값) {}
     // 값으로 가능한 데이터 타입은?
-    // => int 정수(byte,short,int,char), 문자열, 특별한 상수 Enum 타입
+    // => int 정수(byte,short,int,char - 4byte까지만 가능하다!), 문자열, 특별한 상수 Enum 타입
     // => case 값으로 변수를 사용할 수 없다. 리터럴만 가능하다.
     byte b = 2;
     switch (b) {
@@ -29,7 +29,8 @@ public class Exam0230 {
       default:
     }
 
-    char c = 'A'; // A문자의 유니코드 값(UTF-16) 0x41(65)을 c에 저장한다.
+    char c = 'A'; // A문자의 유니코드 값(UTF-16) 0x41(65)을 c에 저장한다. A가 저장되는게 아니다! A에 해당하는 65가 저장되는 거임!!
+    //''의 기능은 이 문자에 해당하는 유니코드 번호를 리턴하는 것이다! 그 문자에 해당하는 유니코드 값을 우리가 외우는게 아니니
     switch (c) {
       // case 의 값도 int 값이면 무엇이든 된다.
       case 'A': // 0x41 = 65

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>연락처</title>
+</head>
+<body>
+
+<h1>새 연락처</h1>
+
+<form>
+이름*: <input id="x-name" type="text"><br>
+이메일*: <input id="x-email" type="text"><br>
+전화*: <input id="x-tel" type="text"><br>
+회사: <input id="x-company" type="text"><br>
+별표(*) 항목은 필수 입력입니다.<br>
+<button id="x-add-btn" type="button">등록</button>
+<button id="x-cancel-btn" type="button">취소</button>
+</form>
+<script type="text/javascript">
+
+  document.querySelector("#x-add-btn").onclick = function() {  //replace temp with query : x-add-btn이 있는 태그를 불러온 후 그걸 클릭하면 function을 호출하라!
+    var name = document.querySelector("#x-name");
+    var email = document.querySelector("#x-email");
+    var tel = document.querySelector("#x-tel");
+    var company = document.querySelector("#x-company");
+
+    if (name.value =="" || email.value == "" || tel.value == "") {
+      window.alert("필수 입력 항목이 비어 있습니다.")
+      return;  // 만약 필수 입력 값이 비어 있으면 이 함수 전체를 끝내라!!
+    }
+
+    fetch(`/contact/add?name=${name.value}&email=${email.value}&tel=${tel.value}&company=${company.value}`)
+      .then(function(response){
+        return response.text();
+      })
+      .then(function(text) {
+        console.log(text);
+      });
+  };
+
+  document.querySelector("#x-cancel-btn").onclick = function() {
+    window.location.href = "index.html";  //(취소 누르면 목록으로 보낼거임)
+  };
+
+  //취소 버튼 추가 및 코드 정리
+  //리팩토링 - replace temp with query
+  //  : 함수의 리턴 값을 받는 변수를 한 번만 사용할 경우 변수 대신 함수 호출을 삽입하라!
+  //  : 즉 임시 변수를 사용할 자리에 함수 호출을 그대로 집어넣어라!
+  // 필수 입력 항목 검사하기
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

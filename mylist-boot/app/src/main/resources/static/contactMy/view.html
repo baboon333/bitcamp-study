@@ -1,0 +1,76 @@
+<!DOCTYPE html>   <!--  커밋한거 보기!! 쓰다 말음-->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>연락처</title>
+</head>
+<body>
+<h1>새 연락처 상세정보</h1> <!--shift + tab  드래그하고 이거 하면 다같이 앞으로 땡겨짐-->
+<form>
+  이름: <input id="x-name" type="text"><br>
+  이메일: <input id="x-email" type="email"><br>
+  전화: <input id="x-tel" type="tel"><br>
+  회사: <input id="x-company" type="text"><br>
+  <button id="x-update-btn" type="button">변경</button> <!--js 혹은 css에서 찾을 일이 있으니 id를 붙여준다-->
+  <button id="x-cancel-btn" type="button">취소</button>
+</form>
+
+<script type="text/javascript">
+
+// 요청 유효성 검사
+if (location.href.indexOf('?') == -1) {              //무슨 소린지 잘 모르겠으면 2021.12.10 5시 18분쯤 봐라
+  window.alert("요청이 올바르지 않습니다!")
+  location.href = "index.html";
+}
+//URL에서 쿼리스트링을 추출하여 파라미터의 이름과 값을 분리한다.
+var params = new URLSearchParams(location.href.split('?')[1]); // 메소드의 리턴값이 배열일 경우 즉시 그 배열의 특정 항목값만   //메소드가 배열이란 소리가 아님.
+                                                               // 물음표 뒤쪽이 1번에 있으니 1번만 떼어오는 것
+//쿼리스트링에서 이메일 값을 추출한다.
+var email = params.get("email");
+if (email == null) {
+  window.alert("이메일이 없습니다.")
+  location.href = "index.html"
+}
+
+var xName = document.querySelector("#x-name");
+var xEmail = document.querySelector("#x-email");
+var xTel = document.querySelector("#x-tel");
+var xCompany = document.querySelector("#x-company");
+
+//이메일을 가지고 연락처 상세 정보를 가져와서 입력폼에 넣는다.
+fetch(`/contact/get?email=${email}`)    //프론트엔드 개발자가 ajax 호출해서 마지막에 마무리 하는 것
+  .then(function(response) {
+    return response.text();
+  })
+
+
+var contact = result.split(",");
+xName.value = contact[0];
+xEmail.value = contact[1];
+xTel.value = contact[2];
+xCompany.value = contact[3];
+
+document.querySelector("#x-update-btn").onclick = function() {
+  //console.log(xName.value); // value라는 속성에 사용자가 입력한 값이 담겨있다
+
+  fetch(`/contact/add?name=${xName.value}&email=${xEmail.value}&tel=${xTel.value}&company=${xCompany.value}`)  //아직 실무에서는 xmlrequest 어쩌구를 더 많이 씀
+    .then(function(response) { //서버에서 보낸 데이터를 그냥 그대로 텍스트로 리턴해줘! JSON 문자열을 처리하지마
+      return response.text();  //서버에서 json 형식으로 오는게 아니라 단순히 오니까 text()로 꺼내는 거임 //  var result = response.text() 이렇게 바로 못받음.
+    })                         //var result = response.text() 이렇게하면 일을 시킬때까지 기다렸다가 결과를 리턴하면 result로
+                              //받는거니 동기방식으로 옛날방식임! 우리가 지금 쓰는건 비동기 방식이니까
+    .then(function(result) {
+      console.log(result);
+      location.href = "index.html"
+    })
+};
+
+document.querySelector("#x-cancel-btn").onclick = function() {
+  window.location.href = "index.html";
+}                                        //window라는 객체의 위치 정보를 form.html에서 contact 밑에 index.html로!
+                                         //window.은 생략가능! //window 객체에 포함되어 있기 때문에 생략 가능한 것
+                                         //우리가 보통 어디사냐고 했을 때 서울시 강남구 이렇게만 말하고 대한민국까지 말 안하는거랑 똑같음
+
+</script>
+</body>
+</html>
+<!--연락처 메인 화면-->

@@ -14,13 +14,13 @@ public class Exam0221 {
     System.out.print("지원 분야의 번호를 입력하세요? ");
     int no = keyScan.nextInt();
 
-    System.out.println("제출하실 서류는 다음과 같습니다.");
+    System.out.println("제출하실 서류는 다음과 같습니다.");     //이렇게 숫자로 떨어지는 등 단순한 조건 비교시 switch문!
     switch (no) {
       case 1:
         System.out.println("정보처리자격증");
         System.out.println("졸업증명서");
         System.out.println("이력서");
-        break; // 여기까지만 실행한다.
+        break; // 여기까지만 실행한다.         break 안적으면 그 다음이 실행된다
       case 2:
         System.out.println("졸업증명서");
         System.out.println("이력서");

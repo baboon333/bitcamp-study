@@ -8,7 +8,7 @@ public class Exam0223 {
     // break 문을 쓰지 않으면 계속 이어서 실행된다.
     // => 일부러 쓰지 않을 때가 있다.
     switch (score) {
-      case 100:
+      case 100:                              //90~100이란 소리가 아니라 90과 100이란 소리임!
       case 90:
         System.out.println("A");
         break;

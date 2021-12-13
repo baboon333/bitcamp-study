@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>연락처</title>
+  </head>
+  <body>
+    <h1>연락처</h1>
+    <a href="form.html">새연락처</a>
+    <table id="x-contact-tbl" border="1">  <!--table 약자 tbl-->
+      <thead>
+        <tr>
+          <th>이름</th> <!--테이블 상단 제목-->
+          <th>이메일</th>
+          <th>전화</th>
+          <th>회사</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+<script type="text/javascript">
+  //type="text/javascript"는 생략가능! 기본값이기 때문
+
+  var tbody = document.querySelector("#x-contact-tbl tbody");
+
+fetch("/contact/list").then(function(response){  //서버에서 응답이 오면 첫번째 then 실행된다
+  return response.json();        //json 형식으로 되어있는걸 파싱해서 리턴하라 // form.html과 다르게 response는 list() 가 리턴하는게 배열이라, 배열을 JSON문자열로 받은거임
+}).then(function(arr) {
+  for (var str of arr) {
+    console.log(str); //예) "홍길동1, hong@test.com, 010-1111-2222, 비트캠프"
+    var contact = str.split(",");  //예) ["홍길동1", "hong@test.com", "010-1111-2222", "비트캠프"] //문자열 배열에서 하나의 문자열을 꺼내서 다시 그 받은 문자열을 ,를 기준으로 쪼갠다. 그 다음 배열을 만든다 //배열이니까 변수에 담아준다
+    var tr = document.createElement("tr");
+    tr.innerHTML = `<td><a href="view.html?email=${contact[1]}">${contact[0]}</a></td>
+    <td>${contact[1]}</td>
+    <td>${contact[2]}</td>
+    <td>${contact[3]}</td>`;  //백틱!! ""나 ''를 넣으면 문자열로 인식한다
+    tbody.appendChild(tr);
+  }
+});
+</script>
+  </body>
+</html>
+<!--연락처 메인 화면-->

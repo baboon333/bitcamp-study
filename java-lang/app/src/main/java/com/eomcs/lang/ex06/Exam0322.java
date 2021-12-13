@@ -13,8 +13,8 @@ public class Exam0322 {
     sum = 0;
     while (count < 100) {
       count++;
-      if (count > 50) // 50을 넘어가면 합을 수행하지 않지만 100까지 계속 반복한다.
-        continue;
+      if (count > 50) // 50을 넘어가면 합을 수행하지 않지만 100까지 계속 반복한다.  //그냥 continue 쓰임 보여주려고 코드 이렇게 짜신거임
+        continue;     // 100번 실행
       sum += count;
     }
     System.out.printf("count=%d, sum=%d\n", count, sum);
@@ -27,7 +27,7 @@ public class Exam0322 {
     while (count < 100) {
       count++;
       if (count > 50)
-        break; // 즉시 반복문을 종료하고 나간다.
+        break; // 즉시 반복문을 종료하고 나간다.  //50번 실행
       sum += count;
     }
     System.out.printf("count=%d, sum=%d\n", count, sum);

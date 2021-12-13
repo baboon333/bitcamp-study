@@ -13,7 +13,7 @@ public class Exam0240 {
     // 읽는 상황이 된다. 
     // nextInt() 다음에 nextLine()을 호출할 때 이런 상황이 발생한다.
     // 해결 방법? nextInt()를 호출한 후 남아있는 엔터 코드를 읽어서 제거하라.
-    keyboardScanner.nextLine(); // 남아 있는 빈 문자열의 한 줄(LF 코드)을 읽어서 버린다.
+    keyboardScanner.nextLine(); // 남아 있는 빈 문자열의 한 줄(LF 코드)을 읽어서 버린다.  //주석 막아보기 // 위의 nextInt()가 엔터 전까지 읽어서 얘를 추가해서 엔터 읽어줘야함(남아있는 찌끄레기). 근데 빈 문자열을 리턴할 필요는 없으니 변수 선언해서 안받는거임. 걍 이렇게 호출만 하고!
 
     System.out.print("이름? ");
     String name = keyboardScanner.nextLine();

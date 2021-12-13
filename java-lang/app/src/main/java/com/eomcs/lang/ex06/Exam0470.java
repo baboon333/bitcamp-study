@@ -1,4 +1,4 @@
-package com.eomcs.lang.ex06;
+package com.eomcs.lang.ex06;  //아직 안함(470, 471)
 
 import java.util.ArrayList;
 

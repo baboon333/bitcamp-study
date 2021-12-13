@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MyList</title>
+</head>
+<body>
+  <h1>연락처</h1>
+  <table id="x-contact-table" border="1">
+  <thead>
+  <tr>
+    <th>이름</th>
+    <th>이메일</th>
+    <th>전화</th>
+    <th>회사</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+  </table>
+
+<script>
+  var tbody = document.querySelector("#x-contact-table tbody");
+
+  fetch("/contact/list")  //서버에 요청하고 응답 받음
+    .then(function(response) {  //응답 받은 데이터들을 처리
+      return response.json(); //서버에서 받은 json 문자열을 파싱해서 자바 스크립트 객체로 받겠다
+    })
+    .then(function(contacts) {
+      for (var contact of contacts) {
+        var values = contact.split(",");
+        var tr = document.createElement("tr");
+        tr.innerHTML = `<td>${values[0]}</td>
+        <td>${values[1]}</td>
+        <td>${values[2]}</td>
+        <td>${values[3]}</td>`;
+        tbody.appendChild(tr);
+      }
+    })
+  //이제부터 백엔드 데이터가 준비되면 다시 프론트엔드 개발자가 코드 짜는거! 서버에 연동하기!
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

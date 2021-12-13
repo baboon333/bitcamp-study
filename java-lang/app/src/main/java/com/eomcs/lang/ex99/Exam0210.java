@@ -4,16 +4,16 @@ package com.eomcs.lang.ex99;
 //
 public class Exam0210 {
   public static void main(String[] args) {
-    // 1) 키보드로 입력한 데이터를 읽을 때 사용할 도구를 준비한다.
-    java.io.InputStream keyboard = System.in;
+    // 1) 키보드로 입력한 데이터를 읽을 때 사용할 도구를 준비한다.  //System.in : 키보드를 가리킨다!
+    java.io.InputStream keyboard = System.in;  //InputStream은 문자열을 읽어들이는 기능이 없다. byte로만 읽어드림. 그래서 scanner라는 도구를 장착해야함
 
     // 2) InputStream은 바이트 단위로 읽는 기능이 있다.
     //    바이트 단위로 읽어서 int나 문자열로 바꾸려면 또 코딩해야 하는 불편함이 있다.
     //    이런 불편함을 줄이기 위해 자바에서는 바이트를 개발자가 원하는 값으로
-    //    바꿔주는 기능을 제공한다.
-    //    그런 기능이 들어 있는 도구가 java.util.Scanner 이다.
+    //    바꿔주는 기능이 들어있는 도구를 제공한다.
+    //    그 도구가 java.util.Scanner 이다.
     // => 키보드를 스캐너에 연결한다.
-    java.util.Scanner keyboardScanner = new java.util.Scanner(keyboard);
+    java.util.Scanner keyboardScanner = new java.util.Scanner(keyboard);  //파라미터 값으로 keyboard를 줌
 
     // print()는 문자열을 출력한 후 줄 바꿈을 하지 않는다.
     System.out.print("팀명? "); 
@@ -27,12 +27,12 @@ public class Exam0210 {
     //   사용자가 엔터키를 누르면, 
     //   입력값으로 0d0a 2바이트 값이 들어오고,
     //   nextLine()은 그 전까지 들어온 데이터를 문자열로 만들어 리턴한다.
-    String str = keyboardScanner.nextLine();
+    String str = keyboardScanner.nextLine();  //nextLine 앞에서 ctrl+ space 눌러서 봐봐  //입력한 값을 문자열로 만들어 str에 저장된다
 
     // 사용자가 입력한 문자열을 출력한다.
     System.out.println(str);
 
-    // 스캐너는 사용 후 키보드와의 연결을 끊고 닫는다.
+    // 스캐너는 사용 후 키보드와의 연결을 끊고 닫는다.  //스캐너 객체는 사용한 후 꼭 해제해줘야 함! 
     keyboardScanner.close();
   }
 }

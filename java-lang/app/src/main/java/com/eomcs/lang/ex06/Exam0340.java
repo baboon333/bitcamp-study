@@ -1,6 +1,6 @@
 package com.eomcs.lang.ex06;
 
-//# 흐름 제어문 - do ~ while 반복문
+//# 흐름 제어문 - do ~ while 반복문  //일단 먼저 실행!! while은 0번 이상 실행이고 do while은 1번 이상 실행임
 //
 public class Exam0340 {
   public static void main(String[] args) {

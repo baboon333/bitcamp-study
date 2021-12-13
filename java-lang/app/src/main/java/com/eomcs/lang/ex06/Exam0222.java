@@ -21,7 +21,7 @@ public class Exam0222 {
         // no의 값이 case에 해당되는 경우
         // break 명령을 만날 때까지 아래로 계속 실행한다.
       case 2:
-        System.out.println("졸업증명서");
+        System.out.println("졸업증명서");                   //이렇게 break 일부러 생략하는 경우도 있다
       case 3:
         System.out.println("이력서");
         break; // 여기까지만 실행한다.

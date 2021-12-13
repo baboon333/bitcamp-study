@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>연락처</title>
+</head>
+<body>
+
+<h1>새 연락처</h1>
+
+<form>
+이름: <input id="x-name" type="text"><br>
+이메일: <input id="x-email" type="text"><br>
+전화: <input id="x-tel" type="text"><br>
+회사: <input id="x-company" type="text"><br>
+<button id="x-add-btn" type="button">등록</button>
+</form>
+<script type="text/javascript">
+  var addBtn = document.querySelector("#x-add-btn"); //이렇게 해당 태그를 찾을 일이 있을 때 id를 부여한다
+  addBtn.onclick = function() {
+    //console.log("click!") 잘 되는지 확인용
+    var name = document.querySelector("#x-name");  //버튼 클릭할 때 태그에 들어있는 값을 찾기! 이거는 그냥 태그고 .value해야 그 안의 값을 찾는것
+    var email = document.querySelector("#x-email");
+    var tel = document.querySelector("#x-tel");
+    var company = document.querySelector("#x-company");
+
+    console.log(name.value, email.value, tel.value, company.value);
+  };
+</script>
+
+</body>
+</html>

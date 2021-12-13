@@ -16,7 +16,7 @@ public class Exam0141 {
 
     //    if (age >= 19)
     //      System.out.println("성인입니다.");
-    //    System.out.println("--------------------------");
+    //    System.out.println("--------------------------");   if 문에 속하지 않는 문장!
     //    else
     //      System.out.println("미성년입니다.");
 
