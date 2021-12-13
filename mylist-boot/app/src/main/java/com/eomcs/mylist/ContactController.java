@@ -44,5 +44,32 @@ public class ContactController {
     }
     return "";
   }
+
+  @RequestMapping("/contact/update")
+  public Object update(String name, String email, String tel, String company) {
+    String contact = name + "," + email + "," + tel + "," + company;
+    for (int i = 0; i < size; i++) {
+      if (contacts[i].split(",")[1].equals(email)) {
+        contacts[i] = contact;   //기존의 값 대신 클라이언트가 보낸 새 값으로 덮어쓴다.
+        return 1;
+      }
+    }
+    return 0;
+  }
+  @RequestMapping("/contact/delete")
+  public Object delete(String email) {
+    for (int i = 0; i < size; i++) {
+      if (contacts[i].split(",")[1].equals(email)) {
+
+        // 현재 위치의 다음 항목에서 배열 끝까지 반복하며 앞으로 값을 당겨온다. 
+        for (int j = i + 1; j < size; j++) {  //현재가 i이니 그 다음꺼 j
+          contacts[j - 1] = contacts[j];   
+        }
+        size--;  
+        return 1;
+      }
+    }
+    return 0;
+  }
 }
 
