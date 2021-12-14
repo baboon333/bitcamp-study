@@ -6,12 +6,12 @@
 </head>
 <body>
   <h1>요점 정리 - 2.변수와 제어문</h1>
-  
+
 <script>
-var size = 10;
-var message = "Hello!";
-message = true; // dynamic type binding; 변수의 타입이 할당되는 값에 따라 바뀐다.
-const PI = 3.14159; // 상수
+var size = 10;     //js의 변수 타입은 정해져있지 않다.
+var message = "Hello!"; //글로벌 변수
+message = true; // dynamic type binding; 변수의 타입이 할당되는 값에 따라 바뀐다. 자바는 static type binding
+const PI = 3.14159; // 상수 변수는 이렇게 선언할 때 초기화까지 해줘야 함!! 따로 해주면 오류난다. 자바에서는 된다
 //PI = 200; // Error
 let localVar = 100; // 지역변수
 
@@ -26,6 +26,6 @@ for (var i = 0; i < size; i++) {
 if (working) {
   console.log("오호라!");
 }
-</script>  
+</script>
 </body>
 </html>

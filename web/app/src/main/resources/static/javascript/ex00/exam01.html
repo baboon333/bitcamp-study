@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  <!--script 태그의 위치와 실행순서-->
 <html>
-
 <head>
   <meta charset="UTF-8">
   <title>exam</title>
-  <script> 
-  if () {}
-  console.log("출력1");
+  <script>     //js는 script 태그 사이에 작성한다. 위치는 반드시 head 안에 넣거나 body 안에 넣는다. 다른데 넣어도 오류는 안나지만 올바르지 않음
+  if () {}   //if 문 괄호 안에는 반드시 true 또는 false가 있어야 한다. // 이렇게 에러가 나면 현재 script 태그를 아예 나가버린다. 그래서 콘솔 출력 안된다
+  console.log("출력1");  //위 문장을 주석으로 막아봐
   </script>
 </head>
 
@@ -14,12 +13,12 @@
   <script>
   console.log("출력2");
   </script>
-  
+
   <h1>요점 정리 - 1.script 태그</h1>
-  
-  <script>
+
+  <script>                  //script태그는 위에서 아래로 실행한다!
   console.log("출력3");
-  </script>  
+  </script>
 </body>
 
 </html>
