@@ -9,7 +9,7 @@
 
 <script>
 function plus(a, b) {  //js에서 함수 선언할 때는 이렇게 선언한다!  //파라미터 선언 시 var 붙이지 않는다!!! 함수에 대한 정보화 코드를 담은 객체 생성 -> 함수 객체
-  return a + b;        //js는 함수도 객체로 다룬다! 따라서 plus는 변수명이라고 봐라
+  return a + b;        //js는 함수도 객체로 다룬다! 따라서 plus는 변수라고 봐라
 }
 console.log(plus(10, 20));
 
@@ -27,7 +27,7 @@ var haha = ok;
 console.log(haha(1000, 2000));
 
 //ok = "hello";  ->  exam03.html:30 Uncaught TypeError: ok is not a function 이런 오류 남
-//ok(100,200);
+//ok(100,200);   -> 이미 "hello"가 저장돼서 변수 타입이 변했으니까
 
 </script>
 </body>

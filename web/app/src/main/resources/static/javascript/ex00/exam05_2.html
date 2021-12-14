@@ -25,20 +25,13 @@ var inputNameDiv = document.querySelector(".inputName");
 
 btnAddName.onclick = function() {
 	inputNameIndex++;
-	var e = inputNameDiv.cloneNode(true);
-	e.querySelector(".name").innerHTML = "이름" + inputNameIndex;
-	e.querySelector("input").name = "name" + inputNameIndex;
-	inputNameContainer.appendChild(e);
+	var e = inputNameDiv.cloneNode(true);  // cloneNode는 inputNameDiv를 그대로 복제함(객체까지 그대로 복사! 그 안에는 많은 값이 들어있다)
+	e.querySelector(".name").innerHTML = "이름" + inputNameIndex;  //.이면 class
+	e.querySelector("input").name = "name" + inputNameIndex;  //. 없으니 그냥 태그임
+  e.querySelector("input").value = ""; //값이 복사되는게 싫어서 이렇게 써줌
+	inputNameContainer.appendChild(e);   //기존 태그 복제 후 안에 값 변경하고 붙임
 };
 
-</script>  
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
