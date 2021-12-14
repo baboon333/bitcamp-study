@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>보드게임</title>
+  <style>
+    body {
+      background-color: skyblue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>보드게임 목록</h1>
+  <a href="form.html">새로운 보드게임</a>
+  <table id="x-game-table" border="1">
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>장르</th>
+        <th>난이도</th>
+        <th>소요시간</th>
+        <th>인원</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+<script>
+  var tbody = document.querySelector("#x-game-table tbody")
+
+  fetch("/my1/list")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(games) {
+      for (var game of games) {
+        var values = game.split(",")
+        var tr = document.createElement("tr");
+        tr.innerHTML = `<td><a href="view.html?name=${values[0]}">${values[0]}</td>  <!--질문-->
+        <td>${values[1]}</td>
+        <td>${values[2]}</td>
+        <td>${values[3]}</td>
+        <td>${values[4]}</td>`;
+        tbody.appendChild(tr);
+      }
+    });
+</script>
+</body>
+</html>

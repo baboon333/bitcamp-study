@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>보드게임</title>
+  <style>
+    body {
+      background-color: skyblue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>새 보드게임</h1>
+  <form>
+  이름*: <input id="x-name" type="text"><br>
+  장르*: <input id="x-genre" type="text"><br>
+  난이도:  <input id="x-level" type="text"><br>
+  소요시간: <input id="x-time" type="text"><br>
+  인원: <input id="x-number" type="text"><br>
+  별표(*) 항목은 필수 입력입니다.<br>
+  <button id="x-add-btn" type="button">등록</button>
+  <button id="x-cancel-btn" type="button">취소</button>
+  </form>
+
+<script>
+var xName = document.querySelector("#x-name");
+var xGenre = document.querySelector("#x-genre");
+var xLevel = document.querySelector("#x-level");
+var xTime = document.querySelector("#x-time");
+var xNumber = document.querySelector("#x-number");
+
+  document.querySelector("#x-add-btn").onclick = function() {
+    if (xName.value == "" || xGenre.value == "") {
+      alert("필수 항목을 입력해주세요.");
+      return;
+    }
+
+    fetch(`/my1/add?name=${xName.value}&genre=${xGenre.value}&level=${xLevel.value}&time=${xTime.value}&number=${xNumber.value}`)
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(text) {
+      location.href = "index.html";
+    });
+  };
+
+    document.querySelector("#x-cancel-btn").onclick = function() {
+      location.href = "index.html";
+    };
+
+
+</script>
+</body>
+</html>

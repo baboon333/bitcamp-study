@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>보드게임</title>
+  <style>
+    body {
+      background-color: skyblue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h1>보드게임 상세보기</h1>
+
+<form>
+이름*: <input id="x-name" type="text" readonly><br>
+장르*: <input id="x-genre" type="text"><br>
+난이도:  <input id="x-level" type="text"><br>
+소요시간: <input id="x-time" type="text"><br>
+인원: <input id="x-number" type="text"><br>
+별표(*) 항목은 필수 입력입니다.<br>
+<button id="x-update-btn" type="button">변경</button>
+<button id="x-delete-btn" type="button">삭제</button>
+<button id="x-cancel-btn" type="button">취소</button>
+</form>
+
+<script type>
+// 1) URL에서 쿼리스트링(query string)을 추출한다.
+  var arr = location.href.split("?");
+
+  if (arr.length == 1) {
+    alert("요청 형식이 올바르지 않습니다.")
+    throw "URL 형식 오류!";
+  }
+
+  var qs = arr[1];
+  console.log(qs);
+
+  // 2) 쿼리 스트링에서 name 값을 추출한다.
+  var params = new URLSearchParams(qs);
+    var name = params.get("name");
+
+  if (name == null) {
+    alert("이름 값이 없습니다.");
+    throw "파라미터 오류!";
+  }
+
+  var xName = document.querySelector("#x-name");
+  var xGenre = document.querySelector("#x-genre");
+  var xLevel = document.querySelector("#x-level");
+  var xTime = document.querySelector("#x-time");
+  var xNumber = document.querySelector("#x-number");
+
+  // 3) 서버에서 데이터 가져오기
+  fetch(`/my1/get?name=${name}`)
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(game) {
+      var values = game.split(",");
+
+      // 4) 연락처 상세 정보를 화면에 출력한다.
+      xName.value = values[0];
+      xGenre.value = values[1];
+      xLevel.value = values[2];
+      xTime.value = values[3];
+      xNumber.value = values[4];
+    });
+
+  document.querySelector("#x-update-btn").onclick = function() {
+    if (xName.value == "" || xGenre.value == "") {
+      alert("필수 항목을 입력해주세요.");
+      return;
+    }
+
+    fetch(`/my1/update?name=${xName.value}&genre=${xGenre.value}&level=${xLevel.value}&time=${xTime.value}&number=${xNumber.value}`)
+      .then(function(response) {
+        return response.text();
+      })
+      .then(function(text) {
+        location.href = "index.html";
+      });
+  };
+
+  document.querySelector("#x-cancel-btn").onclick = function() {
+    location.href = "index.html";
+  };
+
+  document.querySelector("#x-delete-btn").onclick = function() {
+  fetch(`/my1/delete?name=${name}`)
+  .then(function(response) {
+    return response.json();  // 넘어온 0과 1을 js의 숫자로 바꿔준거!
+  })
+  .then(function(result) {
+    location.href = "index.html"
+  });
+};
+
+</script>
+
+</body>
+</html>
