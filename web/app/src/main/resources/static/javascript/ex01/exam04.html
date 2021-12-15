@@ -6,9 +6,9 @@
 <script>
   console.log("11111");
   var v1 = "aaaa";
-  // script 태그 안에 있는 자바스크립트를 실행하는 중에 오류가 발생하면 
-  // 즉시 script 태그의 실행을 중단하고 다음 태그로 간다.
-  
+  // script 태그 안에 있는 자바스크립트를 실행하는 중에 오류가 발생하면
+  // 즉시 그 script 태그의 실행을 중단하고 다음 태그로 간다.
+
   console.lag("오류 발생!"); // log() 함수의 이름을 잘못 작성하여 lag()로 작성하였다. 그래서 실행 오류!
   var v2 = "bbbb";
   console.log("11111 okok!");
@@ -27,18 +27,15 @@
 </script>
 <h1>자바스크립트 오류 발생</h1>
 <script>
-  console.log(v1);
-  console.log(v2);
+  console.log(v1);  // script 태그에서 선언된 변수는 다른 script 태그에서도 쓸 수 있다.
+  console.log(v2);  // 위에 오류 발생했어서 실행 안됐으니 없다!!  undefined : 변수에 값이 없다  //js는 실행전에 호이스팅이 일어나서 var v2 선언문장이 실행 전 맨 위로 올라가니! //변수는 있는데 값이 없음
+  console.log(v3);  //   v3 is not defined //위의 에러와 다름 //아예 변수가 없는 거임
   console.log("44444");
   console.lag("오류 발생!");
   console.log("44444 okok!");
+  //js는 변수가 어느 script 태그에 있든지 상관없다.
+  //모든 변수 선언은 위로 올라간다  -> 변수 호이스팅
+  // 호이스팅은 지금 실행중인 script 태그 안의 것들만 호이스팅!!!
 </script>
 </body>
 </html>
-
-
-
-
-
-
-

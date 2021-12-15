@@ -9,12 +9,12 @@
 <script>
 "use strict"
 
-// 배열을 만들 때 크기를 결정하지 않는다.
+// 배열을 만들 때 크기를 결정하지 않는다. (자바는 크기를 결정해야 한다.)          //느슨한 언어!!
 // 배열에 추가된 값에 따라 배열 크기(length)가 결정된다.
-// => 자바스크립트의 배열은 자바의 ArrayList와 비슷하게 동작한다. 
+// => 자바스크립트의 배열은 자바의 ArrayList와 비슷하게 동작한다.
 var arr = new Array();
 
-// 단 자바의 ArrayList와 다른 점은 대괄호 []를 이용하여 배열 값을 넣을 수 있다. 
+// 단 자바의 ArrayList와 다른 점은 대괄호 []를 이용하여 배열 값을 넣을 수 있다.
 arr[0] = "aaa";
 arr[1] = "bbb";
 arr[2] = "ccc";
@@ -24,26 +24,24 @@ console.log(arr.length);
 console.log(arr);
 console.log("----------------------");
 
-// 중간에 인덱스를 건너 뛰고 값을 넣을 수 있다.
+// 중간에 인덱스를 건너 뛰고 값을 넣을 수 있다. //이게 바로 js가 키(0,1,2,3,4 -> 키이자 변수이다)라는 중요한 증거! 그 중간 4~6까지는 안뜨고 7: eee이렇게 뜨니! 개발자 도구에 콘솔가서 확인해봐
 arr[7] = "eee";
 console.log(arr.length);
 console.log(arr);
 
+console.log(arr[8]);
+
+//var obj = new Object();
+//console.log(obj);
+//console.log(obj.v1);       //console.log(window.v1) 이렇게해도 똑같음.  v1이라는 변수가 obj/window에 있냐고 물어본 것! 만약 없다면 undefined라고 하자고 약속함.
+//객체에 그러한 항목이 없으면 undefined이다! not defined가 아니라. 해당 객체에 변수가 있냐없냐는 무조건 undefined이다. 근데 예외로 글로벌 변수에 그 변수가 있냐없냐 물어볼 때는 예외로 is not defined!!라고 하자고 약속함. 걍 그렇게 정한거래. 이런건 걍 받아들여야 함. 그 js 엔진 만든 개발자가 그렇게 정한거니까.
+//자바의 배열에서는 그 인덱스를 쓰든 안쓰든 존재한다. 근데 js는 안쓰면 존재하지 않는다.
+//js 객체에서 배열은 배열처럼 보이지만 각각이 사실은 하나의 객체다.
+
+// 규칙1: script 태그에 변수가 선언되어 있지 않으면 is not defined
+// 규칙2: script 태그에 변수는 있지만 값을 설정하지 않았으면, undefined
+// 규칙3: 객체에 변수가 없으면 undefined
+
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -15,6 +15,6 @@ public class App {
 
   @RequestMapping("/hello") 
   String hello() {
-    return "Hello World!";
+    return "Hello, java-lang-boot";
   }
 }//앱 클래스를 실행하면 스프링 부트를 실행하면서 서브렛 컨테이너와 웹 서버가 실행된다.

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex01</title>
+</head>
+<body>
+<h1>script 태그를 나중에 실행하는 예</h1>
+
+<p> 이번 달 이용 금액은 <span id="bill"></span> 원입니다.</p> <!--span 태그는 화면에 출력 안되니 이 태그로 써준 것!-->
+
+<script>
+//서버에서 이용 금액 데이터를 가져와서 화면에 출력한다.
+var xhr = new XMLHttpRequest();
+xhr.onload = function() {
+  document.getElementById("bill").innerHTML = xhr.responseText;
+};
+
+xhr.open("GET", "/javascript/ex01/exam05_x", true);  //true : 비동기로 실행해줘  -> 파이어폭스는 제대로 나오는데 크롬에서는 우리가 코딩한 것 처럼 안나오니 비동기로 처리해달라고 요청한거임. 파이어폭스 브라우저가 더 정확하다. 그러나 크롬이 고객들이 많이 쓰니 거기에 맞춰야하는거임.
+xhr.send();
+</script>
+</body>
+</html>

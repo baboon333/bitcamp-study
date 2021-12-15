@@ -27,7 +27,7 @@
 
   if (arr.length == 1) {
     alert("요청 형식이 올바르지 않습니다")
-    throw "URL 형식 오류!";
+    throw "URL 형식 오류!";      //throw 하면 이 script 태그 자체를 나간다!!! 그리고 js 특성상 오류 나면 그 script 태그를 나가고 다음 script 태그로 간다
   }
 
   var qs = arr[1];
