@@ -10,7 +10,7 @@
 // 자바스크립트의 함수는 함수를 호출할 때 전달한 값들을 보관하는 배열과 유사한 변수(length 등)를 내장하고 있다.
 // => 그 내장 변수의 이름은 "arguments" 이다.
 
-var arr = new Array();  // var arr = [];
+var arr = new Array();  // var arr = []; 이렇게 해주는 것과 똑같다.
 console.log(arr);
 
 function f1(a) {
@@ -54,17 +54,16 @@ function f3(a) {
 f4(100, 200, 300, 400);
   console.log("----------------");
 
-	function f5(a) {
-		//arguments 내장 변수는 Array() 로 초기화시킨 배열 객체가 아니기 때문에
+ 	function f5(a) {
+ 		//arguments 내장 변수는 Array() 로 초기화시킨 배열 객체가 아니기 때문에
 		//forEach()라는 함수가 없다.
-	arguments.forEach(function(value) {
-		console.log(value);
-	)}
-}
-	//쓰다말음!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ 	arguments.forEach(function(value) {
+ 		console.log(value);
+ 	});
+ }
 
-f5(100, 200, 300, 400);
-	console.log("----------------");
+ f5(100, 200, 300, 400);
+ 	console.log("----------------");
 
 
 // 주의!
