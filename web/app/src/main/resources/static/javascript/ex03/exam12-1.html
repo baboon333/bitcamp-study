@@ -1,0 +1,58 @@
+<!DOCTYPE html>  <!--쓰다 말음!!!!!!!!!!!!!!!1-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex03</title>
+</head>
+<body>
+<h1>함수 - 애로우(arrow) 함수</h1>
+<script>
+"use strict"
+// 익명 함수를 정의할 때 arrow function 문법을 사용할 수 있다.
+// 문법:
+//    (파라미터,파라미터,...) => 문장
+//    (파라미터,파라미터,...) => {문장1; 문장2;}
+//
+//
+
+function f0() {
+	return "안녕";
+}
+console.log(f0());  //클래식한 함수 정의
+
+var f1 = function() {  //익명함수 정의
+	return "안녕";
+};
+console.log(f1());
+
+// 애로우(arrow) 함 : 초간단 함수 정의 문법
+// 1) function 키워드를 제거한다
+// 2) 대신 파라미터 블록과 코드 블록 사이에 화살표를 추가한다.
+var f2 = () => {  //익명함수 정의
+	return "안녕";
+};
+console.log(f2());
+
+// 3) 한 문장만 있을 때는 중괄호를 제거할 수 있다.
+// 4) 그 한 문장이 리턴 문장일 경우 return을 생략해야 한다.
+//    그리고 문장의 끝을 나타내는 세미콜론을 제거해야 한다.
+var f3 = () => "안녕";
+console.log(f3());
+
+f2 = () => console.log("값을 리턴하지 않는다.");
+console.log(f());
+
+// 만약에 arrow 함수가 값을 리턴하지 않는다면?
+f2 = () => console.log("값을 리턴하지 않는다.");
+console.log(f()); // 값을 리턴하지 않는 함수에 대해 리턴 값을 출력하려고 한다면 undefined가 된다.
+
+f2();
+
+// 파라미터를 받는 arrow function
+var f3 = (a, b) => a + b;
+console.log(f3(100, 200));
+
+</script>
+
+</body>
+</html>
