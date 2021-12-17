@@ -5,7 +5,7 @@
 <title>ex03</title>
 </head>
 <body>
-<h1>자바스크립트 주요 함수 - JSON.parse()</h1><!--뭐라고?????????-->
+<h1>자바스크립트 주요 함수 - JSON.parse(JSON형식문자열)</h1>
 <textarea id="ta" cols="80" rows="10"></textarea>
 <button id="btn1">실행</button>
 <script>
@@ -40,8 +40,8 @@ var ta = document.getElementById("ta");
 
 document.getElementById("btn1").onclick = () => {
 	var str = ta.value;
-    var obj = JSON.parse(str);  //JSON 형식의 문자열 ==> //////////////////다 못적음!!!!!!!!!!!!!!!
-	console.log(obj);       //블럭안에 뭐 넣어줄 때 숫자는 걍 쓰고 실행해줘도 되지만 문자는 json 문자열이니 양쪽에 쌍따옴표 적어주어야한다.
+    var obj = JSON.parse(str);  //JSON 형식의 문자열 ===변환===> 자바스크립트 객체 //JSON 형식의 문자열로 보내야 하니 문자를 쓰고 싶으면 ""꼭 써줘야 한다.
+	console.log(obj);       //JSON 형식의 문자열로 보내야 하니 블럭안에 뭐 넣어줄 때 숫자는 그냥 쓰고 실행해줘도 되지만 문자는 json 문자열이니 양쪽에 ""를 꼭 써줘어야한다.
 
 	// 1) 단일 객체 생성
 	// => eval과 달리 객체 생성 문법인 중괄호{}를 괄호 ()로 감쌀 필요가 없다.

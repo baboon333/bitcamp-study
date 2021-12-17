@@ -1,4 +1,4 @@
-<!DOCTYPE html>  <!--쓰다 말음!!!!!!!!!!!!!!!1-->
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -13,41 +13,28 @@
 //    (파라미터,파라미터,...) => 문장
 //    (파라미터,파라미터,...) => {문장1; 문장2;}
 //
-// 쓰다말음!!!!!!!!
+//
 
 function f0(a,b) {
-	re
+	return a+b;
 }
-f0();
+console.log(f0(1, 2));
 
-// 파라미터를 받는 arrow function   //한문장을 arrow function 하는데 중괄호 하면 안된다! 촌스러운 개발자다. 문장이 한개 일 때는 중괄호 생략하고 return도 빼버린다.
-var f1 = function() {
-	console.log("값을 리턴하지 않는다");
-};  //이거는 여기에 세미콜론 붙여줘야 한다. 변수의 값을 할당하는 것이기 때문에!! 하지만 function f0() {console.log("값을 리턴하지 않는다.");} 이거는 단순히 함수를 정의하는 것이기 때문에 세미콜론을 주는게 아니다.
-f1();
+var f1 = function(a, b) {
+	return a + b;
+}
+console.log(f1(10, 20));
 
-var f2 = () => {
-	console.log("값을 리턴하지 않는다");
+var f2 = (a, b) => {
+	return a + b;
 };
-f2();
-
-var f3 = () => console.log("값을 리턴하지 않는다");  //문장 하나의 경우 중괄호 생략할 수 있.
-f3();
-
-f2 = () => console.log("값을 리턴하지 않는다.");
-console.log(f()); // 값을 리턴하지 않는 함수에 대해 리턴 값을 출력하려고 한다면 undefined가 된다.
-
-f2();
+console.log(f2(100, 200));
 
 var f3 = (a, b) => a + b;
-console.log(f3(100, 200));
+console.log(f3(1000, 2000));
 
 // 여러 개의 문장을 가질 때는 블록{}으로 묶는다.
 // => {} 에서 값을 리턴하려면 return을 명시해야 한다.
-var f4 = (a, b) => {
-    return a + b;
-};
-console.log(f4(100, 200));
 </script>
 
 </body>

@@ -37,7 +37,8 @@ box2.setValue(200);
 
 console.log(box1.getValue());
 console.log(box2.getValue());
-
+// setValue()를 했을 때는 value 값이 리턴안되고 클로저 메모리에 저장된다. 근데 이게 클로저 메모리에 저장되기 때문에
+// 이 함수가 종료된 후 다른 함수인 getValue 함수를 실행했을 때 그 저장해왔던 클로저 메모리에서 가져다 쓸 수 있는 것이다!! 
 </script>
 
 </body>

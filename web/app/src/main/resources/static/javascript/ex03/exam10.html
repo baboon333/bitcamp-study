@@ -20,7 +20,7 @@ function createInterestCalculator(type) {
     	return function(money, month) {return money + (money * 0.0014 * month);};
     default:
     	return function(money, month) {return money;};
-    }
+    }  //return이라고 하면 함수 자체를 나가는 것이다.
 }
 
 // createInterestCalculator() 함수가 리턴하는 것은 내부에서 정의한 함수의 주소이다.

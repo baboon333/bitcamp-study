@@ -22,54 +22,104 @@ public class ContactController {
 
   @RequestMapping("/contact/add")
   public Object add(String name, String email, String tel, String company) {
-    String contact = name + "," + email + "," + tel + "," + company;
-    contacts[size++] = contact;  // add 호출이 들어올 때마다 size가 커진다.
+    if (size == contacts.length) {     //배열이 꽉 찼다면,
+      contacts = grow(); // 메서드 이름에서 해당 코드에 대한 설명을 짐작할 수 있다.
+    }
+    contacts[size++] = createCSV(name, email, tel, company);  // add 호출이 들어올 때마다 size가 커진다.
     return size;
   }
 
   @RequestMapping("/contact/get")
   public Object get(String email) {
-    for (int i = 0; i < size; i++) {   //배열에 입력된 값만 for문 돌리려고 size로!
-      /*학습용 (이렇게 임시변수 많이 만들지 않는다~)
-      String contact = contacts[i];     // 예)"u1,u1@test.com,1111,비트캠프"
-      String[] values = contact.split(",");    // 예){"u1","u1@test.com","1111","비트캠프"}
-      if(contacts[i].split(",").equals(email)) {   // 예)"u1@test.com"
-        return contacts[i];
-      }
-       */
-      //실전
-      if (contacts[i].split(",")[1].equals(email)) { //예 "u1@test.com"
-        return contacts[i];      
-      }
+    int index = indexOf(email);
+    if (index == -1) {  //못찾으면 -1
+      return "";
     }
-    return "";
+
+    return contacts[index];  //찾으면 그 인덱스에 해당하는걸 리턴해주겠다!
   }
 
   @RequestMapping("/contact/update")
   public Object update(String name, String email, String tel, String company) {
-    String contact = name + "," + email + "," + tel + "," + company;
-    for (int i = 0; i < size; i++) {
-      if (contacts[i].split(",")[1].equals(email)) {
-        contacts[i] = contact;   //기존의 값 대신 클라이언트가 보낸 새 값으로 덮어쓴다.
-        return 1;
-      }
+    int index = indexOf(email);
+    if (index == -1) {  
+      return 0;  //못바꿨다! 아무것도 하지마라
     }
-    return 0;
+
+    contacts[index] = createCSV(name, email, tel, company);  //찾으면 그 인덱스에 해당하는걸 리턴해주겠다!
+    return 1;
   }
+
   @RequestMapping("/contact/delete")
   public Object delete(String email) {
+    int index = indexOf(email);
+    if (index == -1) {
+      return 0;
+    }
+
+    remove(index); // 메서드 이름으로 코드의 의미를 김작할 수 있다. ---못적음!!!
+    return 1;
+  }
+
+
+  //기능: 입력 받은 파라미터 값을 가지고 CSV 형식으로 문자열을 만들어 준다.
+  //
+  String createCSV(String name, String email, String tel, String company) {  //메소드: 어떤 기능을 수행하는 코드를 묶어놓은 것 //자바는 리턴타입(String)을 꼭 지정해줘야하고 파라미터를 전부 써줘야 한다! //자바의 createCSV 함수를 흉내내서 쓰는거임. 이렇게 있는걸 흉내내서 써야 이해도를 높이니까!!
+    return name + "," + email + "," + tel + "," + company;  
+  } //한 사람의 연락처 정보를 문자열로 만드는 코드를 메서드로 분리한다.
+
+
+  //기능: 
+  //- 이메일로 연락처 정보를 찾는다.
+  //- 찾은 연락처의 배열 인덱스를 리턴한다. 
+  //
+  int indexOf(String email) {   //이렇게 명확하게 그 기능에 해당하는 메소드 이름을 적어야 한다! //자바의 indexOf 함수를 흉내내서 쓰는거임. 이렇게 있는걸 흉내내서 써야 이해도를 높이니까!!
     for (int i = 0; i < size; i++) {
       if (contacts[i].split(",")[1].equals(email)) {
-
-        // 현재 위치의 다음 항목에서 배열 끝까지 반복하며 앞으로 값을 당겨온다. 
-        for (int j = i + 1; j < size; j++) {  //현재가 i이니 그 다음꺼 j
-          contacts[j - 1] = contacts[j];   
-        }
-        size--;  
-        return 1;
+        return i;
       }
     }
-    return 0;
+    return -1;
+  } 
+
+
+  //기능:
+  // - 배열에서 지정한 항목을 삭제한다.
+  //
+  String remove (int index) {      //자바의 remove 함수를 흉내내서 쓰는거임. 이렇게 있는걸 흉내내서 써야 이해도를 높이니까!!
+    String old = contacts[index];  //자바의 remove 함수를 흉내내서 쓰는거니까 그 함수랑 비슷한 기능을 수행하게 하려고 나중을 위해서 삭제한 값을 리턴하도록 코드를 짠거임!!!
+    for (int i = index + 1; i < size; i++) {
+      contacts[i - 1] = contacts[index];   
+    }
+    size--; 
+    return old;
   }
+
+  // 기능:
+  // - 배열의 크기를 늘린다.
+  // - 기존 배열의 값을 복사해온다.
+  //
+  String[] grow() {  //기존 add에 있어도 상관없지만 코드 기능을 명확하게 하고 싶기 때문에 분리해서 쓴 것.
+    // 기존 배열 보다 50% 큰 배열을 새로 만든다.
+    String[] arr = new String[newLength()];
+
+    //기존 배열의 값을 새 배열로 복사한다.
+    for(int i = 0; i < contacts.length; i++) {
+      arr[i] = contacts[i];
+    }
+    return arr;
+    // >>1은 오른쪽으로 비트를 하나 옮기는거니 2로 나눈것과 같다!
+  }
+
+  // 기능:
+  // - 주어진 배열에 대해 50% 증가시킨 새 배열의 길이를 알려준다.
+  //
+  int newLength() {  // 코드의 가독성을 위해 뺌. 속도는 느려지지만 그만큼 가독성이 중요하다.
+    return contacts.length + (contacts.length >> 1);
+  }
+
 }
+
+
+
 
