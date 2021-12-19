@@ -15,7 +15,7 @@ public class Exam0110 {
     while (starLen <= len) {
       // 별 앞에 공백 출력    //맨 위 별이 가운데 있어야되니!
       int spaceCnt = 1;
-      int spaceLen = (len - starLen) / 2;
+      int spaceLen = (len - starLen) / 2;  //만약 9개면 가운데 1개를 기준으로 양쪽에 4개씩 할 수 있으니
       while (spaceCnt <= spaceLen) {
         System.out.print(" ");   // 반복하면서 공백을 찍는다
         spaceCnt++;
