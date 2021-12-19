@@ -7,19 +7,19 @@ import java.util.Scanner;
 public class Exam0110Test {
 
   static void printSpaces(int len) {
-    int spaceCnt = 1;
-    while (spaceCnt <= len) {
+    for (int i = 0; i < len; i++) {
       System.out.print(" ");
-      spaceCnt++;
     }
   }
 
   static void printStars(int len) {
-    int starCnt = 1;
-    while (starCnt <= len) {
+    for (int i = 0; i < len; i++) {
       System.out.print("*");
-      starCnt++;
     }
+  }
+
+  static int getSpaceLength(int totalStar, int displayStar) {
+    return (totalStar - displayStar) / 2;
   }
 
   public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class Exam0110Test {
     keyScan.close();
 
     for (int starLen = 1; starLen <= len; starLen += 2) {
-      printSpaces((len - starLen) / 2);
+      printSpaces(getSpaceLength(len, starLen));
       printStars(starLen);
       System.out.println();
     }
