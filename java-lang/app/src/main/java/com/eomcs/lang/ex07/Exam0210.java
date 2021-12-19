@@ -89,7 +89,7 @@ public class Exam0210 {
 // ## 용어
 // - 메서드명, 파라미터 변수 선언 : 메서드 시그너처(method signature)
 //      예) hello()
-// - 메서드 블록 : 메서드 몸체(method body)
+// - 메서드 블록 = 메서드 몸체(method body)
 //      예) {
 //            System.out.println("안녕하세요!");
 //            System.out.println("이 메서드는 어떤 값도 리턴하지 않습니다.");
@@ -103,3 +103,4 @@ public class Exam0210 {
 // 2) 인스턴스 메서드
 //    - 특정 인스턴스에 대해 사용한다.
 //    - static이 붙지 않는다.
+// 이 두개의 차이는 기다려~
