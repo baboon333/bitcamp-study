@@ -10,12 +10,12 @@ public class Exam0530 {
     //
     int sum = 0;
     for (String arg : args)
-      sum += Integer.parseInt(arg);
+      sum += Integer.parseInt(arg);  //Integer라는 class에 parseInt라는 method가 있는데 여기에 숫자로 바꿀 수 있는 문자열일 경우 바꿔준다.
     System.out.printf("합계: %d\n", sum);
   }
 }
 
-// # 프로그램 아규먼트(arguments)
+// # 프로그램 아규먼트(arguments)  //클래스 뒤에
 // - 프로그램을 실행할 때 넘겨주는 값.
 // - 어떻게 아규먼트를 넘기는가?
 //

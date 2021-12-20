@@ -4,7 +4,7 @@ package com.eomcs.lang.ex07;
 //
 public class Exam0461 {
 
-  static long sum(int value, int value2, int value3, int value4, int value5, int value6) {
+  static long sum(int value, int value2, int value3, int value4, int value5, int value6) {  //24바이트
     System.out.println(value);
     if (value == 1)
       return 1; 

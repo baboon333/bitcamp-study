@@ -21,7 +21,7 @@ public class Exam0620 {
           "실행 형식: java -cp ./bin/main -Dname=이름 -Dkor=국어점수 -Deng=영어점수 -Dmath=수학점수 com.eomcs.basic.ex07.Exam0620");
       return;
     }
-    int kor = Integer.parseInt(s1);
+    int kor = Integer.parseInt(s1); //꺼낸건 무조건 문자열이니 이걸 정수로 바꾸고 싶으면 이렇게!
     int eng = Integer.parseInt(s2);
     int math = Integer.parseInt(s3);
 

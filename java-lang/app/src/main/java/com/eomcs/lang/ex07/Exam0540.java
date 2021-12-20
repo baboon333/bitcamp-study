@@ -24,7 +24,7 @@ public class Exam0540 {
 
     System.out.printf("이름: %s\n", args[0]);
     System.out.printf("총점: %d\n", sum);
-    System.out.printf("평균: %.1f\n", sum / 3f);
+    System.out.printf("평균: %.1f\n", sum / 3f);  //3f인 이유는 정수와의 연산이면 소수점이 안나오기 때문이다.  // .1이면 소수점 이하 한자리까지 출력하라는 것이다. 
   }
 }
 

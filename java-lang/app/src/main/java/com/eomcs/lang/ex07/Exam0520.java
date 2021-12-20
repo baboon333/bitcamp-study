@@ -7,7 +7,7 @@ public class Exam0520 {
   // 프로그램 아규먼트
   // - jvm을 실행할 때 프로그램에 전달하는 값
   // - 예)
-  // > java -cp bin Exam0520 aaa bbb cccc
+  // > java -cp bin Exam0520 aaa bbb cccc  명령창에서는 이렇게 직접 주면 되고 eclipse에서는 run configurations - Arguments - Program arguments에서 주면 된다
   // aaa bbb cccc 가 프로그램 아규먼트이다.
   //
   public static void main(String[] args) {
