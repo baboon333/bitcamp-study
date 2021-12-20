@@ -8,13 +8,13 @@ public class Exam0450 {
     if (value == 1)
       return 1;
 
-    return value + sum(value - 1);
+    return value + sum(value - 1); //sum(value - 1, value2)  //sum(5)의 메모리와 (4)의 메모리는 다르다! 계속 새로 생겨난다.
   }
 
   public static void main(String[] args) {
     // 다음과 같이 작은 수를 계산 할 때는 재귀호출을 사용하는 것이
     // 코드도 간단하고 이해하기도 쉽다.
-    System.out.println(sum(5));
+    System.out.println(sum(5)); //sum(18000,700000)
   }
 }
 // JVM Stack 메모리의 사용

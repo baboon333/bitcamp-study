@@ -5,13 +5,17 @@ package com.eomcs.lang.ex07;
 public class Exam0420 {
 
   static int[] getArray() {
-    int[] arr = new int[] {100, 200, 300};
+    int[] arr = new int[] {100, 200, 300};  //new 라고 하면 무조건 heap에 만든다!!!!! //우리는 이걸 배열 객체라고 부르기도 하고, 배열 인스턴스라고 부르기도 한다.
+    // => int 배열 주소를 담을 arr 변수를 JVM Stack 영역에 준비하라!
+    // => 100, 200, 300 값을 담은 배열을 Heap 영역에 준비하라.
+    // => Heap 영역에 준비한 배열 메모리의 주소를 JVM Stack 메모리에 있는 arr 변수에 넣어라.
+
     return arr;
   }
 
   public static void main(String[] args) {
     int[] arr;
-    arr = getArray();
+    arr = getArray(); //arr 배열의 주소가 놓임
     System.out.println(arr[1]); // 200
   }
 }
