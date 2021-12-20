@@ -14,6 +14,10 @@ public class Exam0271 {
 
   public static void main(String[] args) {
     // 컴파일 확인하라!
+
+    // 가변 파라미터 사용 예:
+    System.out.printf("==> %s", "aaa");  //1개 줄수도
+    System.out.printf("==> %s|%s\n", "aaa", "bbb");  // 2개 줄수도... printf에 마우스 올려서 확인해보기! 2번째 파라미터 값에 ...확인 가능
   }
 }
 

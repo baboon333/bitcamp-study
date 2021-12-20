@@ -7,9 +7,9 @@ public class Exam0270 {
   // 1) 가변 파라미터는 여러 개 선언할 수 없다.
   //    => 아규먼트의 시작과 끝을 구분할 수 없다.
   //       예) m1("aaa", "bbb", "aaa@test.com", "bbb@test.com");
-  //       어느 값이 names 배열에 들어가고, 어느 값이 emails 배열에 들어가는가?
+  //       어느 값이 names 배열에 들어가고, 어느 값이 emails 배열에 들어가는가? 알수가 없다!
   //  static void m1(String... names, String... emails) {} // 컴파일 오류!
-  //  static void m1(String[] names, String[] emails) {} // OK!
+  //  static void m1(String[] names, String[] emails) {} // OK!  //배열 파라미터는 가능하다!
   //
   //    => 중간에 다른 타입이 온다 하더라도 안된다.
   //  static void m1(String... names, int a, String... emails) {}// 컴파일 오류!

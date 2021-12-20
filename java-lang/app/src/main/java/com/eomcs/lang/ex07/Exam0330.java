@@ -1,4 +1,4 @@
-package com.eomcs.lang.ex07;
+package com.eomcs.lang.ex07;  //나중에
 
 //# 메서드 : call by reference II
 //

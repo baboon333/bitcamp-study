@@ -4,14 +4,14 @@ package com.eomcs.lang.ex07;
 //
 public class Exam0260 {
 
-  // 가변 파라미터
+  // 가변 파라미터  // 0개 이상의 문자열을 받겠다. 물론 배열의 주소를 받을 수도 있다.
   static void hello(String... names) {
     for (int i = 0; i < names.length; i++) {
       System.out.printf("%s님 반갑습니다.\n", names[i]);
     }
   }
 
-  // 배열 파라미터
+  // 배열 파라미터  // 배열 주소만 받겠다
   static void hello2(String[] names) {
     for (int i = 0; i < names.length; i++) {
       System.out.printf("%s님 반갑습니다.\n", names[i]);

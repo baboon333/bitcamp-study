@@ -4,7 +4,7 @@ package com.eomcs.lang.ex07;
 //
 public class Exam0450 {
 
-  static int sum(int value) {
+  static int sum(int value) {  //(int value, long value2)로 하면 sum(18000)에서도 stackoverflow 뜬다. 메소드 호출할 때마다 12 byte를 준비해야하니! 8byte가 늘었잖아. 그니까 stack 메모리가 더 빨리 찬다. 
     if (value == 1)
       return 1;
 
