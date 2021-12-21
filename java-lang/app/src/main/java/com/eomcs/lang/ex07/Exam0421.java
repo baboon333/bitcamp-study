@@ -40,11 +40,11 @@ public class Exam0421 {
     for (int i = 0; i < moneys.length; i++) {
       totals[i] = moneys[i] + (moneys[i] * interest);
     }
-    return totals;
+    return totals;  //totals의 주소를 리턴한다
   }
 
 }
-
+//heap은 메서드 별로 존재하는게 아니라 모든 메서드가 공유하는 메모리 영역이다.
 
 
 
