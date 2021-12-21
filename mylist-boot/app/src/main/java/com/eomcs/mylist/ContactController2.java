@@ -1,4 +1,4 @@
-package com.eomcs.mylist;
+//package com.eomcs.mylist;
 
 /*@RestController // 클라이언트 요청을 처리하는 역할  // 일반 클래스가 아닌 클라이언트 요청에 응답하는 클래스다!
 public class ContactController2 {

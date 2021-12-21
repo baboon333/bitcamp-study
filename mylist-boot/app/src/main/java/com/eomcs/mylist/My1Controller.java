@@ -1,4 +1,4 @@
-package com.eomcs.mylist;
+/*package com.eomcs.mylist;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,3 +61,4 @@ public class My1Controller{
     return 0;
   }
 }
+ */

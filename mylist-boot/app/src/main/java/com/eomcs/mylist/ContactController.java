@@ -1,31 +1,34 @@
 package com.eomcs.mylist;
 
-import org.springframework.web.bind.annotation.RequestMapping; //@RequestMapping 이거 치면 자동으로 생성된다
-import org.springframework.web.bind.annotation.RestController; //@RestController 이거 치면 자동으로 생성된다
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController 
 // 이 클래스가 클라이언트 요청 처리 담당자임을 표시한다.
-// 이 표시(애노테이션)가 붙어 있어야만 스프링부트가 인식한다.
 public class ContactController {
 
-  String[] contacts = new String[5];
-  int size = 0; // 배열에 집어넣은 개수
+  Contact[] contacts = new Contact[5];
+  int size = 0;
 
-  @RequestMapping("/contact/list") //요청과 이 메소드를 연결한다. 반드시 앞에 / 붙여줘야한다!!!
+  //연락처 목록은 Contact 클래스의 배열로 변경한다.
+  @RequestMapping("/contact/list")
   public Object list() {
-    String[] arr = new String[size];     //배열에 저장된 값만 복사할 새 배열을 만든다. 들어있는 값이 두개면 두개만 복사해주는거임
+    Contact[] arr = new Contact[size];
     for (int i =0; i < size; i++) {
-      arr[i] = contacts[i]; // 전체 배열에서 값이 들어 있는 항목만 복사한다
+      arr[i] = contacts[i];
     }
-    return arr; //복사한 항목들을 리턴한다.
+    return arr;
   }
 
   @RequestMapping("/contact/add")
-  public Object add(String name, String email, String tel, String company) {
+  public Object add(Contact contact) {   //contact 레퍼런스 변수를 스프링부트가 넘겨줌. //스프링부트는 add()를 호출하기 전에 그 파라미터인 contact 인스턴스를 만든 후에 값을 저장한다. 그리고 그 주소를 넘겨주는거임
+    System.out.println(contact); //Contact.java에 @override 덕분에 이렇게 간단하게 쓸 수 있음. //(contact.toString()) to.String() 생략가능! 인스턴스의 주소만 주면 된다.
+
     if (size == contacts.length) {     //배열이 꽉 찼다면,
       contacts = grow(); // 메서드 이름에서 해당 코드에 대한 설명을 짐작할 수 있다.
     }
-    contacts[size++] = createCSV(name, email, tel, company);  // add 호출이 들어올 때마다 size가 커진다.
+    contacts[size++] = contact;
+
     return size;
   }
 
@@ -40,13 +43,13 @@ public class ContactController {
   }
 
   @RequestMapping("/contact/update")
-  public Object update(String name, String email, String tel, String company) {
-    int index = indexOf(email);
+  public Object update(Contact contact) {
+    int index = indexOf(contact.email);
     if (index == -1) {  
       return 0;  //못바꿨다! 아무것도 하지마라
     }
 
-    contacts[index] = createCSV(name, email, tel, company);  //찾으면 그 인덱스에 해당하는걸 리턴해주겠다!
+    contacts[index] = contact;  //찾으면 그 인덱스에 해당하는걸 리턴해주겠다!
     return 1;
   }
 
@@ -57,17 +60,9 @@ public class ContactController {
       return 0;
     }
 
-    remove(index); // 메서드 이름으로 코드의 의미를 김작할 수 있다. ---못적음!!!
+    remove(index); // 메서드 이름으로 코드의 의미를 짐작할 수 있다. 이것이 메서드로 분리하는 이유이다.
     return 1;
   }
-
-
-  //기능: 입력 받은 파라미터 값을 가지고 CSV 형식으로 문자열을 만들어 준다.
-  //
-  String createCSV(String name, String email, String tel, String company) {  //메소드: 어떤 기능을 수행하는 코드를 묶어놓은 것 //자바는 리턴타입(String)을 꼭 지정해줘야하고 파라미터를 전부 써줘야 한다! //자바의 createCSV 함수를 흉내내서 쓰는거임. 이렇게 있는걸 흉내내서 써야 이해도를 높이니까!!
-    return name + "," + email + "," + tel + "," + company;  
-  } //한 사람의 연락처 정보를 문자열로 만드는 코드를 메서드로 분리한다.
-
 
   //기능: 
   //- 이메일로 연락처 정보를 찾는다.
@@ -75,21 +70,21 @@ public class ContactController {
   //
   int indexOf(String email) {   //이렇게 명확하게 그 기능에 해당하는 메소드 이름을 적어야 한다! //자바의 indexOf 함수를 흉내내서 쓰는거임. 이렇게 있는걸 흉내내서 써야 이해도를 높이니까!!
     for (int i = 0; i < size; i++) {
-      if (contacts[i].split(",")[1].equals(email)) {
+      Contact contact = contacts[i]; //각 주소들
+      if (contact.email.equals(email)) {  //파라미터(email)과 같으면
         return i;
       }
     }
     return -1;
   } 
 
-
   //기능:
   // - 배열에서 지정한 항목을 삭제한다.
   //
-  String remove (int index) {      //자바의 remove 함수를 흉내내서 쓰는거임. 이렇게 있는걸 흉내내서 써야 이해도를 높이니까!!
-    String old = contacts[index];  //자바의 remove 함수를 흉내내서 쓰는거니까 그 함수랑 비슷한 기능을 수행하게 하려고 나중을 위해서 삭제한 값을 리턴하도록 코드를 짠거임!!!
+  Contact remove (int index) {      //자바의 remove 함수를 흉내내서 쓰는거임. 이렇게 있는걸 흉내내서 써야 이해도를 높이니까!!
+    Contact old = contacts[index];  //자바의 remove 함수를 흉내내서 쓰는거니까 그 함수랑 비슷한 기능을 수행하게 하려고 나중을 위해서 삭제한 값을 리턴하도록 코드를 짠거임!!!
     for (int i = index + 1; i < size; i++) {
-      contacts[i - 1] = contacts[index];   
+      contacts[i - 1] = contacts[i];   
     }
     size--; 
     return old;
@@ -99,8 +94,9 @@ public class ContactController {
   // - 배열의 크기를 늘린다.
   // - 기존 배열의 값을 복사해온다.
   //
-  String[] grow() {
-    String[] arr = new String[newLength()]; //새 길이의 배열을 만들고
+
+  Contact[] grow() {
+    Contact[] arr = new Contact[newLength()]; //contact 인스턴스 배열이 아니라 레퍼런스 배열이다!!!
     copy(contacts, arr);  //기존 배열의 값을 새 배열에 복사한다
     return arr; //새 배열을 리턴한다
   }
@@ -115,7 +111,7 @@ public class ContactController {
   // 기능:
   // - 배열을 복사한다.
   //
-  void copy(String[] source, String[] target) {
+  void copy(Contact[] source, Contact[] target) {
     // 개발자가 잘못 사용할 것을 대비해서 다음 코드를 추가한다.
     // 즉 target 배열이 source 배열 보다 작을 경우 target 배열 크기만큼만 복사한다.
     int length = source.length;
@@ -125,9 +121,7 @@ public class ContactController {
     for (int i = 0; i < source.length; i++) {
       target[i] = source[i]; 
     }
-
   }
-
 }
 
 

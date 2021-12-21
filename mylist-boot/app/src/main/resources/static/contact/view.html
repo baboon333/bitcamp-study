@@ -49,18 +49,16 @@
     var xCompany = document.querySelector("#x-company");
 
     // 3) 서버에서 데이터 가져오기
-    fetch(`/contact/get?email=${email}`)
-      .then(function(response) {
-        return response.text();
+    fetch(`/contact/get?email=${email}`)//이걸 실행한 후
+      .then(function(response) {  //이 함수를 호출해줘
+        return response.json();  //서버에서 받은 데이터는 JSON문자열이니까 파싱해서 JS객체로 만들어줘! //서버에서 받은 json 형식의 문자열을 js 객체로 전환하여 다룬다.
       })
-      .then(function(contact) {
-        var values = contact.split(",")
-
+      .then(function(contact) { //파싱이 끝나면 다음 메소드 호출할 때 넘겨줘
         //4) 연락처 상세 정보를 화면에 출력한다.
-        xName.value = values[0];
-        xEmail.value = values[1];
-        xTel.value = values[2];
-        xCompany.value = values[3];
+        xName.value = contact.name;
+        xEmail.value = contact.email;
+        xTel.value = contact.tel;
+        xCompany.value = contact.company;
       });
 
   document.querySelector("#x-update-btn").onclick = function() {

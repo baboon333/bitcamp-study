@@ -25,16 +25,15 @@
 
   fetch("/contact/list")
     .then(function(response) {
-      return response.json();  //json 형식의 문자열을 자바스크립트 객체로 바꿔라
+      return response.json();  //json 형식의 문자열을 자바스크립트 객체로 바꿔라 //서버에서 받은 json 형식의 문자열을 js 객체로 전환하여 다룬다.
     })
     .then(function(contacts) {
       for (var contact of contacts) {
-        var values = contact.split(",");
         var tr = document.createElement("tr");
-        tr.innerHTML = `<td><a href="view.html?email=${values[1]}">${values[0]}</a></td>
-        <td>${values[1]}</td>
-        <td>${values[2]}</td>
-        <td>${values[3]}</td>`;
+        tr.innerHTML = `<td><a href="view.html?email=${contact.email}">${contact.name}</a></td>
+        <td>${contact.email}</td>
+        <td>${contact.tel}</td>
+        <td>${contact.company}</td>`;
         tbody.appendChild(tr);
       }
     })
