@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>HTML</title>
   <style>
-  /* 실렉터(selector) III
+  /* 셀렉터(selector) III
      특정 조건을 갖는 대상자를 지정하기
      => 대상자를 지정할 때 조건을 나열할 수 있다.
      => 문법
@@ -13,18 +13,18 @@
         대상자:상태명 {...}
         대상자[속성명] {...}
    */
-  
-  div#content {
+
+  div#content {  /*공백을 띄우면 div 자손 중에서 content라는 id를 갖는거에 해당하므로! 이건 div의 id를 의미함*/
     border-width: 1px;
     border-color: red;
     border-style: dashed;
     margin: 10px;
   }
-  ul.c1.c2 {
+  ul.c1.c2 {  /*c1, c2 둘다에 소속된 ul!! 공백 주면 안된다.*/
     background-color: yellow;
   }
 
-  div#menu li.c2 {
+  div#menu li.c2 { /*div 중에서도 menu라는 id를 가진 애들 중에서 c2에 속한 li를 안보이게 하라*/
     display: none;
   }
   </style>
@@ -63,6 +63,11 @@ IT 분야로의 성공적인 취업과 창업준비!!<br>
   <li class="c2">빅데이터 프로페셔널 과정</li>
 </ul>
 </div>
+<div>
+<p id="content">
+오호라 테스트입니다!
+</p>
+</div>
 
 <div id="footer">
 <img src="http://bitcamp.co.kr/resources/images/logo/bottom_logo1.png">
@@ -73,8 +78,3 @@ IT 분야로의 성공적인 취업과 창업준비!!<br>
 
 </body>
 </html>
-
-
-
-
-<!-- -->
