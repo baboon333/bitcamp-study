@@ -12,23 +12,23 @@
 
 var obj = new Object();
 
-obj.name = "홍길동";
-obj.f1 = () => console.log("f1()....");
+obj.name = "홍길동";  //name이란 이름으로 홍길동을 저장해줄래?
+obj.f1 = () => console.log("f1()....");  //함수객체가 만들어지고 f1에는 함수의 주소가 들어가는 것이다.
 
 var obj2 = new Object();
 obj2.v1 = 100;
 obj2.v2 = true;
 obj2.v3 = "문자열";
-obj2.v4 = () => console.log("v4()....");
+obj2.v4 = () => console.log("v4()....");  //함수객체(코드+변수 등등)가 만들어진다.
 
 // 이렇게 프로퍼티의 값으로 다른 객체의 주소를 저장할 수 있다.
-obj.other = obj2;
+obj.other = obj2;  //obj에 other란 이름으로 obj2 주소가 저장된다.   //객체는 다들 떨어져있고 주소로 서로를 가리키는거임.
 
 // 객체의 프로퍼티 값 꺼내기
 console.log(obj.name);
 console.log(obj.other.v1); // 자바의 OGNL(Object Graph Navigation Language)와 비슷하다.
 console.log(obj.other.v2);
-console.log(obj.other.v3);
+console.log(obj.other.v3);  //obj의 other에서 주소를 얻어 들어가서 거기에서 v3를 찾음. //객체(object) 선(연결) 그래프(graph)를 따라가는 경로(navigation)를 표기한 문법(language)  (OGNL 표기법: 객체에 접근하기 위한 언어)
 
 // 객체의 함수 호출
 obj.f1();
@@ -37,8 +37,3 @@ obj.other.v4();
 </script>
 </body>
 </html>
-
-
-
-
-

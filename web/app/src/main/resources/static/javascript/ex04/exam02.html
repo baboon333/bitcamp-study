@@ -8,7 +8,7 @@
 <h1>객체 - 프로퍼티 추가</h1>
 <script>
 "use strict"
-// 생성자를 이용하여 기본 객체를 준비한 후에 
+// 생성자를 이용하여 기본 객체를 준비한 후에
 // 필요한 프로퍼티(변수와 함수)를 추가할 수 있다.
 //
 
@@ -19,28 +19,28 @@ console.log(obj);
 // 기본 객체 안에는 다음의 함수들이 들어 있다.
 console.log(obj.toString());
 console.log(obj.valueOf());
-console.log(obj.hasOwnProperty("toString")); // false
-console.log(obj.hasOwnProperty("hashCode")); // false
-// => hasOwnProperty()는 기본 객체를 생성한 이후에 
+console.log(obj.hasOwnProperty("toString")); // false(개발자가 추가시킨게 아니라 object 생성자에 의해 생성된 것이니 false가 나오는거임)
+console.log(obj.hasOwnProperty("hashCode")); // false(아예 없으니 false가 나오는거임)
+// => hasOwnProperty()는 기본 객체를 생성한 이후에
 //    개발자가 추가한 프로퍼티인지 검사한다.
 
 console.log("----------------------");
 
 // 이렇게 준비된 객체에 프로퍼티를 추가하고 싶다면 다음의 문법을 사용하라!
-// 객체.프로퍼티명 = 값;
+// 객체.프로퍼티명 = 값;    //프로퍼티명 거의 변수명이라고 보면 된다. 함수명 이런 것도 있음!
 // 객체["프로퍼티명"] = 값;
 // 객체['프로퍼티명'] = 값;
 
 // 객체에 값을 저장할 수 있다.
 obj.title = "제목입니다.";
 obj["content"] = "내용입니다.";
-obj['viewCount'] = 120; 
+obj['viewCount'] = 120;
 
 // 물론 그 값으로 함수 객체의 주소를 저장할 수 있다.
 function f1(a, b) {
-  return a + b; 
+  return a + b;
 }
-obj.plus1 = f1; // 함수명은 그 자체가 함수 객체의 주소를 갖고 있는 변수이다. 
+obj.plus1 = f1; // 함수명은 그 자체가 함수 객체의 주소를 갖고 있는 변수이다.
 
 obj.plus2 = function(a, b) {
   return a + b;
@@ -48,7 +48,7 @@ obj.plus2 = function(a, b) {
 
 obj.plus3 = (a, b) => console.log("합계=", a + b); // arrow function
 
-console.log(obj.hasOwnProperty("title"));  // true
+console.log(obj.hasOwnProperty("title"));  // true    //내가 추가시킨 것이니 true
 console.log(obj.hasOwnProperty("content")); // true
 console.log(obj.hasOwnProperty("viewCount")); // true
 console.log(obj.hasOwnProperty("plus1")); // true
@@ -67,8 +67,3 @@ obj['plus3'](100, 200);
 </script>
 </body>
 </html>
-
-
-
-
-
