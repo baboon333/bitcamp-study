@@ -5,13 +5,15 @@
 <title>ex04</title>
 </head>
 <body>
-<h1>생성자5 - 생성자 상속</h1>
+<h1>생성자6 - 생성자 상속과 prototype 연결</h1>
 <script>
 "use strict"
 
 function f1(n) {
   this.name = n; //f2가 넘겨준 this와 같다.
 }
+
+f1.prototype
 
 function f2 (n, k, e, m) {
   // 상위 생성자를 명시적으로 호출한다.
