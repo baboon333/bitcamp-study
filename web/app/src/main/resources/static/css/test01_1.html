@@ -4,40 +4,40 @@
   <meta charset="UTF-8">
   <title>HTML</title>
   <style>
-    
+
   /* CSS 주석
      CSS(Cascading Style Sheet)?
      => HTML UI 컴포넌트(=태그)의 모양을 제어할 때 사용하는 기술
   */
-  /* 실렉터(selector)?
+  /* 셀렉터(selector)?
     => 스타일을 적용할 대상자를 지정하는 문법
    */
 
   /* 1) 태그 이름으로 대상자 지정하기
-    태그명 {스타일명:값; 스타일명:값; ...}
+    태그명 {스타일명:값; 스타일명:값; ...}   // js는 프로퍼티 사이에 ,(콤마)를 찍는데 css는 ;(콜론)을 찍는다.
   */
-  html {
+  html {  /*셀렉터 중 태그 이름을 주는 거임*/
     border-style: solid;
     border-color: blue;
-    margin: 20px; 
+    margin: 20px;   /*마지막도 ;빼면 안된다!*/
   }
 
   body {
-    border-style: dotted;
-    border-color: red;
-    margin: 10px;
+    border-style: dotted;  /*테두리 스타일*/ /*커서 두고 ctrl + space 누르면 어떤거 가능한지 나열돼서 나옴 https://developer.mozilla.org/ko/docs/Web/CSS/border-style*/
+    border-color: red;  /*web color 검색   주로 이름 아니면 헥사 값을 쓴다.  #ff0000(HEX) = red(이름) = rgb(100, 0, 0)  RGB중 R만 빛을 쏘는거니 FF0000 흰색은 모두 쏘는거니 FFFFFF!!*/
+    margin: 10px;  /*margin2: 이런 식으로 적어도 오류는 안남. 그냥 스타일 적용이 안될 뿐이다. 그러니 이런걸 이름 바꿔 확인해보면서 공부해라! margin: 테두리 바깥쪽 여백*/
   }
-  
+
   div {
-    border-style: dashed;
-    border-width: 10px;
+    border-style: solid;
+    border-width: 2px;
     border-color: green;
-    padding: 10px;
+    padding: 10px;  /*테두리 안쪽 여백*/
     margin: 10px;
   }
- 
+
   img, ul {
-    border-style: dotted;
+    border-style: dashed;
     margin: 0px;
   }
 
@@ -47,13 +47,13 @@
 
 <div id="menu">
 <img src='http://bitcamp.co.kr/img/link2.png'>
-<ul>
+<ol>  <!--ol: ordered list 순서가 있는 리스트-->
   <li>교육안내</li>
   <li>교육과정</li>
   <li>수강신청</li>
   <li>온라인상담</li>
   <li>커뮤니티</li>
-</ul>
+</ol>
 <button>로그인</button>
 <button>회원가입</button>
 </div>
@@ -64,7 +64,7 @@
 IT 분야로의 성공적인 취업과 창업준비!!<br>
 이젠 실무프로젝트로 승부한다.
 </p>
-<ul>
+<ul> <!--unordered list 순서를 표현하지 않는 리스트-->
   <li>자바 웹개발자 양성과정</li>
   <li>IoT 개발자 양성과정</li>
   <li>윈도우 프로그래머 과정</li>

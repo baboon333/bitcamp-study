@@ -8,29 +8,29 @@
      CSS(Cascading Style Sheet)?
      => HTML UI 컴포넌트(=태그)의 모양을 제어할 때 사용하는 기술
   */
-  /* 실렉터(selector)?
+  /* 셀렉터(selector)?
     => 스타일 적용할 대상자를 지정하는 문법
    */
 
-  /* 3) 분류명(class)으로 대상자 지정하기
+  /* 3) 분류명(class)으로 대상자 지정하기    //모든 태그에는 class라는 속성이 있다.  //하나의 태그는 여러 그룹(분류)에 속할 수 있다. 그리고 css는 그룹별로 스타일을 제어할 수 있다.
     .분류명 {스타일명:값; 스타일명:값; ...}
   */
   .member {
-    display: none;
+    display: none;  /*태그는 존재하는데 화면에 출력하지 말아라*/
   }
- 
+
   .c1 {
     color: red;
   }
-  
+
   .c2 {
-    color: blue;
+    color: green;            /*같은 걸 가리킬 경우 c2가 후에 왔기 때문에 c1을 덮어쓴다.*/
     font-weight: bold;
     text-decoration: underline;
   }
 
   .c1, .c2 {
-    border-style: double;
+    border-style: solid;   /*border-color를 따로 지정해주지 않으면 폰트 색상을 그대로 쓴다.*/
   }
 
   </style>
@@ -39,8 +39,8 @@
 <div id="menu">
 <img src='http://bitcamp.co.kr/resources/images/logo/head_logo.gif'>
 <ul>
-  <li class="guest">교육안내</li>
-  <li class="guest member">교육과정</li>
+  <li class="guest">교육안내</li>         <!--li 태그는 guest라는 클래스에 속해있다-->
+  <li class="guest member">교육과정</li>  <!--이 li 태그는 guest에도 속해 있고 member에도 속해있다는 거임. 순서는 중요x, member guest해도 된다-->
   <li class="member">수강신청</li>
   <li class="guest">온라인상담</li>
   <li class="member">커뮤니티</li>
@@ -58,7 +58,7 @@ IT 분야로의 성공적인 취업과 창업준비!!<br>
 <ul>
   <li class="c1">자바 웹개발자 양성과정</li>
   <li class="c1">IoT 개발자 양성과정</li>
-  <li class="c2 c1">윈도우 프로그래머 과정</li>
+  <li class="c2 c1">윈도우 프로그래머 과정</li>  <!--빨간색 대신 초록색이 뜨는 이유는 c2가 적용되었기 때문이다. 이유는 style 태그 안에 c2가 c1보다 나중에 오는데 다음에 오는 스타일이 전의 스타일을 덮어쓰기 때문-->
   <li class="c2">빅데이터 프로페셔널 과정</li>
 </ul>
 </div>

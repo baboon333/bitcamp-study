@@ -8,28 +8,28 @@
      CSS(Cascading Style Sheet)?
      => HTML UI 컴포넌트(=태그)의 모양을 제어할 때 사용하는 기술
   */
-  /* 실렉터(selector)?
+  /* 셀렉터(selector)?
     => 스타일 적용할 대상자를 지정하는 문법
    */
 
   /* 2) ID 값으로 대상자 지정하기
-    #아이디 {스타일명:값; 스타일명:값; ...}
+    #아이디 {스타일명:값; 스타일명:값; ...}  셀렉터 문법
   */
- 
+
   #content {
-    background-color: gray;
-    color: red;
+    background-color: gray;  /*보통 css는 자바처럼 이름 표기 시 카멜 표기법을 안쓰고 단어 사이를 -로 정의한다.*/
+    color: red;              /*font-color가 아니라 그냥 color다!!!*/
   }
-  
+
   #menu, #footer {
     background-color: yellow;
     color: blue;
   }
-  
+
   </style>
 </head>
 <body>
-<div id="menu">
+<div id="menu"> <!--모든 태그는 id라는 속성을 붙일 수 있다. id라는 속성을 붙이면 id 라는 속성으로 태그를 찾을 수 있다. id가 같은게 두개라도 에러가 안뜬다. 그래서 문제다. 무심코 같은 id를 주게될 수 있으니. tag 이름이 다르더라도 안된다! -->
 <img src='http://bitcamp.co.kr/resources/images/logo/head_logo.gif'>
 <ul>
   <li>교육안내</li>
@@ -65,8 +65,3 @@ IT 분야로의 성공적인 취업과 창업준비!!<br>
 
 </body>
 </html>
-
-
-
-
-<!-- -->
