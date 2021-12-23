@@ -14,15 +14,15 @@ function f1(n) {
 }
 
 function f2 (n, k, e, m) {
-  // 상위 생성자를 명시적으로 호출한다.
-  f1.call(this, n);  //f1 생성자를 호출하며 받은 n을 그대로 넘겨준다.
+  // 상위 생성자를 명시적으로 호출한다. //f2가 f1을 상속 받는 방식
+  f1.call(this, n);  //f1 생성자를 호출하며 f2가 받은 객체 주소를 그대로 this에 넘겨준다. 그리고 f2에서 받은 n을 그대로 넘겨준다. 그래서 그 객체에 이름을 설정할 수 있는거임
 
   this.kor = k;
   this.eng = e;
   this.math = m;
 }
 
-var obj1 = new f2("홍길동", 100, 90, 80);
+var obj1 = new f2("홍길동", 100, 90, 80); //기본 객체를 만든 후 f2를 호출한다.
 console.log(obj1);
 
 </script>

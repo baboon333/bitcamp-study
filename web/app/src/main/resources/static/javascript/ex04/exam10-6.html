@@ -8,7 +8,7 @@
 <h1>객체 - 객체 생성과 초기화 IV</h1>
 <script>
 "use strict"
-// 다 못적음!!!!!!!!!!!!!!9시 50분 잘 못들음
+
 // 6) 함수 외부에서 객체를 생성한 후 즉시 초기화시키
 // 실무에서는 대부분 이 방법을 쓴다. 4번 방법도 쓰긴 씀
 
@@ -16,7 +16,7 @@
 function createScore(name, kor, eng, math) {
 	// new 명령을 실행한 후에 이 함수를 호출하면
 	// this 내장 변수에 그 생성된 객체 주소가 저장된다.
-	// 이렇게 되면 이 함수 내부에
+	// 이렇게 되면 이 함수 내부에서 객체를 생성할 필요가 없다.
 	// this 내장 변수를 사용하여 객체를 사용하면 된다.
 	this.name = name;
 	this.kor = kor;
@@ -47,16 +47,6 @@ for (var score of scores) {
             score.sum(), score.aver());
 }
 
-console.log("--------------------------------------------");
-
-// 과목의 점수를 변경하더라도 합계와 평균은 다시 계산되기 때문에 편하다!
-scores[2].kor = 100;
-
-for (var score of scores) {
-    console.log(score.name, score.kor, score.eng, score.math,
-    		score.sum(), score.aver());
-}
-
 // 다음과 같이 생성된 객체를 초기화시키는 것이 아니라
 // 객체를 생성해두는 일을 하는 함수는
 // "팩토리 함수(factory)"라 부른다.
@@ -74,9 +64,8 @@ function createScore2(name, kor, eng, math) {
 	};
 	return obj;
 }
-
-// 못 적음
-
+var obj = createScore2("홍길동", 100, 90, 80);
+console.log(obj);
 
 </script>
 </body>
