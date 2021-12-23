@@ -17,8 +17,8 @@
 <script>
 "use strict"
 
-// querySelectorAll("CSS selector 문법")
-// => NodeList 객체 리턴
+// querySelectorAll("CSS selector 문법")  => 얘로 찾으면 한개를 찾든 여러개를 찾든 NodeList로 리턴한다!
+// => NodeList 객체 리턴    //아까는 HTMLCollection!
 //
 // 1) 아이디로 찾기
 var list = document.querySelectorAll("#header3");
@@ -27,7 +27,7 @@ for (var e of list) {
     console.log(e);
 }
 // NodeList는 배열이 아니다. 따라서 다음 반복문을 사용하면 필요없는 프로퍼티까지 반복하게 된다.
-console.log("1) for...in ---------------------");
+console.log("1) for...in ---------------------");   //for in은 배열에 대해서만 써라!!!!!!for of 나 전통적인 for루프를 써라.
 for (var i in list) {
     console.log(list[i]);
 }
@@ -69,8 +69,3 @@ for (var e of list) {
 </script>
 </body>
 </html>
-
-
-
-
-

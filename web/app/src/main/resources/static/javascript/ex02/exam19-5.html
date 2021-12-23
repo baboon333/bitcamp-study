@@ -5,7 +5,7 @@
 <title>ex02</title>
 </head>
 <body>
-<h1>반복문 - for(... of 객체)</h1>
+<h1>반복문 - for(변수 선언 of iterable 객체)</h1>
 <script>
 "use strict"
 // 일반 객체는 이 반복문을 사용할 수 없다.   //for in은 된다!
@@ -27,7 +27,7 @@ for (var v of obj) {
 */
 console.log("---------------------");
 
-var obj2 = new Map(); // Map으로 초기화시킨 객체는 iterable 객체이다.
+var obj2 = new Map(); // Map으로 초기화시킨 객체는 iterable 객체이다.  //Map은 우리가 만든게 아닌 js에서 만들어준 객체!
 obj2.set("name", "홍길동");
 obj2.set("age", 20);
 obj2.set("tel", "1111-1111");
