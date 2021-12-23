@@ -5,73 +5,87 @@
 <title>ex04</title>
 </head>
 <body>
-<h1>생성자8 - 생성자 상속과 instanceof</h1>
+<h1>생성자8 - 생성자 상속과 prototype</h1>
 <script>
 "use strict"
+//생성자 상속 이해 못해도 좋다. 근데 이걸 알아야 DOM API, 라이브러리, jQuery등 이해 가능. 라이브러리가 이런 식으로 이루어져 있기 때문.
+// dom api의 태그 객체가 상속관계로 되어있다.
 
-//생성자 상속 이해 못해도 좋다. 근데 이걸 알아야 DOM API 이해 가능
+console.log("----------------------------------");
+console.log("Object() 생성자:");
+
+Object.prototype.test0 = function() {  //생성자의 모든 함수는 prototype이라는 보관소가 있다. object도 마찬가지
+  console.log("test0() 호출됨!");
+}
+var obj0 = new Object();
+console.log(obj0);  //object라는 prototype을 기반으로 만들었어~prototype 안에 constructor 정보가 들어있다.
+console.log(obj0.constructor);
+console.log(Object.prototype); // object의 ptototype 저장소 전체 내용 출력해줘!
+obj0.test0();
+
+
+console.log("----------------------------------");
+console.log("f1() 생성자:");
+
 function f1() {
   this.name = "홍길동";
 }
-f1.prototype.test1 = function() {
-  console.log("test1()...");
+f1.prototype.test1 = function() {  //생성자의 모든 함수는 prototype이라는 보관소가 있다. object도 마찬가지
+  console.log("test1() 호출됨!");
 };
+var obj1 = new f1();
+console.log(obj1);  //object라는 prototype을 기반으로 만들었어~prototype 안에 constructor 정보가 들어있다.
+console.log(obj1.constructor);
+console.log(f1.prototype); // object의 ptototype 저장소 전체 내용 출력해줘!
+obj1.test1();  // obj1  ---> f1.prototype
+obj1.test0();  // 찾는 순서: obj1 ---> f1.prototype ---> Object.prototype   //obj1객체에서 먼저 찾은 후 없으면 객체를 초기화시킨 prototype에서 찾은 후 없으면 이 생성자의 상위 생성자의 prototype에 가서 찾는다.
+//obj1.testx();  // 찾는 순서: obj1 ---> f1.prototype(이 객체를 초기화시킨 생성자의 prototype에서) ---> Object.prototype(상위 생성자의) ---> null (더 이상 못찾으니 error)
 
+
+
+console.log("----------------------------------");
+console.log("f2() 생성자:");
 function f2() {
-  f1.call(this); // (상속 받을 때는) 상위 생성자를 호출해야 한다.
+  f1.call(this); // (상속 받을 때는) 상위 생성자를 호출해야 한다.  //f1을 call하고 this를 넘겨준다. 이걸 적어줘서 name이 추가된거임
   this.email = "hong@test.com";
 }
-f2.prototype = Object.create(f1.prototype);
+f2.prototype = Object.create(f1.prototype); //f1의 프로토타입을 기반으로 f2 prototype을 만들겠다(=f2 프로토타입은 f1 프로토타입을 가리킨다.)  //이거 안해주면 상위생성자가 f1이 아닌 object로 나옴 //f2의 프로토타입은 버려버리고 f1으 프로토타입과 연결된 프로토타입을 새로 만든거임(덮어써지는거임)
 f2.prototype.constructor = f2; // 이거 안해주면 console.log(obj2.constructor); 했을 때 f1이 나옴!
 f2.prototype.test2 = function() {
-  console.log("test2()...");
+  console.log("test2() 호출됨!");
 };
 
+var obj2 = new f2();
+console.log(obj2);
+console.log(obj2.constructor);
+console.log(f2.prototype); // object의 ptototype 저장소 전체 내용 출력해줘!
+obj2.test2();  // obj2  ---> f2.prototype
+obj2.test1();  // obj2  ---> f2.prototype ---> f1.prototype  // 없으면 상위생성자의 prototype에서 찾는다.
+obj2.test0();  // obj2  ---> f2.prototype ---> f1.prototype ---> Object.prototype
+//obj2.testx();  // obj2  ---> f2.prototype ---> f1.prototype ---> Object.prototype ---> null
+
+console.log("----------------------------------");
+console.log("f3() 생성자:");
 function f3() {
-  f2.call(this); // 상위 생성자인 f2를 호출해야 한다.
+  f2.call(this); // 상위 생성자인 f2를 호출해야 한다.  // f2 함수를 호출해서 this를 파라미터로 넘겨줘서 실행하라. this에는 해당 객체(obj3)의 주소가 들어있다! 따라서 obj3에 email이 추가될 수 있는거임//f3() {} 여기서 {}안에 있는걸 function body라고 한다. 코드를 가지고 있는 몸체!
   this.tel = "010-1111-2222";
 }
 f3.prototype = Object.create(f2.prototype);
 f3.prototype.constructor = f3;
 f3.prototype.test3 = function() {
-  console.log("test3()...");
+  console.log("test3() 호출됨!");
 };
 
-var obj1 = new f1();
-var obj2 = new f2();
 var obj3 = new f3();
-
-console.log(obj1);
-console.log(obj2);
 console.log(obj3);
-console.log("-----------------------");
-
-obj3.test1(); //obj1.test3();는 안된다!
-obj3.test2();
-obj3.test3();
-console.log("-----------------------");
-
-console.log(obj3 instanceof f3);
-console.log(obj3 instanceof f2); //f3의 슈퍼생성자는 f2
-console.log(obj3 instanceof f1); //f1의 슈퍼생성자는 Object
-console.log(obj3 instanceof Object);
-console.log("-----------------------");
-
-console.log(obj2 instanceof f3);
-console.log(obj2 instanceof f2);
-console.log(obj2 instanceof f1);
-console.log(obj2 instanceof Object);
-console.log("-----------------------");
-
-console.log(obj1 instanceof f3);
-console.log(obj1 instanceof f2);
-console.log(obj1 instanceof f1);
-console.log(obj1 instanceof Object);
-console.log("-----------------------");
-
 console.log(obj3.constructor);
-console.log(obj2.constructor);
-console.log(obj1.constructor);
+console.log(f3.prototype); // object의 ptototype 저장소 전체 내용 출력해줘!
+obj3.test3();  // obj3  ---> f3.prototype ---> f2.prototype   // obj3에 없으니 이 객체를 초기화시킨 f3의 prototype에서 찾아본다.
+obj3.test2();  // obj3  ---> f3.prototype ---> f2.prototype ---> f1.prototype  // 없으면 상위생성자의 prototype에서 찾는다.
+obj3.test1();  // obj3  ---> f3.prototype ---> f2.prototype ---> f1.prototype ---> Object.prototype
+obj3.test0();  // obj3  ---> f3.prototype ---> f2.prototype ---> f1.prototype ---> Object.prototype
+//obj3.testx();  // obj3  ---> f3.prototype ---> f2.prototype ---> f1.prototype ---> Object.prototype ---> null
+
 </script>
 </body>
 </html>
