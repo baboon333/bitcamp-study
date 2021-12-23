@@ -17,9 +17,9 @@
 <script>
 "use strict"
 
-// getElementById("태그아이디")
-// => Element 객체 리턴
-var e1 = document.getElementById("header4");
+// Document.prototype.getElementById("태그아이디")  //객체가 있어야만! .prototype이니!
+// => 리턴 값: HTMLElement 하위 생성자에 의해 초기화된 객체를 리턴
+var e1 = document.getElementById("header4"); //# 주면 안된다! #은 css 셀렉터니까!  //그 태그를 찾아 리턴한다.
 
 console.log(e1);
 console.log(e1.name); // undefined
@@ -28,8 +28,9 @@ console.log(e1.constructor.name); // 객체의 생성자 이름
 
 console.log("----------------------------");
 
+// => 생성자 상속 관계 : HTMLHeadingElement() --->  HTMLElement() ---> Element()  ---> Node() ---> EventTarget() ---> Object()
 console.log(e1 instanceof HTMLHeadingElement); // true
-console.log(e1 instanceof HTMLElement); // true
+console.log(e1 instanceof HTMLElement); // true // HTMLHeadingElement의 슈퍼(상위)생성자
 console.log(e1 instanceof Element); // true
 console.log(e1 instanceof Node); // true
 console.log(e1 instanceof EventTarget); // true

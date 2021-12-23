@@ -6,13 +6,6 @@
 </head>
 <body>
 <h1>DOM API - document 객체</h1>
-<h1 id="header1" class="g1">제목1</h1>
-<h2 id="header2" class="g1">제목1.1</h2>
-<h2 id="header3" class="g1">제목1.2</h2>
-
-<h1 id="header4" class="g2">제목2</h1>
-<h2 id="header5" class="g2">제목2.1</h2>
-<h2 id="header6" class="g2">제목2.2</h2>
 
 <script>
 "use strict"
@@ -39,17 +32,25 @@ console.log(document.constructor.name); // 이 객체를 초기화시킨 생성�
 //    4. Document() ---> 3. Node() ---> 2. EventTarget() ---> 1. Object()    // Object(): 최상위 생성자
 // 초기화 순서: 1->2->3->4  //초기화: 준비시키는 것. 변수나 함수를 추가하는 것.  //따라서 document의 변수나 함수를 보고 싶다면  이것만 볼게 아니라 상위 생성자의 것까지 찾아봐야 한다.
 
-// Object() 생성자가 추가한 함수 존재 여부 확인:
-console.log(document.toString);
+console.log(document);
 
-// EventTarget() 생성자가 추가한 함수 존재 여부 확인:
-console.log(document.addEventListener);
+console.log(Document.prototype);
 
-// Node() 생성자가 추가한 함수 존재 여부 확인:
-console.log(document.appendChild);
+// Document()의 함수
+console.log(document.createElement);  // document(변수) ---> Document(함수).prototype
 
-// Document() 생성자가 추가한 함수 존재 여부 확인:
-console.log(document.createElement);
+// Node()의 함수
+console.log(document.appendChild);   // document ---> Document.prototype ---> Node.prototype
+
+// EventTarget()의 함수
+console.log(document.addEventListener);   // document ---> Document.prototype ---> Node.prototype ---> EventTarget.prototype
+
+// Object()의 함수
+console.log(document.toString);   // document ---> Document.prototype ---> Node.prototype  ---> EventTarget.prototype ---> Object.prototype
+//함수를 호출한게 아니라 toString으로 추가된 함수를 출력한거임
+
+
+
 
 </script>
 </body>

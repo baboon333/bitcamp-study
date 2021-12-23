@@ -14,35 +14,36 @@
   <article>
     <h1 id="header2">자바</h1>
     <p>자바는 <b>백-엔드</b>에서 사용하는 프로그래밍 언어입니다.
-    <a href='http://www.spring.io'>스프링 프레임워크</a>는 자바 백-엔드 개발 프레임워크입니다.</p>
+    <a href='http://www.spring.io'>스프링 프레임워크</a>는 자바 백-엔드 개발 프레임워크입니다.</p><!--html에서 href는 attribute-->
   </article>
 </section>
 <script>
 "use strict"
 
+//다 못적음
+
 // 태그의 속성 바꾸기
-// 
-var e = document.querySelector("article:nth-child(2) a");
-console.log(e.href)
+//
+var e = document.querySelector("article:nth-child(2) a");  //article 중에서 두번째가 아니라 부모로부터 두번째에 있는 태그가 article인 경우! 이 자손중에서 a 를 찾아라(직계자식은 >)
+console.log(e.href)  //js에서 href는 property
+
+if (confirm("링크의 주소를 바꿀까요?")) {
+//창을 띄우는 거임 yes 누를 때만 if 문 실행!
 
 // 1) 방법1
 // => 원래 태그에 있던 속성 값을 바꿀 때!
 //      태그객체.속성명 = "값"
-e.href = "http://www.daum.net";
+e.href = "http://www.daum.net";  //바뀐 소스는 개발자 도구의 Elements에서 봐야 함!! 페이지 소스보기에소 보는 건 처음 받아온 소스임
 
-// 2) 방법2
+// 2) 방법2  //원래 있던 거에 더불어 없었던 것도 추가할 때 이 방법을 써라!
 // => 원래 태그에 있던 속성 값을 바꿀 때
 //      태그객체.setAttribute("속성명", "값")
-// => 이 메서드를 사용하면 개발자가 임의로 추가한 프로퍼티 값도 바꿀 수 있다. 
-//    즉 원래 태그 객체에 없던 프로퍼티 값을 설정할 때 사용한다.
+// => 이 메서드를 사용하면 개발자가 임의로 추가한 프로퍼티 값도 바꿀 수 있다.
+//    즉 원래 태그 객체에 없던 프로퍼티 값도 설정할 수 있다.
 //e.setAttribute("href", "http://www.google.com");
+}
 
 
 </script>
 </body>
 </html>
-
-
-
-
-

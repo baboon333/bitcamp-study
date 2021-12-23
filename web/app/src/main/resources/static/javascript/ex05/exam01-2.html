@@ -17,18 +17,20 @@
 <script>
 "use strict"
 
-// getElementsByTagName("태그이름")
+// Document.prototype.getElementsByTagName("태그이름")  //Elements으로 같은 이름을 가진 태그가 여러개 리턴될 수 있다.
 // => HTMLCollection 객체 리턴
-// => HTMLCollection은 배열이 아니다!
+// => HTMLCollection은 배열이 아니다!  //배열처럼 사용할 수는 있다.
 //
 var el = document.getElementsByTagName("h2");
+
+console.log(el.constructor.name);
 
 // HTMLCollection 객체는 배열은 아니지만,
 // 배열처럼 length 프로퍼티가 있고,
 // 인덱스 번호를 이용하여 찾은 태그들을 꺼낼 수 있다.
 // => 그래서 반복문을 사용할 수 있다.
 for (var i = 0; i < el.length; i++) {
-    console.log(i, el[i].innerHTML);
+    console.log(i, el[i].innerHTML);   //el[i].innerHTML -> 그 인덱스에 뭐가 들어있는지 출력해보자
 }
 console.log("--------------------------");
 

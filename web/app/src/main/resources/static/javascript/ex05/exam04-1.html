@@ -21,45 +21,43 @@
 "use strict"
 
 // 태그를 만들고 추가하는 방법
-// 
-var section = document.querySelector("section");
+//
+var section = document.querySelector("section");  //그냥 태그 객체를 리턴한거임
 
 // 1) 태그 만들기
-// => createElement("태그명")를 사용하여 태그 객체를 만든다.
+// => Document.prototype.createElement("태그명")를 사용하여 태그 객체를 만든다.
 //
 var article = document.createElement("article"); // <article></article>
 var h1 = document.createElement("h1"); // <h1></h1>
 var text = document.createTextNode("제목입니다."); // 제목입니다.
 var p = document.createElement("p"); // <p></p>
-var text2 = document.createTextNode("내용입니다."); // 내용입니다. 
+var text2 = document.createTextNode("내용입니다."); // 내용입니다.
 
 // 2) 태그에 자식 노드를 붙이기
-// => appendChild(자식노드)를 사용하여 자식 태그나 노드를 붙인다.
+// => appendChild(자식노드)를 사용하여 자식 태그나 노드를 붙인다.  //부모 밑에 자식 추가할 때는 appendchild!!
 //    appendChild()는 자식노드(태그)를 맨 뒤에 붙인다.
 //
 
 // Node의 함수를 사용해서 콘텐트를 설정할 수 있다.
-h1.appendChild(text); // <h1>제목입니다.</h1>
-//h1.innerHTML = "제목입니다."; // innerHTML에 직접 값을 넣을 수 도 있다.
+h1.appendChild(text); // <h1>제목입니다.</h1>  //자식 태그를 붙인다는 걸 설명하기 위해 하는 것. 아래 방법을 더 많이 씀.
+//h1.innerHTML = "제목입니다."; // innerHTML에 직접 값을 넣을 수도 있다.  //실무에서는 이 방법을 더 많이 씀.
 
 p.appendChild(text2); // <p>내용입니다.</p>
 
 article.appendChild(h1); // <article><h1>제목입니다.</h1></article>
 article.appendChild(p); // <article><h1>제목입니다.</h1><p>내용입니다.</p></article>
 
-// 새로 만든 article 태그를 section 태그의 막내 자식태그로 붙인다.
-section.appendChild(article); 
-// <section>
-//   <article>...</article>
-//   <article>...</article>
-//   <article><h1>제목입니다.</h1><p>내용입니다.</p></article>
-// </section>
+
+if (confirm("article 태그를 추가하겠습니까?")) {  //yes 누르면 추가되고 no 누르면 추가 안된다.
+  // 새로 만든 article 태그를 section 태그의 막내 자식태그로 붙인다.
+  section.appendChild(article);
+  // <section>
+  //   <article>...</article>
+  //   <article>...</article>
+  //   <article><h1>제목입니다.</h1><p>내용입니다.</p></article>
+  // </section>
+}
 
 </script>
 </body>
 </html>
-
-
-
-
-
