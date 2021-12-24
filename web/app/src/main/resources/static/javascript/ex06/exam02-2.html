@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>이벤트 - 이벤트 정보 다루기 II</h1>
-<button id="btn1" onclick="btn1Click(event)">버튼1</button><br>
+<button id="btn1" onclick="btn1Click(event)">버튼1</button><br> <!--여기선 무조건 event라고 써야 함. event는 빌트인 객체. 태그에서 event객체를 사용할 때는 꼭 이렇게 적어야 함. 밑에 method에서는 받아서 쓰기만 하면 된다.-->
 
 <script>
 "use strict"
@@ -15,21 +15,16 @@
 // 함수를 만들고 호출하라!
 // => 물론 event 객체를 함수를 호출할 때 넘겨줘야 한다.
 //    당연히 함수에서는 event 객체를 받는 파라미터가 있어야 한다.
-function btn1Click(e) {
+function btn1Click(e) {   //event의 e! 이걸 많이 씀
   console.log(e);
   console.log(e.constructor.name);
   console.log(e instanceof MouseEvent);
 	console.log(
-			e.altKey, e.ctrlKey, e.button, 
-			e.offsetX, e.offsetY, 
-			e.clientX, e.clientY, 
+			e.altKey, e.ctrlKey, e.button,
+			e.offsetX, e.offsetY,
+			e.clientX, e.clientY,
 			e.screenX, e.screenY)
 }
 </script>
 </body>
 </html>
-
-
-
-
-

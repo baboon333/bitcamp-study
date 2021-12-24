@@ -11,19 +11,14 @@
 <script>
 "use strict"
 
-// addEventListener() 사용
-document.getElementById("btn1").addEventListener("click", function(e) {
+// addEventListener() 사용     //리스너를 등록할 때 event가 발생했을 때 그 event 정보가 필요하다면 파라미터로 넘겨줘라! 안넘겨줘도 arguments에 들어 있긴 하지만 그럼 코드를 더 써줘야니 불편하잖아!
+document.getElementById("btn1").addEventListener("click", function(e) {  //getElementByTagName("button")으로 하면 얘가 리턴하는건 태그가 아니기 때문에 addEventListener가 없어서 안된다!
 	console.log(
-		e.altKey, e.ctrlKey, e.button, 
-		e.offsetX, e.offsetY, 
-		e.clientX, e.clientY, 
+		e.altKey, e.ctrlKey, e.button,
+		e.offsetX, e.offsetY,
+		e.clientX, e.clientY,
 		e.screenX, e.screenY)
 });
 </script>
 </body>
 </html>
-
-
-
-
-
