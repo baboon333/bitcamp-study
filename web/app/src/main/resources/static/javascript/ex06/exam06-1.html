@@ -6,20 +6,20 @@
 </head>
 <body>
 <h1>이벤트 - a 태그의 기본 동작을 중단시키기</h1>
-<p>a 태그의 링크를 클릭하면 href 에 등록한 URL을 요청하는 것이 
+<p>a 태그의 링크를 클릭하면 href 에 등록한 URL을 요청하는 것이
 a 태그의 기본 동작이다.</p>
-<a href="http://www.daum.net" 
+<a href="http://www.daum.net"
    onclick="alert('OK!')">a 태그의 기본 동작 계속</a><br>
 
-<!-- 기본 동작을 막고 싶다면 onclick 속성에 작성하는 스크립트의 리턴 값을 false로 지정하라! -->
-<a href="http://www.daum.net" 
+<!-- 기본 동작을 막고 싶다면 onclick 속성에 작성하는 스크립트의 리턴 값을 false로 지정하라! 그럼 a 태그의 원래 동작인 그 url로 이동하는게 이루어지지 않는다.-->
+<a href="http://www.daum.net"
    onclick="alert('OK!'); return false">a 태그의 기본 동작 취소 1</a><br>
 
 <!-- a 태그의 onclick에 작성할 스크립트가 많다면 별도의 함수에 작성하고 호출한다.
-     이때 함수의 리턴 값에 따라 a 태그의 기본 동작을 제어하는 기법이 
+     이때 함수의 리턴 값에 따라 a 태그의 기본 동작을 제어하는 기법이
      다음 예이다. -->
-<a href="http://www.daum.net" 
-   onclick="return f1()">a 태그의 기본 동작 취소 2</a><br>
+<a href="http://www.daum.net"
+   onclick="return f1()">a 태그의 기본 동작 취소 2</a><br>  <!--함수의 리턴값이 false면 기본 동작을 막겠구나-->
 
 <!-- 태그.onclick = 함수() {} -->
 <a id="link3" href="http://www.daum.net">a 태그의 기본 동작 취소 3</a><br>
@@ -47,19 +47,20 @@ document.querySelector("#link3").onclick = function() {
 }
 
 document.querySelector("#link4").onclick = function(e) {
-  e.preventDefault(); // a 태그의 기본 동작을 비활성화 한다.
+  e.preventDefault(); // a 태그의 기본 동작을 비활성화시킨다. 리스너 호출이 끝난 후 서버에 요청하지 않는다.  (http 요청: 개발자 도구에서 network에서 확인해봐. 이거는 alert창 끄면 아예 아무것도 요청 안하는게 보임)
   alert("OK!");
 }
 
 document.querySelector("#link5").addEventListener("click", function() {
   alert("OK!");
-  return false; // addEventListener()로 함수를 등록하면 
-                // return 값으로 a 태그의 기본 동작을 취소할 수 없다.
+  return false; // addEventListener()로 함수를 등록하면
+                // return 값으로 a 태그의 기본 동작을 취소할 수 없다.  //onclick은 된다!
 });
 
 document.querySelector("#link6").addEventListener("click", function(e) {
-  // addEventListener()로 함수를 등록한다면 
+  // addEventListener()로 함수를 등록한다면
   // Event.preventDefault()를 사용하여 a 태그의 기본 동작을 취소해야 한다.
+  // 그래서 권장하는 방법이 Event.preventDefault()를 사용하는 것!
   e.preventDefault();
   alert("OK!");
 });
@@ -68,8 +69,3 @@ document.querySelector("#link6").addEventListener("click", function(e) {
 </script>
 </body>
 </html>
-
-
-
-
-

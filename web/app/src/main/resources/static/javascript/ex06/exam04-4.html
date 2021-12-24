@@ -11,8 +11,13 @@ table {
 tbody tr:hover {
   background-color: lightgray;
   color: white;
-  cursor: pointer;
+  cursor: pointer;  /*커서 모양 손모양으로 바꾸기*/
 }
+
+a {
+  border: 1px dotted gray;
+}
+
 </style>
 </head>
 <body>
@@ -29,21 +34,21 @@ tbody tr:hover {
 </thead>
 <tbody>
   <tr data-no="100">
-    <td>1</td> 
+    <td>1</td>
     <td><a href="#" data-no="1">제목</a></td>
     <td>홍길동</td>
     <td>2019-4-29</td>
     <td>100</td>
   </tr>
   <tr data-no="200">
-    <td>2</td> 
+    <td>2</td>
     <td><a href="#" data-no="2">제목</a></td>
     <td>임꺽정</td>
     <td>2019-4-29</td>
     <td>800</td>
   </tr>
   <tr data-no="300">
-    <td>3</td> 
+    <td>3</td>
     <td><a href="#" data-no="3">제목입니다.</a></td>
     <td>유관순</td>
     <td>2019-4-29</td>
@@ -54,24 +59,25 @@ tbody tr:hover {
 <script>
 "use strict"
 
-// 자식 태그에 대해 이벤트 리스너를 등록할 때 
+// 자식 태그에 대해 이벤트 리스너를 등록할 때
 // 그 자식 태그를 클릭했을 때만 호출되기 때문에 불편할 경우가 있다.
-// 예) 제목을 출력하는 a 태그에 click 리스너를 등록하면 
+// 예) 제목을 출력하는 a 태그에 click 리스너를 등록하면
 //    정확하게 제목을 클릭해야만 동작할 것이다.
+// 딱 a 태그를 눌러야만 이게 실행된다!
 //var el = document.querySelectorAll("tbody a");
 
-// 이런 경우 부모 태그에 리스너를 등록하면 훨씬 더 광범위하게 클릭 이벤트를 발생시킬 수 있다.
+// 이런 경우 부모 태그에 리스너를 등록하면 훨씬 더 광범위하게 클릭 이벤트를 발생시킬 수 있다. 자식을 눌러도 어차피 버블링되면서 부모인 tr에 등록된 리스너가 호출되니!! //a 태그 그 조그만 범위가 아니라 그 줄을 눌렀을 때 되도록! // 그 부모 밑의 자손 중 어떤 태그를 누르더라도 그 조상에 등록된 리스너가 호출된다. 이걸 일부러 이용해서 이렇게 실무에서 처리한다.
 var el = document.querySelectorAll("tbody tr");
 
 for (var e of el) {
   e.addEventListener("click", function(e) {
     // e.target 은 이벤트가 발생한 객체를 가리킨다.
-    console.log(e.target);
-    
+    console.log(e.target);   //진짜 이벤트가 발생된 곳  //td를 눌렀으면 td에서 이벤트가 발생한거임
+
     // 리스너가 등록된 태그를 가리키고 싶다면,
     // e.currentTarget 프로퍼티의 값을 사용하라!
-    console.log(e.currentTarget);
-    
+    console.log(e.currentTarget); //실제 리스너가 등록된 태그
+
     // var no = e.target.getAttribute("data-no");
     var no = e.currentTarget.getAttribute("data-no");
     window.alert(no + " 번 게시물의 제목을 눌렀음!");
@@ -80,8 +86,3 @@ for (var e of el) {
 </script>
 </body>
 </html>
-
-
-
-
-

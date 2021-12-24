@@ -6,7 +6,7 @@
 <style>
 body, div {
     border: 1px solid red;
-    padding: 30px; 
+    padding: 30px;
 }
 button {padding: 30px;}
 </style>
@@ -24,19 +24,24 @@ button {padding: 30px;}
 
 // 커스텀 이벤트에 데이터를 첨부해서 보내기
 // => CustomEvent() 생성자를 사용해서 이벤트 객체를 만들어야 한다.
-// 
+//
 document.getElementById("btn1").addEventListener("click", function(e) {
 	// #btn1을 눌렀을 때 #btn2에 "ohora" 이벤트를 발생시키기
 	// 1) CustomEvent 만들기
 	// => 이벤트 객체에 데이터를 첨부할 때는 "detail"이라는 이름으로 데이터를 첨부하라!
-	var myEvent = new CustomEvent("ohora", 
-	    {detail: "hello!!"}); 
-	
+
+/* var data = {
+  detail : "hello!!"   //이 코드를 이렇게 따로 적을게 아니라 아래에 파라미터에 저렇게 바로 적는게 실무 코드다!! 이렇게 적으면 여러번 쓸 수 있지만 밑처럼 파라미터에서 저렇게 바로 주면 한번밖에 줄 수 없다! 주소를 모르니!
+}; */
+	var myEvent = new CustomEvent("ohora",    // CustomEvent(이벤트 이름, {detail: 보내고 싶은 데이터}) 두번째 파라미터는 객체가 아니라 객체의 주소이다! 함수의 파라미터로 객체를 주고받을 수는 없다. 개발자들끼리 그렇게 말할때는 주소를 생략하고 그냥 말하는거임. 객체는 한번 heap에 만들어지면 객체의 주소를 주고받는거임. 객체를 주고받는게 아님
+	    {detail: "hello!!"
+    }); // detail이란 이름으로 hello란 문자열을 저장한 객체(상자)를 만들어서 이 주소를 넘겨주는 것이다.
+
 	// 2) 위에서 생성한 이벤트 객체를 #btn2에 보낸다.
 	document.getElementById("btn2").dispatchEvent(myEvent);
 });
 
-// "ohora" 이벤트를 처리하고 싶다면, 
+// "ohora" 이벤트를 처리하고 싶다면,
 // 다음과 같이 이벤트 이름을 "ohora"로 지정하라!
 document.getElementById("btn2").addEventListener("ohora", function(e) {
     console.log("버튼2...", e.detail);
@@ -46,8 +51,3 @@ document.getElementById("btn2").addEventListener("ohora", function(e) {
 </script>
 </body>
 </html>
-
-
-
-
-

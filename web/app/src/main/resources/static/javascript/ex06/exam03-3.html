@@ -21,22 +21,19 @@ var el = document.querySelectorAll(".b1");
 var el2 = document.querySelectorAll(".b2");
 
 var btnClick = function(e) {
-	alert("===> " + this.getAttribute("data-no"));
-	alert("===> " + e.target.getAttribute("data-no"));
+	alert("===> " + this.getAttribute("data-no"));     // this를 통해 이벤트가 발생한 그 태그 객체를 알아낼 수 있다
+	alert("===> " + e.target.getAttribute("data-no"));  //위 방법보다 이 방법을 추천한다!
 	for (var e of el2) {
-		e.style["background-color"] = "yellow";
+		e.style["background-color"] = "yellow";  // 원래는 이름에 -가 있다면 이렇게 적어야되지만 js에서 편의성과 일관성있게 코드를 짤 수 있도록 e.style.backgroundColor 이렇게 다음 단어를 대문자로 바꿔서 할 수 있게 속성을 추가해줌.
+		e.style.color = "red";   //이름에 - 가 없으면 그냥 .으로 해도 된다.  //객체.프로퍼티.프로퍼티
+		e.style.border = "5px dashed red";
 	}
 };
 
 for (var e of el) {
-	  e.addEventListener("click", btnClick);
+	  e.addEventListener("click", btnClick);  //btnClick은 함수 주소를 의미하고 btnClick()는 함수 실행을 의미한다.
 }
 
 </script>
 </body>
 </html>
-
-
-
-
-
