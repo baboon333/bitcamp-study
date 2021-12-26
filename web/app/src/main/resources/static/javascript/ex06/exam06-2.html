@@ -52,7 +52,7 @@
 
 <form action="https://www.daum.net" id="form6">
   <input type="text" name="title">
-  <!-- 일반 버튼은 서버에 전송을 수행하지 않는다. -->
+  <!-- 일반 버튼은 서버에 전송을 수행하지 않는다. (button과 input type 모두 button이니! -->
   <button type="button">전송 막기6</button>
   <input type="button" value="전송 막기6">
 </form>
@@ -62,11 +62,11 @@
 
 document.querySelector("#form2").onsubmit = () => {
   return false;
-}
+};  // 이거 할 때는 ;찍어주는게 다고 들었는데 정확히 못들음  2021.12.24 3시 42분!!
 
 document.querySelector("#form3").onsubmit = (e) => {
   e.preventDefault();
-}
+};
 
 document.querySelector("#form4").addEventListener("submit", (e) => {
   e.preventDefault();
