@@ -8,7 +8,7 @@
 <h1>이벤트 - form의 submit 동작을 중단시키기</h1>
 <p>form의 submit 버튼을 클릭하면 서버에 요청을 한다.</p>
 
-<form action="https://www.daum.net">
+<form action="https://www.daum.net">  <!--폼 내부에 데이터를 보내는 목적지 URL 을 지정한다.-->
   <input type="text" name="title">
   <button>전송1</button>  <!-- button에 type 지정 안해주면 기본 default가 submit! 그냥 일반 버튼이고 싶으면 type에 button이라고 꼭 지정해줘야 한다-->
 </form>
@@ -60,9 +60,9 @@
 <script>
 "use strict"
 
-document.querySelector("#form2").onsubmit = () => {
+document.querySelector("#form2").onsubmit = () => {  //submit 이벤트가 발생했을 때 호출될 이벤트를 등록
   return false;
-};  // 이거 할 때는 ;찍어주는게 다고 들었는데 정확히 못들음  2021.12.24 3시 42분!!
+};  // 보통 이렇게 할당연산자로 등록할 때는 ;(세미콜론) 찍어주는게 좋다. 
 
 document.querySelector("#form3").onsubmit = (e) => {
   e.preventDefault();
