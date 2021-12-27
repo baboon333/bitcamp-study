@@ -82,7 +82,7 @@
   };
 
   document.querySelector("#x-delete-btn").onclick = function() {
-    fetch(`/contact/delete?email=${email}`)
+    fetch(`/contact/delete?email=${email}`)  //쿼리스트링
     .then(function(response) {
       return response.json();  // 넘어온 0과 1을 js의 숫자로 바꿔준거!
     })

@@ -29,6 +29,17 @@
     if (e.target.localName = "button") {  // 첫 번째 방법 //localName : 태그명
       // if (e.target instanceof HTMLButtonElement) {   //두 번째 방법 : 객체가 이 생성자HTMLButtonElement로 초기화된 객체이냐?
       console.log(e.target.getAttribute("data-no"));  //구글에서는 한문장이라도 ;붙이라고 함. 자바에서처럼!! 실수할 확률을 줄여주니
+      fetch(`/todo/delete?index=${index}`)  //쿼리스트링
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        if (result == 0) {
+          window.alert("삭제하지 못했습니다!");
+        }else{
+          location.reload  "index.html"
+        }//삭제했으면 reload 해야하니!
+      });
     }
   };
 
