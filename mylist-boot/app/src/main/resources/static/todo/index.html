@@ -10,8 +10,8 @@
   <table id="x-todo-table" border="1">
   <thead>
   <tr>
+    <th></th>
     <th>해야할 일</th>
-    <th>완료</th>
     <th>삭제</th>
   </tr>
   </thead>
@@ -22,26 +22,7 @@
 <script>
   var tbody = document.querySelector("#x-todo-table tbody");
 
-  // 삭제 버튼을 클릭했을 때 호출될 리스너 등록하기
-  // => 삭제 버튼은 동적으로 생성된다.                // 버튼이 생성되는 코드가 밑에 있으니 var buttons = document.querySelectorAll("button"); 이걸로는 못찾음! 아직 버튼 만들어지는 코드 실행 전이니까.
-  // => 따라서 부모 태그에 리스너를 등록해야 한다.
-  tbody.onclick = function(e) {
-    if (e.target.localName = "button") {  // 첫 번째 방법 //localName : 태그명
-      // if (e.target instanceof HTMLButtonElement) {   //두 번째 방법 : 객체가 이 생성자HTMLButtonElement로 초기화된 객체이냐?
-      console.log(e.target.getAttribute("data-no"));  //구글에서는 한문장이라도 ;붙이라고 함. 자바에서처럼!! 실수할 확률을 줄여주니
-      fetch(`/todo/delete?index=${index}`)  //쿼리스트링
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(result) {
-        if (result == 0) {
-          window.alert("삭제하지 못했습니다!");
-        }else{
-          location.reload  "index.html"
-        }//삭제했으면 reload 해야하니!
-      });
-    }
-  };
+
 
   fetch("/todo/list")
     .then(function(response) {
@@ -52,34 +33,39 @@
 
       for (var i = 0; i < todoList.length; i++) {
         var tr = document.createElement("tr");
-        tr.innerHTML = `<td>${todoList[i].title}</td>
-        <td><input type="checkbox" id=""></td>
-        <td><button type="button" data-no="${i}">삭제</td>`  // 버튼 눌렀을 때 어떤 할일의 버튼인지 구분하려고 data-no 추가함!// 개발자가 임의로 추가한 속성(attribute)은 data-를 붙이라고 권고된다!! 기존에 존재하는 속성값이 있을 수도 있으니//Button으로 해도 된다! js는 대소문자를 구분하지만 html은 구분하지 않기 때문에
+        tr.innerHTML = `<td><input type="checkbox" onchange="checkTodo(${i}, event.target.checked)"></td>  <!--onchange: 변화가 발생했을 때 이벤트   // event.target.checked: 이벤트 타겟의 체크여부-->
+        <td data-no="${i}">${todoList[i].title}</td>
+        <td><button type="button" onclick"=deleteTodo(${i})">삭제</td>`  // 여기서 data-no="${i}" 넣어줘서 지워주는 방식도 있다! html 코드에 js를 삽입하는 방법(index06.html) // 버튼 눌렀을 때 어떤 할일의 버튼인지 구분하려고 data-no 추가함!// 개발자가 임의로 추가한 속성(attribute)은 data-를 붙이라고 권고된다!! 기존에 존재하는 속성값이 있을 수도 있으니//Button으로 해도 된다! js는 대소문자를 구분하지만 html은 구분하지 않기 때문에
         tbody.appendChild(tr);
       }
     })
-  //연락처 입력 구현
+
+    // 삭제 버튼을 클릭했을 때 호출될 리스너 등록하기
+    // => 삭제 버튼은 동적으로 생성된다.                // 버튼이 생성되는 코드가 밑에 있으니 var buttons = document.querySelectorAll("button"); 이걸로는 못찾음! 아직 버튼 만들어지는 코드 실행 전이니까.
+    // => 따라서 부모 태그에 리스너를 등록해야 한다.
+    function deleteTodo(no) {
+      fetch(`/todo/delete?index=${no}`)  //쿼리스트링
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        if (result == 0) {
+          window.alert("삭제하지 못했습니다!");
+        }else{
+          location.reload();
+        }//삭제했으면 reload 해야하니!
+      });
+    }
+
+function checkTodo(no, checked) {
+  console.log(no, checked);
+  document.querySelector(`tbody td[data-no]=''"``)
+}
+
+
+
+
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>
