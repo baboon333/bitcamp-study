@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>To-do</title>
+<style>
+.todo-checked {  /*이렇게 클래스(그룹)를 준 후 여기에 속해있을 때만 스타일이 바뀌게 해준다*/
+  text-decoration: line-through;
+}
+</style>
+</head>
+<body>
+  <h1>To-do</h1>
+  <a href="form.html">추가</a>
+  <table id="x-todo-table" border="1">
+  <thead>
+  <tr>
+    <th></th>
+    <th>해야할 일</th>
+    <th>삭제</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+  </table>
+
+<script>
+  var tbody = document.querySelector("#x-todo-table tbody");
+
+
+
+  fetch("/todo/list")
+    .then(function(response) {
+      return response.json();  //json 형식의 문자열을 자바스크립트 객체로 바꿔라 //서버에서 받은 json 형식의 문자열을 js 객체로 전환하여 다룬다.
+    })
+    .then(function(todoList) {
+      console.log(todoList);
+
+      for (var i = 0; i < todoList.length; i++) {
+        var tr = document.createElement("tr");
+        tr.innerHTML = `<td><input type="checkbox" onchange="checkTodo(${i}, event.target.checked)"></td>  <!--onchange: 변화가 발생했을 때 이벤트   // event.target.checked: 이벤트 타겟의 체크여부-->
+        <td data-no="${i}">${todoList[i].title}</td>
+        <td><button type="button" onclick"=deleteTodo(${i})">삭제</button></td>`  // 여기서 data-no="${i}" 넣어줘서 지워주는 방식도 있다! html 코드에 js를 삽입하는 방법(index06.html) // 버튼 눌렀을 때 어떤 할일의 버튼인지 구분하려고 data-no 추가함!// 개발자가 임의로 추가한 속성(attribute)은 data-를 붙이라고 권고된다!! 기존에 존재하는 속성값이 있을 수도 있으니//Button으로 해도 된다! js는 대소문자를 구분하지만 html은 구분하지 않기 때문에
+        tbody.appendChild(tr);
+      }
+    })
+
+    // 삭제 버튼을 클릭했을 때 호출될 리스너 등록하기
+    // => 삭제 버튼은 동적으로 생성된다.                // 버튼이 생성되는 코드가 밑에 있으니 var buttons = document.querySelectorAll("button"); 이걸로는 못찾음! 아직 버튼 만들어지는 코드 실행 전이니까.
+    // => 따라서 부모 태그에 리스너를 등록해야 한다.
+    function deleteTodo(no) {
+      fetch(`/todo/delete?index=${no}`)  //쿼리스트링
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        if (result == 0) {
+          window.alert("삭제하지 못했습니다!");
+        }else{
+          location.reload();
+        }//삭제했으면 reload 해야하니!
+      });
+    }
+
+function checkTodo(no, checked) {
+  console.log(no, checked);
+  fetch(`/todo/delete?index=${no}`)  //쿼리스트링
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(result) {
+    if (result == 0) {
+      window.alert("삭제하지 못했습니다!");
+    }else{
+      location.reload();
+    }//삭제했으면 reload 해야하니!
+  });
+  
+  var titleTd = document.querySelector(`tbody td[data-no="${no}"]`);
+  if (checked) {  //checked 값이 true이면 (체크되어 있으면)
+    titleTd.classList.add("todo-checked");  // 그룹에 속하게 한다  //저수준 프로그래밍: 이렇게 직접 js 코드로 스타일을 제어하는 .: titleTd.style["text-decoration"] = "line-through";
+  } else {
+    titleTd.classList.remove("todo-checked");// 그룹에서 제거한다  //고수준 프로그래밍: 태그의 스타일을 제어할 때 프로퍼티 값을 직접 제어하지 않고 이름으로 제어한다.  //실무에선 이런 방식으로 쓴다. 간접적으로! 해당 태그를 그 그룹에 가입시키거나 탈퇴시키는 방식으로!! 짱중요!! 이게 html과 css, js를 제대로 다루는 방법
+  }
+}
+
+
+
+</script>
+
+
+</body>
+</html>
