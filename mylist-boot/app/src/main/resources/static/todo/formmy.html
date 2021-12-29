@@ -13,23 +13,22 @@
 <button id="x-add-btn" type="button">등록</button>
 <button id="x-cancel-btn" type="button">취소</button>
 </form>
-
 <script type="text/javascript">
   var xTitle = document.querySelector("#x-title");
 
   document.querySelector("#x-add-btn").onclick = function() {
-    if (xTitle.value == "") {
-      window.alert("필수 입력 항목이 비어 있습니다.");
+    if (xTitle.value =="") {
+      window.alert("필수 입력 항목이 비어 있습니다.")
       return;
     }
 
     fetch(`/todo/add?title=${xTitle.value}`)
-      .then(function(response) {
+      .then(function(response){
         return response.text();
       })
       .then(function(text) {
         console.log(text);
-        location.href = "index.html";
+        location.href = "index.html"
       });
   };
 
@@ -37,6 +36,23 @@
     window.location.href = "index.html";
   };
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
