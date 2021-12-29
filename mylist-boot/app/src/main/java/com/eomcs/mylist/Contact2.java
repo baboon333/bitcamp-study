@@ -1,7 +1,7 @@
 package com.eomcs.mylist;
 
 //1단계 - 연락처 정보를 한 단위로 묶어서 다룰 새 데이터 타입을 정의한다.
-public class Contact {
+public class Contact2 {
   String name;
   String email;
   String tel;

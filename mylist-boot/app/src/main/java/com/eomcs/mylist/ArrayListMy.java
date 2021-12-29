@@ -1,4 +1,4 @@
-package com.eomcs.mylist;
+/*package com.eomcs.mylist;
 
 public class ArrayListMy {
   static Object[] contacts = new Object[5];
@@ -100,3 +100,4 @@ public class ArrayListMy {
 }
 // 배열을 다루는 메서드를 별도의 클래스로 분류한다. 
 // ContactController에서 배열을 다루는 메서드를 가져온다. 
+ * */

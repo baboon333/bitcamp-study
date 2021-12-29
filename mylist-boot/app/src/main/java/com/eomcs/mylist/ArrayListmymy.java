@@ -1,4 +1,4 @@
-package com.eomcs.mylist;
+/*package com.eomcs.mylist;
 
 public class ArrayListmymy {
   static Object[] contacts = new Object[5];
@@ -72,4 +72,4 @@ static int indexOf(String email) {   //이렇게 명확하게 그 기능에 해�
     }
   }
   return -1;
-}
+}*/

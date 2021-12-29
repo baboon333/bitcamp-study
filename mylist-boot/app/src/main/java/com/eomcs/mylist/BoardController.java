@@ -4,50 +4,54 @@ import java.sql.Date;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController 
 public class BoardController {
+
+  // Board 객체 목록을 저장할 메모리를 준비한다.
+  ArrayList boardList = new ArrayList();
 
   @RequestMapping("/board/list")
   public Object list() {
-    return ArrayList3.toArray();
+    return ArrayList.toArray(boardList); 
   }
 
   @RequestMapping("/board/add")
-  public Object add(Board board) {  // 보통 클래스는 대문자로 시작하고 메소드 이름은 소문자로! 변수명도 소문자로!
+  public Object add(Board board) {
 
-    board.setCreatedDate(new Date(System.currentTimeMillis()));  // new Date하고 ctrl+space 하면 이클립스에서 자동으로 import해준다! 맨 윗줄!
-    ArrayList3.add(board);
-    return ArrayList3.size;
+    board.setCreatedDate(new Date(System.currentTimeMillis()));
+    ArrayList.add(boardList, board);
+    return boardList.size;
   }
+
 
   @RequestMapping("/board/get")
   public Object get(int index) {
-    if (index < 0 || index >= ArrayList3.size) {
+    if (index < 0 || index >= boardList.size) {
       return "";
     }
-    Board board = (Board) ArrayList3.list[index];  //list가 object 배열이니! object가 상위 타입이므로 이걸 board 하위 타입에 담을 수 없다. 하위 클래스가 상위 클래스를 못 가리킨다. 그렇기 때문에 (Board)라고 해줘야 함.
-    board.viewCount++;
+    Board board = (Board) boardList.list[index];
+    board.viewCount++; 
     return board;
   }
 
   @RequestMapping("/board/update")
   public Object update(int index, Board board) {
-    if (index < 0 || index >= ArrayList3.size) {
+    if (index < 0 || index >= boardList.size) {
       return 0;
     }
-    Board old = (Board) ArrayList3.list[index];
-    board.viewCount = old.viewCount;// 기존 값을 새 보드객체에 담아둬야 함. 조회수와 최초로 게시글을 올린 날짜
+
+    Board old = (Board) boardList.list[index];
+    board.viewCount = old.viewCount;
     board.createdDate = old.createdDate;
-    return ArrayList3.set(index, board) == null ? 0 : 1;  //update가 안됐다는 의미에서 클라이언트에게 0을 리턴해준다. 이렇게 알려줘야 서버 쪽에서 변경을 했는지 안했는지 알기 때문에! 
+
+    return ArrayList.set(boardList, index, board) == null ? 0 : 1;
   }
 
   @RequestMapping("/board/delete")
   public Object delete(int index) {
-    if (index < 0 || index >= ArrayList3.size) {
+    if (index < 0 || index >= boardList.size) {
       return 0;
     }
-
-    ArrayList3.remove(index);
-    return 1;
+    return ArrayList.remove(boardList, index) == null ? 0 : 1;
   }
 }
