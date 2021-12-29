@@ -4,12 +4,12 @@ import java.sql.Date;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController 
+@RestController
 public class BoardController {
 
   @RequestMapping("/board/list")
   public Object list() {
-    return ArrayList3.toArray(); 
+    return ArrayList3.toArray();
   }
 
   @RequestMapping("/board/add")
@@ -20,24 +20,25 @@ public class BoardController {
     return ArrayList3.size;
   }
 
-
   @RequestMapping("/board/get")
   public Object get(int index) {
     if (index < 0 || index >= ArrayList3.size) {
       return "";
     }
-    Board board = ArrayList3.list[index];  //list가 object 배열이니! object가 상위 타입이므로 이걸 board 하위 타입에 담을 수 없다. 하위 클래스가 상위 클래스를 못 가리킨다.
-    return ArrayList3.list[index];
+    Board board = (Board) ArrayList3.list[index];  //list가 object 배열이니! object가 상위 타입이므로 이걸 board 하위 타입에 담을 수 없다. 하위 클래스가 상위 클래스를 못 가리킨다. 그렇기 때문에 (Board)라고 해줘야 함.
+    board.viewCount++;
+    return board;
   }
 
-  @RequestMapping("/contact/update")
-  public Object update(Contact contact) {
-    int index = indexOf(contact.email);
-    if (index == -1) {
+  @RequestMapping("/board/update")
+  public Object update(int index, Board board) {
+    if (index < 0 || index >= ArrayList3.size) {
       return 0;
     }
-
-    return ArrayList.set(index, contact) == null ? 0 : 1;
+    Board old = (Board) ArrayList3.list[index];
+    board.viewCount = old.viewCount;// 기존 값을 새 보드객체에 담아둬야 함. 조회수와 최초로 게시글을 올린 날짜
+    board.createdDate = old.createdDate;
+    return ArrayList3.set(index, board) == null ? 0 : 1;  //update가 안됐다는 의미에서 클라이언트에게 0을 리턴해준다. 이렇게 알려줘야 서버 쪽에서 변경을 했는지 안했는지 알기 때문에! 
   }
 
   @RequestMapping("/board/delete")
@@ -46,11 +47,7 @@ public class BoardController {
       return 0;
     }
 
-    ArrayList.remove(index);
+    ArrayList3.remove(index);
     return 1;
   }
 }
-
-
-
-

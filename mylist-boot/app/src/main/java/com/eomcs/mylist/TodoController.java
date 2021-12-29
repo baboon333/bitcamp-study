@@ -29,11 +29,11 @@ public class TodoController {
   @RequestMapping("/todo/check")
   public Object check(int index, boolean done) {
     if (index < 0 || index >= ArrayList2.size) {
-      return 0;  // 인덱스가 무효해서 설정하지 못했다.
+      return 0;  // 무효한 인덱스라면 설정못했다는 의미로 1을 리턴함  // 인덱스가 무효해서 설정하지 못했다.
     }
 
     ((Todo) ArrayList2.list[index]).done = done;
-    return 1; // 해당 항목의 상태를 변경했다.
+    return 1; // 인덱스번째 done을 위의 done으로 값을 설정한다. 1이라는 것은 설정했다! // 해당 항목의 상태를 변경했다.
   }
 
   @RequestMapping("/todo/delete")

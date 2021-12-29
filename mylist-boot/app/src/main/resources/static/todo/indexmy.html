@@ -64,24 +64,22 @@
 
 function checkTodo(no, checked) {
   console.log(no, checked);
-  fetch(`/todo/delete?index=${no}`)  //쿼리스트링
+  fetch(`/todo/check?index=${no}&done=${checked}`)  //쿼리스트링
   .then(function(response) {
     return response.json();
   })
   .then(function(result) {
     if (result == 0) {
-      window.alert("삭제하지 못했습니다!");
+      window.alert("변경하지 못했습니다!");
     }else{
-      location.reload();
-    }//삭제했으면 reload 해야하니!
+      var titleTd = document.querySelector(`tbody td[data-no="${no}"]`);
+      if (checked) {  //checked 값이 true이면 (체크되어 있으면)
+        titleTd.classList.add("todo-checked");  // 그룹에 속하게 한다  //저수준 프로그래밍: 이렇게 직접 js 코드로 스타일을 제어하는 .: titleTd.style["text-decoration"] = "line-through";
+      } else {
+        titleTd.classList.remove("todo-checked");// 그룹에서 제거한다  //고수준 프로그래밍: 태그의 스타일을 제어할 때 프로퍼티 값을 직접 제어하지 않고 이름으로 제어한다.  //실무에선 이런 방식으로 쓴다. 간접적으로! 해당 태그를 그 그룹에 가입시키거나 탈퇴시키는 방식으로!! 짱중요!! 이게 html과 css, js를 제대로 다루는 방법
+      }  // 체크되었냐 안되었냐에 따라 화면 모양을 바꾸겠다.
+    }
   });
-  
-  var titleTd = document.querySelector(`tbody td[data-no="${no}"]`);
-  if (checked) {  //checked 값이 true이면 (체크되어 있으면)
-    titleTd.classList.add("todo-checked");  // 그룹에 속하게 한다  //저수준 프로그래밍: 이렇게 직접 js 코드로 스타일을 제어하는 .: titleTd.style["text-decoration"] = "line-through";
-  } else {
-    titleTd.classList.remove("todo-checked");// 그룹에서 제거한다  //고수준 프로그래밍: 태그의 스타일을 제어할 때 프로퍼티 값을 직접 제어하지 않고 이름으로 제어한다.  //실무에선 이런 방식으로 쓴다. 간접적으로! 해당 태그를 그 그룹에 가입시키거나 탈퇴시키는 방식으로!! 짱중요!! 이게 html과 css, js를 제대로 다루는 방법
-  }
 }
 
 
