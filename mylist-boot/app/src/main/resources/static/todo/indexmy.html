@@ -101,7 +101,7 @@ function updateTodo(no) {
   if (titleInput.parentNode instanceof HTMLTableCellElement) {  //입력상자(input)의 부모는 td 이다.  // 화살표 누른 다음 개발자도구/element에서 확인해봐
     // 다른 항목을 편집하기 위해 이동하기 전에             //     console.log(titleInput);  -> <input type="text" id="x-title-input" style="" data-no="1">
     // 편집 전의 상태로 되돌린다.                          //     console.log(titleInput.parentNode);  -> <td class="todo-title"><span style="">가</span></td>
-    titleInput.parentNode.querySelector("span").style["display"] = "";
+    titleInput.parentNode.querySelector("span").style["display"] = "";  // 감춰져있는게 있으면 나타나게 하라
   }
   var titleTd = document.querySelector(`tbody td[data-no="${no}"]`);
   var titleSpan = titleTD.querySelector("span");

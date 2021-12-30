@@ -12,14 +12,13 @@ public class BoardController {
 
   @RequestMapping("/board/list")
   public Object list() {
-    return ArrayList.toArray(boardList); 
+    return boardList.toArray();  // 인스턴스 메소드는 그 메소드가 사용할 주소를 이렇게 앞쪽에서 넘겨주고 ArrayList에서는 this 빌트인 변수를 사용한다.
   }
 
   @RequestMapping("/board/add")
-  public Object add(Board board) {
-
+  public Object add(Board board) {  //ArraylIST 메서드를 호출할 때 인스턴스 주소를 파라미터로 넘기지 않는다!
     board.setCreatedDate(new Date(System.currentTimeMillis()));
-    ArrayList.add(boardList, board);
+    boardList.add(board);
     return boardList.size;
   }
 
@@ -44,7 +43,7 @@ public class BoardController {
     board.viewCount = old.viewCount;
     board.createdDate = old.createdDate;
 
-    return ArrayList.set(boardList, index, board) == null ? 0 : 1;
+    return boardList.set(index, board) == null ? 0 : 1;
   }
 
   @RequestMapping("/board/delete")
@@ -52,6 +51,6 @@ public class BoardController {
     if (index < 0 || index >= boardList.size) {
       return 0;
     }
-    return ArrayList.remove(boardList, index) == null ? 0 : 1;
+    return boardList.remove(index) == null ? 0 : 1;
   }
 }
