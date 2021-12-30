@@ -1,6 +1,6 @@
 package com.eomcs.oop.ex01;
 
-// # 클래스 사용 : 3) 클래스 사용
+// # 클래스 사용 : 3) 클래스 사용  //클래스로 일반 변수 묶기
 //
 public class Exam0112 {
   public static void main(String[] args) {

@@ -29,7 +29,7 @@
     })
     .then(function(contacts) {
       for (var contact of contacts) {
-        var tr = document.createElement("tr");
+        var tr = document.createElement("tr");  //   // 객체를 만들어주는 메서드: 팩토리 메서드 javalang/oop/exam0114
         tr.innerHTML = `<td><a href="view.html?email=${contact.email}">${contact.name}</a></td>
         <td>${contact.email}</td>
         <td>${contact.tel}</td>

@@ -6,7 +6,7 @@ public class Exam0230 {
   public static void main(String[] args) {
     // 여러 개의 인스턴스 주소 저장하기
     //
-    class Score {
+    class Score {  // main method안에 class를 쓰면 다른 method는 class를 못쓰니까 0240에서는 밖으로 빼줬다.
       String name;
       int kor;
       int eng;

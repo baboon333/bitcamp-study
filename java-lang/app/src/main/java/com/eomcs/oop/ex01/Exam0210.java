@@ -2,7 +2,7 @@ package com.eomcs.oop.ex01;
 
 // # 레퍼런스 배열 - 사용 전
 //
-public class Exam0210 {
+public class Exam0210 {  // Exam0210 class 안에 class가 있는게 아니라 컴파일 할 때 각 class마다 각각으로 다른 파일로 만들어짐
   public static void main(String[] args) {
     // 여러 개의 인스턴스 주소 저장하기
 
