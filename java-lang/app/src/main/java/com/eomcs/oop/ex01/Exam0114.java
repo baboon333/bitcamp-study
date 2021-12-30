@@ -32,7 +32,7 @@ public class Exam0114 {
   // - Score 인스턴스를 생성하여 리턴한다.
   // - 더 정확하게 표현하면, Score 인스턴스를 생성한 후 그 주소를 리턴한다.
   static Score createScore(String name, int kor, int eng, int math) {
-    Score s = new Score();
+    Score s = new Score();  //new 하면 Heap 메모리에 만들어진다.
 
     s.name = "홍길동";
     s.kor = 100;

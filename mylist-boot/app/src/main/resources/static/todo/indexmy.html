@@ -98,10 +98,11 @@ function checkTodo(no, checked) {
 
 function updateTodo(no) {
   //현재 Todo 항목을 편집 중인 상태에서 변경 버튼을 눌렀다면
-  if (titleInput.parentNode instanceof HTMLTableCellElement) {  //입력상자(input)의 부모는 td 이다.  // 화살표 누른 다음 개발자도구/element에서 확인해봐
+  if (titleInput.parentNode instanceof HTMLTableCellElement) {  //td 밑에 있는게 아니면 무시하라 //입력상자(input)의 부모는 td 이다.  // 화살표 누른 다음 개발자도구/element에서 확인해봐
     // 다른 항목을 편집하기 위해 이동하기 전에             //     console.log(titleInput);  -> <input type="text" id="x-title-input" style="" data-no="1">
-    // 편집 전의 상태로 되돌린다.                          //     console.log(titleInput.parentNode);  -> <td class="todo-title"><span style="">가</span></td>
-    titleInput.parentNode.querySelector("span").style["display"] = "";  // 감춰져있는게 있으면 나타나게 하라
+    // 편집 전의 상태로 되돌린다.                          //     console.log(titleInput.parentNode);  titleInput의 부모노드는 td이다 -> <td class="todo-title"><span style="">가</span></td>
+    titleInput.parentNode.querySelector("span").style["display"] = "";  // 감춰져있는게 있으면 나타나게 하라  // input 태그를 아래로 옮기기 전에 td 태그의 원래 있던 span 태그는 화면에 출력하게 하라. 그리고 input box가 아래로 내려오게 하라. 변경 버튼을 누르면 변경 버튼이 소속되어있는 td로 input box가 옮겨진다. 근데 다른 td에 있는 imput box를 옮길 경우에는 이 짓을 하라  //HTMLTableCellElement는 td일 경우다  // 현재 input 박스가 box가 아니라 td에 있다면!!  근데 input 박스가 body 밑에 있으면 if 문//
+    // 을 수행하지 말아라
   }
   var titleTd = document.querySelector(`tbody td[data-no="${no}"]`);
   var titleSpan = titleTD.querySelector("span");

@@ -17,8 +17,8 @@ public class Exam0110 {
     // - 그래서 성적 데이터를 저장할 변수를 다음과 같이 낱개로 선언한다.
     //
     String name;
-    int kor;
-    int eng;
+    int kor;      // JVM은 기본 단위를 int로 함. 그러니 굳이 정수 값을 다룰 때 short, byte 쓰지않고 int를 씀. 1~10 다룰 때도 int로! byte 변수에 저장해봐야 연산할 때 어차피 int 4byte로 바뀐다.
+    int eng;      // int: -21억 ~ 21억
     int math;
     int sum;
     float aver;

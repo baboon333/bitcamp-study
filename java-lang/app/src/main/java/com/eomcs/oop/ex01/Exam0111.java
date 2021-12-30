@@ -3,7 +3,7 @@ package com.eomcs.oop.ex01;
 // # 클래스 사용 : 2) 메서드 활용
 //
 public class Exam0111 {
-  public static void main(String[] args) {
+  public static void main(String[] args) {  // 항상 메서드는 기본이 static이다.
     String name;
     int kor;
     int eng;
@@ -41,11 +41,11 @@ public class Exam0111 {
 //
 // 클래스란?
 // - 개발자가 자신이 개발하는 프로그램에서 사용할 특별한 형식의 데이터를 다룰 수 있는
-// 새로운 데이터 타입을 정의하게 해주는 문법이다.
+//   새로운 데이터 타입을 정의하게 해주는 문법이다.
 // - 즉 byte, short, int, long, float, double, boolean, char 외에
-// 새 형식의 새로운 메모리 구조를 갖는 데이터 타입을 정의할 수 있다.
+//   새 형식의 새로운 메모리 구조를 갖는 데이터 타입을 정의할 수 있다.
 // - 이렇게 정의한 새 데이터 타입을
-// "사용자 정의 데이터 타입(user defined data type)" 이라 한다.
+//   "사용자 정의 데이터 타입(user defined data type)" 이라 한다.  // 이 때 user(언어를 사용하는 사용자)는 개발자다. 정확히 말하면 개발자가 정한 데이터 타입
 //
 // 사용자?
 // - 아니~~ 자바 언어를 사용하는 사람이 누군가?

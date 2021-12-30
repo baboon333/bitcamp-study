@@ -4,7 +4,7 @@ package com.eomcs.oop.ex01;
 //
 public class Exam0113 {
 
-  // 여러 메서드에서 클래스를 사용한다면
+  // 여러 메서드에서 클래스를 사용한다면              //0112번처럼 main method안에 선언하면 그 안에서만 사용가능하다.
   // 이렇게 메서드 밖에 선언해야 한다.
   // => static 메서드에서 사용할 수 있게 클래스도 static으로 선언한다.
   static class Score {
@@ -27,7 +27,7 @@ public class Exam0113 {
 
     // 성적 데이터를 클래스로 묶어 놓으면 값을 다루기가 편하다.
     // => 다음과 같이 성적 데이터를 한 번에 넘길 수 있다.
-    printScore(s);
+    printScore(s);  //넘기는건 주소이다.
   }
 
   static void printScore(Score s) {
