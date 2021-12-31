@@ -10,13 +10,13 @@ package com.eomcs.oop.ex01;
 //   보통은 한 파일에 한 클래스를 선언한다.
 // - 패키지 멤버 클래스는 접근 권한이 있다면 누구든 사용할 수 있다.
 //
-// bin/main/com/eomcs/oop/ex01/A.class
+// bin/main/com/eomcs/oop/ex01/A.class    //컴파일한 파일이 기본으로 놓이는 폴더가 bin/main 여기이다!
 class A {}
 
 // => bin/main/com/eomcs/oop/ex01/Exam0510.class
 public class Exam0510 {
 
-  // 중첩 클래스(nested class)
+  // 중첩 클래스(nested class)  //이런 단어들 영어로 써! 한글로 말하지말고! 네스티드 클래스!!!
   // - 다른 클래스 안에 정의된 클래스
   // - 그 클래스 안에서만 사용된다.
   // - 종류:
