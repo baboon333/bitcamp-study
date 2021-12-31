@@ -46,7 +46,7 @@ public class Exam0220 {
 
     // 클래스 메서드를 호출하여 작업을 수행하고,
     // 리턴 결과는 로컬 변수에 저장한다.
-    result = Calculator.plus(2, 3);
+    result = Calculator.plus(2, 3);  // calculator 클래스에 소속된 메서드는 쓸 때 앞에 클래스 이름을 준다.
     result = Calculator.minus(result, 1);
     result = Calculator.multiple(result, 7);
     result = Calculator.divide(result, 3);
@@ -59,5 +59,7 @@ public class Exam0220 {
 // - 즉 새로운 구조의 메모리를 설계할 때 사용한다.
 // 2) 메서드를 묶을 때
 // - 서로 관련된 기능을 관리하기 쉽게 묶고 싶을 때 사용한다.
+
+// exam0210은 메소드들이 main 메소드들고 다 동등하게 있는데 0220번은 calculator라는 class에 다 넣음. 그러니 calculator 클래스에 소속된 메서드는 쓸 때 앞에 클래스 이름을 준다.
 
 

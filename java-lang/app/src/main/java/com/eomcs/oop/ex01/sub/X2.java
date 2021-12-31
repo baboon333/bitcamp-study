@@ -10,4 +10,5 @@ package com.eomcs.oop.ex01.sub;
 class X2 {
 
 }
+// 얘가 ex01.exam0610에 있는 클래스 이런거 못씀. 하위에 있다고 상위 패키지의 클래스를 쓸 수 있는게 아니다. 
 

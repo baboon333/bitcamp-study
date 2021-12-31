@@ -1,6 +1,6 @@
 package com.eomcs.oop.ex02;
 
-// # 사용자 정의 데이터 타입 + 클래스 메서드
+// # 사용자 정의 데이터 타입 + 클래스 메서드(static)
 //
 public class Exam0120 {
 
@@ -30,8 +30,8 @@ public class Exam0120 {
   }
 
   public static void main(String[] args) {
-    
-    Score s = new Score();
+
+    Score s = new Score();  //new를 사용해 메서드를 준비하고
     s.name = "홍길동";
     s.kor = 100;
     s.eng = 90;
@@ -40,9 +40,9 @@ public class Exam0120 {
     // 다음은 Score의 값을 다루는 연산자가 없을 때의 예이다.
     // core.sum = score.kor + score.eng + score.math; 
     // score.average = score.sum / 3f;
-    
+
     // 사용자 정의 데이터 타입의 값을 연산자를 사용하여 다뤄보자!
-    Score.calculate(s);
+    Score.calculate(s);  // new를 사용해 메서드를 준비하고 메서드를 사용해 그 데이터를 다룬다.
 
     System.out.printf("%s, %d, %d, %d, %d, %.1f\n", s.name, s.kor, s.eng, s.math, s.sum, s.average);
   }

@@ -2,7 +2,7 @@ package com.eomcs.oop.ex01;
 
 // # import - 사용 후 II
 //
-import com.eomcs.oop.ex01.sub.Y2;
+import com.eomcs.oop.ex01.sub.*;  //import com.*; 이렇게 한다고 com 밑에 있는 패키지의 모든걸 다 쓸 수 있는게 아님!!
 
 public class Exam0730 {
   public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Exam0730 {
     // - (주의!) 서브 패키지는 해당이 안된다.
     // - 단 소스 코드를 읽을 때 어떤 클래스가 어떤 패키지 있는지 바로 확인할 수 없는 불편함이 있다.
     //   그래서 대부분의 자바 개발자들은 널리 알려진 클래스가 아닌 경우
-    //   가능한 wildcard(*)를 사용하지 않고 패키지명과 클래스명을 정확하게 명시한다.
+    //   가능한 wildcard(*)를 사용하지 않고 패키지명과 클래스명을 정확하게 명시한다.  (실무에서는 * 안쓴다)
     //
     Y2 obj;
     obj = new Y2();

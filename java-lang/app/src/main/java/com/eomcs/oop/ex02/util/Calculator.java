@@ -10,7 +10,7 @@ public class Calculator {
     this.result += value;
   }
 
-  public void minus(int value) {
+  public void minus(int value) {  // 얘네는 인스턴스를(인스턴스 변수) 사용하기 때문에 논스태틱으로 만듦
     this.result -= value;
   }
 
@@ -25,5 +25,9 @@ public class Calculator {
   // 인스턴스를 사용하지 않는 메서드라면 그냥 클래스 메서드로 두어라.
   public static int abs(int a) {
     return a >= 0 ? a : a * -1;
+  }
+
+  public int getResult() {
+    return this.result;
   }
 }

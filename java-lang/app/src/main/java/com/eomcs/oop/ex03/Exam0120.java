@@ -24,8 +24,10 @@ public class Exam0120 {
     Score s2 = new Score();
     Score s3 = new Score();
 
+    // s1 = null;  // nullpointerexception(레퍼런스에 주소가 안들어있다) 발생함
+
     // 각 인스턴스에 한 명의 성적 데이터를 저장하라!
-    s1.name = "홍길동";
+    s1.name = "홍길동";  //s1: 인스턴스 주소
     s1.kor = 100;
     s1.eng = 90;
     s1.math = 80;

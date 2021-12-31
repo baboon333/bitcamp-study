@@ -16,7 +16,7 @@ public class Exam0210 {
     result = plus(2, 3);
     result = minus(result, 1);
     result = multiple(result, 7);
-    result = divide(result, 3);
+    result = divide(result, 3);   // 소수점 이하는 잘리니 27
 
     System.out.printf("result = %d\n", result);
   }

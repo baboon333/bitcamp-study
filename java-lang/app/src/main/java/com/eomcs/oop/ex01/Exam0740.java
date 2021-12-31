@@ -24,7 +24,7 @@ public class Exam0740 {
 //   패키지 이름을 명시하지 않아도 된다.
 // - 주의!
 //   - java.lang 패키지의 하위 패키지는 해당되지 않는다.
-//   - 예) java.lang.annotation, java.lang.invoke 등
+//   - 예) java.lang.annotation, java.lang.invoke 등 다양한 하위 패키지가 있는데 이거는 해당이 안되는 것!
 // - java.lang 패키지의 클래스들은 가장 많이 사용하는
 //   기본 클래스이기 때문에 자바 컴파일러는 해당 클래스를 자동으로 찾는다.
 // - 그 외의 모든 패키지 클래스들은 반드시 패키지명을 지정해야 한다.

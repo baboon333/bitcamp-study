@@ -5,12 +5,13 @@ package com.eomcs.oop.ex02;
 public class Exam0250 {
 
   static class Calculator {
-    // 인스턴스 변수
+    // 인스턴스 변수(=non-static 변수)
     // - 작업 결과를 개별적으로 관리하고 싶을 때 인스턴스 변수로 선언한다.
     // - 인스턴스 변수는 클래스가 로딩 될 때 만들어지지 않는다.
     // - new 명령을 사용해서 만들어야 한다.
     // - 변수 선언 앞에 static이 붙지 않는다.
-    int result = 0;
+    // static 변수에서 접근 못함
+    int result = 0;  // result는 인스턴스 변수다
 
     static void plus(Calculator obj, int value) {
       // 인스턴스 변수를 다루는 메서드는 작업을 수행할 때 그 인스턴스 주소를 받아야 한다.
@@ -19,7 +20,7 @@ public class Exam0250 {
       obj.result += value;
     }
 
-    static void minus(Calculator obj, int value) {
+    static void minus(Calculator obj, int value) {  // result 변수가 들어있는 그 주소로 찾아가기
       obj.result -= value;
     }
 
@@ -48,7 +49,7 @@ public class Exam0250 {
     // 두 개의 식을 동시에 계산하고 싶은가?
     // 그럴려면 계산 결과를 개별적으로 관리할 수 있어야 한다.
     // 다음과 같이 각 식의 계산 결과를 보관할 메모리를 준비한다.
-    Calculator c1 = new Calculator(); // 식1의 계산 결과를 보관할 메모리 준비
+    Calculator c1 = new Calculator(); // 식1의 계산 결과를 보관할 메모리 준비  //result 변수가 만들어지고 그 주소가 리턴된다. 
     Calculator c2 = new Calculator(); // 식2의 계산 결과를 보관할 메모리 준비
 
     // 계산을 수행할 때 계산 결과를 보관할 메모리를 전달한다.
@@ -58,7 +59,7 @@ public class Exam0250 {
     Calculator.plus(c1, 3); // + 2 + 3
     Calculator.multiple(c2, 2); // + 3 * 2
 
-    Calculator.minus(c1, 1); // + 2 + 3 - 1
+    Calculator.minus(c1, 1); // + 2 + 3 - 1  //c1이 가리키는 result 변수에서 1을 빼
     Calculator.plus(c2, 7); // + 3 * 2 + 7
 
     Calculator.multiple(c1, 7); // + 2 + 3 - 1 * 7
@@ -66,6 +67,7 @@ public class Exam0250 {
 
     Calculator.divide(c1, 3); // + 2 + 3 - 1 * 7 / 3 = ?
     Calculator.minus(c2, 5); // + 3 * 2 + 7 / 4 - 5 = ?
+    // => 이렇게 매번 파라미터로 주소를 넘겨주는게 불편하다. 그래서 0260!
 
     // 식1의 계산 결과는 c1 인스턴스의 result 변수에 들어 있고,
     // 식2의 계산 결과는 c2 인스턴스의 result 변수에 들어 있다.
@@ -73,4 +75,5 @@ public class Exam0250 {
     System.out.printf("c2.result = %d\n", c2.result);
   }
 }
-
+//인스턴스 변수는 new 명령을 실행할 때 마다 생성되기 때문에
+//각각 구분되는 개별 데이터를 저장할 때 사용한다.
