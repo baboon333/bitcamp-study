@@ -11,8 +11,10 @@ public class Exam0420 {
     int sum;
     float average;
 
-    // 생성자가 한 개라도 있으면 컴파일러는 기본 생성자를 만들어주지 않는다.
-    Score(String name, int kor, int eng, int math) {
+    // 생성자가 한 개라도 있으면 컴파일러는 자동으로 기본 생성자를 만들어주지 않는다.
+    // Score () {}
+
+    Score(String name, int kor, int eng, int math) {  //외부로부터 값을 받는 생성자를 만들 수 있음! 이럴 때는 new 하고 꼭 파라미터로 값을 넘겨주어야 한다!
       System.out.println("Score(String,int,int,int) 호출!");
 
       // 파라미터로 받은 값을 새로 만든 인스턴스 변수에 저장한다.
@@ -37,7 +39,7 @@ public class Exam0420 {
 
     // Score 인스턴스를 만든 후에는 
     // 생성자를 호출할 때 그 생성자의 파라미터 값을 주어야 한다.
-    Score s1 = new Score("홍길동", 100, 90, 77);
+    Score s1 = new Score("홍길동", 100, 90, 77);  // Score s1 = new Score("홍길동", 100); 이렇게 하면 오류남! 파라미터와 아규먼트의 개수가 다르니! 파라미터 변수 순서도 맞춰줘야 한다!! js는 된다!
     Score s2 = new Score("임꺽정", 80, 88, 87);
 
     // 생성자에서 이미 계산을 수행했기 때문에 
