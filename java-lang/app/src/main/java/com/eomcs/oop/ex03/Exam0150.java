@@ -10,13 +10,13 @@ public class Exam0150 {
     // - 모든 인스턴스가 공유하는 값을 저장할 때는 클래스 변수를 사용한다.
     static int count; 
 
-    // 인스턴스 필드
+    // 인스턴스 필드 = 논스태틱 필드
     // - 인스턴스마다 개별적으로 관리해야 할 값은 인스턴스 변수에 저장한다.
     String name;
     int age;
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) {  //main 메서드에서 사용하는 변수들이 먼저 다 로딩된다
 
     // 클래스 필드는 인스턴스를 생성할 필요 없이 클래스 이름으로 바로 사용한다.
     Student.count = 0;

@@ -8,7 +8,7 @@ public class Exam0120 {
   static class Score {
 
     // 2) 여러 명의 구별되는 성적 데이터를 저장해야 하기 때문에
-    // 인스턴스 변수로 메모리를 설계하라!
+    // 인스턴스 변수로 메모리를 설계하라! (static이 안붙었으니!)
     String name;
     int kor;
     int eng;
@@ -21,7 +21,7 @@ public class Exam0120 {
 
     // 저장하고 싶은 데이터 개수 만큼 인스턴스를 생성하라!
     Score s1 = new Score(); // 1명 분의 성적 데이터를 저장할 메모리
-    Score s2 = new Score();
+    Score s2 = new Score();  // new 명령을 실행하는 순간 heap에 만들어진다
     Score s3 = new Score();
 
     // s1 = null;  // nullpointerexception(레퍼런스에 주소가 안들어있다) 발생함
