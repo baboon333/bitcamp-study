@@ -4,6 +4,11 @@ package com.eomcs.oop.ex03;
 public class Exam0610 {
 
   public static class A {
+
+    static {  // 스태틱 블록
+      System.out.println("Static{} 11111");
+    }
+
     static int a;
 
     static void m() {}
@@ -13,12 +18,11 @@ public class Exam0610 {
     // 2) 스태틱 블록을 실행한다.
 
     // 컴파일할 때
-    // - 여러 개의 스태틱 블록이 있을 때, 컴파일러는 한 개의 블록으로 합친다.
+    // - 여러 개의 스태틱 블록이 있을 때, 컴파일러는 한 개의 블록으로 합친다. 합쳐진다고 하니까 같은 변수를 선언하면 충돌하는거 아니야? 이런 의문이 들 수도 있는데 jvm이 알아서 내부적으로 수행하니 그냥 그러려니하고 궁금해하지마!
+    //   클래스 안에 스태틱 블록이 여러 개 있을 때 위에서 아래로 static 블록을 순차적으로 실행한다.
+    // - 스태틱 블록의 위치에 상관없이 작성된 순서대로 한 개의 static 블록을 합친다.
     // - 바이트코드(Exam0610$A.class)를 확인해 보라.
     //
-    static {
-      System.out.println("Static{} 11111");
-    }
 
     static {
       System.out.println("Static{} 22222");
