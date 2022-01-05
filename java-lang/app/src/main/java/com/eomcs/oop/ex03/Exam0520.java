@@ -1,4 +1,4 @@
-// 변수 자동 초기화 - 인스턴스 변수
+// 변수 자동 초기화 - 인스턴스 변수  //new 명령을 실행할 때 heap에 만들어진다. 또한 자동 초기화된다.
 package com.eomcs.oop.ex03;
 
 import java.sql.Date;
@@ -9,7 +9,7 @@ public class Exam0520 {
     short s2;
     int i2;
     long l2;
-    char c2;
+    char c2;  // 빈문자로 출력된다.
     float f2;
     double d2;
     boolean bool2;

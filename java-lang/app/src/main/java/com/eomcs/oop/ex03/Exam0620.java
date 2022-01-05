@@ -24,7 +24,7 @@ public class Exam0620 {
   public static void main(String[] args) throws Exception {
 
     // 클래스가 로딩되는 경우,
-    // 1) 클래스 멤버(필드와 메서드)를 최초로 사용할 때
+    // 1) 클래스 멤버(필드와 메서드)를 사용할 때
     A.a = 100;
 
     System.out.println("종료!");

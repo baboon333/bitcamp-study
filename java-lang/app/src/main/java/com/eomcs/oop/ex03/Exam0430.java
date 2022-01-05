@@ -1,4 +1,5 @@
 // 생성자 - 여러 개의 생성자 정의하기 
+// 파라미터를 다르게 한다면 생성자를 여러개 만들 수 있다.
 package com.eomcs.oop.ex03;
 
 public class Exam0430 {
@@ -11,8 +12,9 @@ public class Exam0430 {
     int sum;
     float average;
 
-    Score() {
+    Score() {   // 생성자는 메서드와 똑같으니 이 안에 있는 문장이 실행되는 것이다!
       System.out.println("Score()");
+      this.name = "이름없음";
     }
 
     Score(String name) {
@@ -37,15 +39,16 @@ public class Exam0430 {
 
   public static void main(String[] args) {
 
-    // 생성자가 여러 개 일 때 파라미터에 전달하는 값으로 구분한다.
-    Score s1 = new Score();
+    // 생성자가 여러 개 일 때 파라미터에 전달하는 값으로 호출될 생성자를 구분한다.  // 클래스의 생성자가 꼭 하나일 필요는 없다
+    Score s1 = new Score();  // 어떤 생성자를 호출할지 알려주는 것!!
 
-    // 인스턴스 생성 후에 나중에 따로 생성자를 호출할 수 없다!
+    // 인스턴스 생성 후에 나중에 따로 생성자를 호출할 수 없다! new 명령을 할 때 호출하는 것이다!
     //    s1.Score("홍길동", 100, 90, 77); // 컴파일 오류!
 
     Score s2 = new Score("유관순");
     Score s3 = new Score("홍길동", 100, 90, 77);
-    //    Score s4 = new Score(true); // 논리 값을 받는 생성자는 없다!
+    //    Score s4 = new Score(true); // 논리 값을 받는 생성자는 없다! 컴파일 오류!
+    // new Score(100, 90, 80); 한다면 숫자만 세 개 받는 생성자가 없으니 컴파일 오류!
 
     System.out.printf("%s, %d, %d, %d, %d, %.1f\n",
         s1.name, s1.kor, s1.eng, s1.math, s1.sum, s1.average);

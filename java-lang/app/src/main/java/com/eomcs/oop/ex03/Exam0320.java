@@ -26,6 +26,9 @@ public class Exam0320 {
 
     System.out.print("성적 데이터를 입력하세요(예: 홍길동 100 100 100)> ");
     Score s1 = new Score();
+    //s1.name = "이름없음";  -> 이런식으로 초기값을 주기 위해 생성자를 만드는 거임!
+    //s1.kor = 50; 최소 기본 점수 50점
+
     s1.name = keyScan.next();
     s1.kor = keyScan.nextInt();
     s1.eng = keyScan.nextInt();

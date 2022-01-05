@@ -16,7 +16,7 @@ public class Exam0150 {
     int age;
   }
 
-  public static void main(String[] args) {  //main 메서드에서 사용하는 변수들이 먼저 다 로딩된다
+  public static void main(String[] args) {  //main 메서드에서 사용하는 변수들(args, s1, s2, s3)이 먼저 다 로딩된다
 
     // 클래스 필드는 인스턴스를 생성할 필요 없이 클래스 이름으로 바로 사용한다.
     Student.count = 0;

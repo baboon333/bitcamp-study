@@ -4,7 +4,7 @@ package com.eomcs.oop.ex03;
 
 public class Exam0162 {
 
-  static class Member {
+  static class Member {  //nested class(중첩 클래스)
 
     // Member와 관련된 값을 갖고 있는 변수라면
     // 다음과 같이 Member 클래스에 두는 것이 유지보수에 좋다. 
@@ -24,7 +24,7 @@ public class Exam0162 {
 
     // Member와 관련된 상수라면 
     // Member 클래스에 선언하는 것이 유지보수에 더 낫다.
-    // exam0161
+    // Exam0161
     // final int GUEST = 0;
     // final int MEMBER = 1;
     // final int MANAGER = 2;

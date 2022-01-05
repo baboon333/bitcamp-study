@@ -33,7 +33,7 @@ public class Exam0420 {
   }
 
   public static void main(String[] args) {
-    // Score 클래스에는 기본 생성자가 없기 때문에
+    // Score 클래스에는 기본 생성자가 없기 때문에  // 이미 생성자를 만들어줘서 컴파일러가 기본 생성자를 자동으로 추가하지 않는다!
     // 다음 문장은 컴파일 오류이다!
     //    Score s0 = new Score();
 

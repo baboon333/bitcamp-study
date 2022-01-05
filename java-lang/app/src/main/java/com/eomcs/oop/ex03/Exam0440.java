@@ -1,4 +1,5 @@
 // 생성자 - this()
+// 생성자를 따로 호출할 수는 없지만 생성자를 호출하는 중에 다른 생성자를 호출할 수 있다.
 package com.eomcs.oop.ex03;
 
 public class Exam0440 {
@@ -14,15 +15,15 @@ public class Exam0440 {
     Score() {
       // 다른 생성자를 호출할 때는 this()를 사용한다.
       // 단, 생성자의 첫 문장으로 와야 한다.
-      this("이름없음"); // Score(String) 생성자 호출
+      this("이름없음"); // Score(String) 생성자 호출(문자열 하나 받는)  // 다른 생성자를 가리키는 것! 이건 변수가 아님!! this.이 아니잖아!
 
-      System.out.println("Score()");
+      System.out.println("Score()");  //이걸 첫 문장으로 쓰면 다른 생성자를 호출하지 못한다! 다른 생성자를 호출하는 문장이 첫 문장에 와야하니!(주석은 문장이 아니다)
     }
 
     Score(String name) {
       // 다른 생성자를 호출할 때는 this()를 사용한다.
       // 단, 생성자의 첫 문장으로 와야 한다.
-      this(name, 0, 0, 0); // Score(String, int, int, int) 생성자 호출
+      this(name, 0, 0, 0); // Score(String, int, int, int) 생성자 호출 // 생성자에서 다른 생성자를 호출하는 문법
 
       System.out.println("Score(String)");
     }
@@ -37,6 +38,7 @@ public class Exam0440 {
     }
 
     public void compute() {
+      // this("오호라"); // 일반 메서드에서 생성자를 호출할 수 없다. 이게 된다면 생성자 호출을 언제나 할 수 있는 거겠지. 근데 인스턴스를 생성할 때만 생성자를 호출할 수 있잖아!
       this.sum = this.kor + this.eng + this.math;
       this.average = this.sum / 3f;
     }
@@ -69,6 +71,8 @@ public class Exam0440 {
         s3.average);
   }
 }
+
+//0430은 this.name 이 코드가 중복되니 이걸 해결하기 위해 나온게 0440!!
 
 // 생성자?
 // => 인스턴스(객체)를 생성한 후에 사용하기 전에 유효한 값으로 초기화시키 작업을 수행한다.

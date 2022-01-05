@@ -9,7 +9,7 @@ package com.eomcs.oop.ex03;
 // 그 변수의 소속을 미리 밝힐 수 있다.
 // => 스태틱 변수의 소속 클래스를 미리 밝혀두면
 //    클래스 이름 없이 스태틱 변수를 바로 사용할 수 있다.
-import static com.eomcs.oop.ex03.Member.GUEST;  //import 다음 static을 붙여아한다!
+import static com.eomcs.oop.ex03.Member.GUEST;  //import 다음 static을 붙여야한다!
 import static com.eomcs.oop.ex03.Member.MANAGER;
 import static com.eomcs.oop.ex03.Member.MEMBER;
 
