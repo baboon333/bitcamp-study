@@ -19,7 +19,7 @@ public class Exam0960 {
       System.out.println("Monitor()");
     }
 
-    Monitor(int bright, int contrast) {
+    Monitor(int bright, int contrast) {  // 밝기와 명암만 설정하고 싶으면 이 생성자를 호출하고!
       this.bright = bright;
       this.contrast = contrast;
       System.out.println("Monitor(int, int)");

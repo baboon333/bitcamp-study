@@ -32,7 +32,7 @@ public class Exam0750 {
       c = 300;
     }
 
-    {
+    {  // 생성자 위에 작성하든 밑에 작성하든 생성자의 앞 부분에 삽입한다.
       this.a = 102;
       System.out.println("두 번째 인스턴스 초기화 블록");
     }

@@ -1,7 +1,7 @@
 // 인스턴스 초기화 블록(instance initializer) - 인스턴스 블록의 활용
 package com.eomcs.oop.ex03;
 
-public class Exam0760 {
+public class Exam0760 {  // 아직 안 배움!! 나중에!!
 
   public static void main(String[] args) {
 

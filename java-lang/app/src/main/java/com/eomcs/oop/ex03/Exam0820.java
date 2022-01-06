@@ -4,7 +4,7 @@ package com.eomcs.oop.ex03;
 public class Exam0820 {
 
   static class A {
-    int a = 100;
+    int a = 100;  // 변수 선언은 여기 있고 초기화 문장은 생성자 안에 삽입된다.
     int b = 200;
     int c;
 
@@ -17,7 +17,7 @@ public class Exam0820 {
       // - 바이트코드(Exam0820$A.class)를 확인해 보라!
       // - 즉 인스턴스 필드를 초기화시키는 문장이 다음과 같이 삽입된다.
       //
-      // a = 100;
+      // a = 100;  -> 변수 초기화 문장이 여기로 삽입된다.
       // b = 200;
 
       a = 111;

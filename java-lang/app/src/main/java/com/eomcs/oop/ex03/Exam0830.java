@@ -38,7 +38,7 @@ public class Exam0830 {
       // a = 100;
       // b = 200;
 
-      this.a = a;
+      this.a = a;  // 파라미터로 받은 a 값이 들어감!
       this.b = b;
       c = 300;
     }

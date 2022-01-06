@@ -25,17 +25,17 @@ public class Exam0240 {
     // yyyy-MM-dd 형식으로 다루기 때문에 편리하다.
 
     // 스태틱 메서드 활용
-    long currMillis = System.currentTimeMillis();
+    long currMillis = System.currentTimeMillis(); // 클래스이름.메서드명 -> 전형적인 클래서 메서드!  // 워낙 큰 값이니 long으로!
 
     // 생성자 활용
-    java.sql.Date today = new java.sql.Date(currMillis);
+    java.sql.Date today = new java.sql.Date(currMillis);  // java.util.Date 보다 java.sql.date클래스를 더 많이 쓴다!
 
     // 인스턴스 메서드 활용 
     String str = today.toString();
     System.out.println(str);
 
     // 스태틱 메서드 활용
-    java.sql.Date d = java.sql.Date.valueOf("2019-12-30");
+    java.sql.Date d = java.sql.Date.valueOf("2019-12-30");  // java.sql.Date.메서드를 호출하면 java.sql.Date 객체를 리턴한다.
     System.out.println(d);
     // println()에 문자열을 주지 않고 그냥 객체(의 주소)를 넘기면
     // println() 내부에서 해당 객체의 toString()을 호출한 후에 

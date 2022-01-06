@@ -27,8 +27,9 @@ public class Exam0113 {
         (byte)0xeb, (byte)0x98, (byte)0xa5  // 똥
     };
 
-    String s1 = new String(bytes);
+    String s1 = new String(bytes);  // 이클립스에서는 무조건 utf-8이라고 생각하기 때문에 utf-8이라고 안알려줘도 된다. 근데 이클립스에서 실행하든 말든 byte 배열을 가지고 객체를 만들 때 그냥 무조건 byte배열의 charset을 적어라! 그게 좋은 코드이다!
     System.out.println(s1);
+    System.out.println("--------------------------------");
 
     // 생성자에 바이트 배열을 넘길 때
     // 바이트 배열에 들어 있는 데이터의 문자 코드표를 알려주지 않으면,

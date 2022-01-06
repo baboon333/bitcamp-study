@@ -1,7 +1,7 @@
 // 종합 정리 - 인스턴스 필드 초기화(variable initializer) 적용
 package com.eomcs.oop.ex03;
 
-public class Exam0920 {
+public class Exam0920 {  // 0920 보다 좀 더 유연한 코드가 0930
 
   static class Monitor {
 
