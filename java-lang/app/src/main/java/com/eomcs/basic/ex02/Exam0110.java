@@ -4,7 +4,7 @@ package com.eomcs.basic.ex02;
 public class Exam0110 {
   public static void main(String[] args) {
     // String 레퍼런스
-    // - String은 자바 기본 타입이 아니다.
+    // - String은 자바 기본 타입(primitive type)이 아니다.
     // - 클래스이다.
     String s1; // s1은 String 인스턴스 주소를 담는 레퍼런스이다.
 
@@ -16,7 +16,7 @@ public class Exam0110 {
     String s2 = new String("Hello");
 
     // 인스턴스가 같은지를 비교해보면,
-    System.out.println(s1 == s2); // false => 서로 다른 인스턴스이다.
+    System.out.println(s1 == s2); // false => 서로 다른 인스턴스이다.(문자열이 아닌 주소를 비교하는 것이니. 문자열을 비교할 때는 equals 메서드를 사용해야 한다)  // s1/2에 저장된 값: 주소
   }
 }
 

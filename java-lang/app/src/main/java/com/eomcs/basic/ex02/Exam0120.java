@@ -7,7 +7,7 @@ public class Exam0120 {
     String s1 = new String("Hello");
     String s2 = new String("Hello");
 
-    // 두 String 인스턴스는 분명히 서로 다르다.
+    // 두 String 인스턴스는 분명히 서로 다르다. 문자열 비교가 아니라 주소가 같은지 비교하는 것이다.
     System.out.println(s1 == s2);
 
     // 두 인스턴스가 갖고 있는 문자열이 같은지를 비교하고 싶다면,

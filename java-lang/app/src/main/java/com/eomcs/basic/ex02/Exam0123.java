@@ -1,4 +1,4 @@
-// String - String.equals() 처럼 동작하게 만들기
+// String - String.equals() 처럼 동작하게 만들기  // 아직 안배움 상속 배운 후 나중에! 
 package com.eomcs.basic.ex02;
 
 import java.util.Objects;

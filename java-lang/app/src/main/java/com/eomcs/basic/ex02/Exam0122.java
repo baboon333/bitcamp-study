@@ -1,4 +1,4 @@
-// String - String.equals() vs Object.equals()
+// String - String.equals() vs Object.equals()  // 아직 안배움 상속 배운 후 나중에! 
 package com.eomcs.basic.ex02;
 
 public class Exam0122 {

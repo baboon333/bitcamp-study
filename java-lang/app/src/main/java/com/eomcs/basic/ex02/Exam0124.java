@@ -1,4 +1,4 @@
-// StringBuffer - 문자열 비교
+// StringBuffer - 문자열 비교  // 시험문제에 잘 나온다!!! 이것도 상속과 overriding을 배운 후 나중에!!
 package com.eomcs.basic.ex02;
 
 public class Exam0124 {
