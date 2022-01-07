@@ -11,7 +11,13 @@ public class ContactController {
   // Contact 객체 목록을 저장할 메모리 준비
   // => Object[] list = new Object[5];
   // => int size = 0;
-  ArrayList contactList = new ArrayList();
+  ArrayList contactList;  // 인스턴스 변수 = 초기화 문장
+
+  public ContactController() {
+    contactList = new ArrayList();
+    System.out.println("ContactController() 호출됨!");
+  }
+
 
   @RequestMapping("/contact/list")
   public Object list() {

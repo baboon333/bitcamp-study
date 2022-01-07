@@ -12,6 +12,11 @@ public class BoardController {
   // Board 객체 목록을 저장할 메모리를 준비한다.
   ArrayList boardList = new ArrayList();
 
+  public BoardController() {
+    // 컴파일 하면 이렇게 boardList = new ArrayList(); 삽입된다. 따라서 위에서는 그냥 ArrayList boardList; 이렇게만 해줘도 된다! // 인스턴스 필드 초기화 문장은 생성자의 앞 부분에 삽입된다.
+    System.out.println("BoardController() 호출됨!");
+  }
+
   @RequestMapping("/board/list")
   public Object list() {
     return boardList.toArray();  // 인스턴스 메소드는 그 메소드가 사용할 주소를 이렇게 앞쪽에서 넘겨주고 ArrayList에서는 this 빌트인 변수를 사용한다.

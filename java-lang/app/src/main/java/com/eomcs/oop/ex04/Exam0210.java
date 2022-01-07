@@ -18,7 +18,7 @@ public class Exam0210 {
     System.out.println(s1.contains("ee"));
 
     // 두 문자열을 연결하여 새 문자열을 만들자!
-    String s2 = s1.concat(", world!");
+    String s2 = s1.concat(", world!");  // String은 immutable 객체이기 때문에 s1에 이 문자열을 더하라는게 아니라 이걸 더해서 새로운 인스턴스를 만들라는 얘기이다. 따라서 s2는 새로 만든 인스턴스이다.
     System.out.println(s1); // 기존 인스턴스의 값은 변경하지 않는다.
     System.out.println(s2); // 새로 문자열을 만든다.
 

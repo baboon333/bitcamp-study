@@ -9,7 +9,12 @@ import com.eomcs.util.ArrayList;
 public class TodoController {
 
   // Todo 객체 목록을 저장할 메모리를 준비한다.
-  ArrayList todoList = new ArrayList();
+  ArrayList todoList;
+
+  public TodoController() {
+    todoList = new ArrayList();
+    System.out.println("TodoController() 호출됨!");
+  }
 
   @RequestMapping("/todo/list")
   public Object list() {
