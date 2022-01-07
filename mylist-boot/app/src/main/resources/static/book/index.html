@@ -7,16 +7,13 @@
 <body>
 <h1>독서록</h1>
 <a href="form.html">새 독서록</a>
-<table id="x-board-table" border="1">
+<table id="x-book-table" border="1">
 <thead>
   <tr>
-    <th>제목</th>
+    <th>책</th>
     <th>저자</th>
     <th>출판사</th>
     <th>페이지</th>
-    <th>가격</th>
-    <th>읽은날짜</th>
-    <th>소감</th>
   </tr>
 </thead>
 <tbody>
@@ -36,8 +33,9 @@
         var book = books[i];
         var tr = document.createElement("tr");
         tr.innerHTML = `<td><a href="view.html?index=${i}">${book.title}</a></td>
-        <td>${book.viewCount}</td>
-        <td>${book.readDate}</td>`;
+        <td>${book.author}</td>
+        <td>${book.press}</td>
+        <td>${book.page}</td>`;
         tbody.appendChild(tr);
       }
     });
