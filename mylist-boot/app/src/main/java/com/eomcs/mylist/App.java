@@ -4,7 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +16,7 @@ public class App {
     // 스프링부트가 객체를 만든다! 따라서 App.java를 실행하면 ContactController.java에 있는 "ContactController() 호출됨!"이게 출력됨
   }
 
-  @Bean
+  // @Bean  주석으로 처리되면 일반클래스가 돼서 자동으로 동작안된다!!
   public CommandLineRunner commandLineRunner(ApplicationContext beanContainer) {
     return args -> {
 

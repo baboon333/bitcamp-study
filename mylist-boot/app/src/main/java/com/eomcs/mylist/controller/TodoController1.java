@@ -1,4 +1,4 @@
-package com.eomcs.mylist.controller;
+/*package com.eomcs.mylist.controller;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -8,21 +8,31 @@ import com.eomcs.mylist.domain.Todo;
 import com.eomcs.util.ArrayList;
 
 @RestController 
-public class TodoController {
+public class TodoController1 {
 
-  ArrayList todoList = new ArrayList();
+  // Todo 객체 목록을 저장할 메모리를 준비한다.
+  ArrayList todoList;
 
-  public TodoController() throws Exception {
+  public TodoController1() throws Exception {
+    todoList = new ArrayList();
     System.out.println("TodoController() 호출됨!");
+
     FileReader in = new FileReader("todos.csv");
 
     StringBuilder buf = new StringBuilder();
     int c;
-    while ((c = in.read()) != -1) {
+    while (true) {
+
+      c = in.read();
+
+      if (c == -1)
+        break;
+
       if (c == '\n') {
-        todoList.add(Todo.valueOf(buf.toString())); 
-        buf.setLength(0); 
-      } else { 
+        todoList.add(Todo.valueOf(buf.toString()));
+        buf.setLength(0);
+
+      } else {
         buf.append((char) c);
       }
     }
@@ -47,8 +57,8 @@ public class TodoController {
       return 0;
     }
 
-    Todo old = (Todo) todoList.get(index);
-    todo.setDone(old.isDone()); // 기존의 체크 정보를 그대로 가져가야 한다.
+    Todo old = (Todo) todoList.get(index);  // 기존의 체크 정보는 그대로 가져가야 한다.
+    todo.setDone(old.isDone());  //값을 꺼낼 때는 GET() 값을 설정할 때는 SET()  //근데 TRUE/FALSE일 때는 get 대신 isdone!!!
 
     return todoList.set(index, todo) == null ? 0 : 1;
   }
@@ -75,7 +85,7 @@ public class TodoController {
 
   @RequestMapping("/todo/save")
   public Object save() throws Exception {
-    FileWriter out = new FileWriter("todos.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    FileWriter out = new FileWriter("todos.csv");
 
     Object[] arr = todoList.toArray();
     for (Object obj : arr) {
@@ -83,11 +93,9 @@ public class TodoController {
       out.write(todo.toCsvString() + "\n");
     }
 
+
     out.close();
     return arr.length;
   }
 }
-
-
-
-
+ */
