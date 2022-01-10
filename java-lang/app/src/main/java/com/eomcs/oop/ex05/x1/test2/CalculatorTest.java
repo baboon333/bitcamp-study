@@ -2,10 +2,10 @@ package com.eomcs.oop.ex05.x1.test2;
 
 // 기능 추가:
 //  - 곱하기 계산 기능을 수행
-// 해셜책?
+// 해결책?
 //  - 기존 코드에 곱하기 기능을 추가한다.  
 
-class CalculatorTest {
+public class CalculatorTest {
   public static void main(String[] args) {
     com.eomcs.oop.ex05.x1.test1.Calculator c = new com.eomcs.oop.ex05.x1.test1.Calculator();
 

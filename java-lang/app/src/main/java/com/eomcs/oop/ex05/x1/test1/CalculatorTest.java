@@ -1,6 +1,6 @@
 package com.eomcs.oop.ex05.x1.test1;
 
-class CalculatorTest {
+public class CalculatorTest {
   public static void main(String[] args) {
     Calculator c = new Calculator();
 
