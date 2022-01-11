@@ -6,6 +6,7 @@ public class Calculator2 extends Calculator {
 
   // 상속은 기존 코드를 자동으로 복사해오는 것이 아니다! 아니다! 아니다!
   // 아니다! 아니다! 아니다! 아니다! 아니다! 아니다! 아니다!
+  // 그냥 연결된 것이다!!
   /*
   public int result;
 
