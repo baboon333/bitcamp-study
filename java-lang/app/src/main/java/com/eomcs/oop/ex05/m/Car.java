@@ -27,7 +27,8 @@ package com.eomcs.oop.ex05.m;
 // => 문법:
 //      abstract class 클래스명 {...}
 //
-public abstract class Car {
+// abstract는 modifier다!
+public abstract class Car {  // abstract public 이렇게 순서 바꿔도 되나 아싸 개발자 되고 싶으면 이렇게 해라!
 
   public Car() {
     super();

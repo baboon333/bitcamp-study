@@ -24,12 +24,12 @@ public class Exam0210 {
 
     // 해결책?
     // => 레퍼런스 변수가 실제 가리키는 것이 무엇인지 알려줘야 한다.
-    // => ((원래인스턴스타입) 레퍼런스).멤버
+    // => ((실제 레퍼런스가 가리키는 인스턴스의 타입) 레퍼런스).멤버
     ((Sedan)c).sunroof = true; // OK!
     ((Sedan)c).auto = true;    // OK!
 
     // => 또는 인스턴스의 원래 클래스 레퍼런스에 저장한 다음에 사용.
-    Sedan s = (Sedan)c;
+    Sedan s = (Sedan)c;  // (Sedan) 빼면 오류! c에 들어있는게 sedan이라고 알려줘야 함!
     s.sunroof = true;
     s.auto = true;
 

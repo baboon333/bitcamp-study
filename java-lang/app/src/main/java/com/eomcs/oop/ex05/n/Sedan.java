@@ -1,7 +1,8 @@
 package com.eomcs.oop.ex05.n;
 
 public class Sedan extends Car {
-  public void run() {
+  @Override
+  public void run() {  // 이렇게 run() 메서드 구현 안하고 추상메서드인채로 놔두면 에러!
     System.out.println("쌩쌩 달린다.");
   }
 

@@ -3,8 +3,8 @@ package com.eomcs.oop.ex06.b;
 
 public class Exam0310 {
   public static void main(String[] args) {
-    
-    // 다양한 파라미터 값을 받는 println()
+
+    // 다양한 파라미터 값을 받는 println()  // println()이 사실 오버로딩이었다!
     System.out.println(100);
     System.out.println(true);
     System.out.println("hello");

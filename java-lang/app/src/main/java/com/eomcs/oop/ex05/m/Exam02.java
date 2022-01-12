@@ -1,4 +1,4 @@
-// 상속 - 추상클래스를 파라미터로 사용하기
+// 상속 - 추상클래스를 파라미터로 사용하기  // 아직 안함!!!!
 package com.eomcs.oop.ex05.m;
 
 public class Exam02 {

@@ -29,7 +29,7 @@ public class Exam0120 {
     int r1 = Calculator.plus(100, 200);
     int r2 = Calculator.plus(100);
     float r3 = Calculator.plus(35.7f, 22.2f);
-    //    double f4 = Calculator.plus(35.7, 22.2); // 파라미터 타입이나 개수가 일치하는 메서드가 없다.
+    //    double f4 = Calculator.plus(35.7, 22.2); // 파라미터 타입이나 개수가 일치하는 메서드가 없다. // 더블 타입의 8byte 리터럴! 상수라고 하지말고 리어럴이라고 해라!
 
     System.out.printf("%d, %d, %.1f\n", r1, r2, r3);
 
