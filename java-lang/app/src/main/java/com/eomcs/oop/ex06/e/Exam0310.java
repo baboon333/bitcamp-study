@@ -5,7 +5,7 @@ class C {
   // 필드에 final 을 붙이면 상수 필드가 된다.
   // 생성자에서 초기화시켜야 한다.
   //
-  final int v1;
+  final int v1;  // 이게 생성자 안으로 들어가서 컴파일되면 exam0320의 final int v1 = 100; 이거와 같다
 
   public C() {
     v1 = 100;
