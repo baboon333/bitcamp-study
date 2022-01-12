@@ -1,4 +1,4 @@
-// 오버라이딩(overriding) - 레퍼런스가 가리키는 필드
+// 오버라이딩(overriding) - 레퍼런스가 가리키는 필드  // 쓸 일 없음! 잊어버려도 돼
 package com.eomcs.oop.ex06.c;
 
 public class Exam0510 {
@@ -34,13 +34,13 @@ public class Exam0510 {
 
     // 레퍼런스를 형변환 하면 오버라이딩 하기 전,
     // 해당 클래스의 인스턴스 변수를 가리킬 수 있다.
-    System.out.println(((A3)obj1).age);
-    System.out.println(((A3)obj1).working); // 없으면 수퍼 클래스의 필드를 가리킨다.
+    System.out.println(((A3)obj1).age);  // 30 -> A3부터 찾는 것!
+    System.out.println(((A3)obj1).working); // true -> 없으면 수퍼 클래스의 필드를 가리킨다.
     System.out.println("-----------------------------");
 
     // 형변환 클래스에 존재하지 않는 필드는 가리킬 수 없다.
     //    System.out.println(((A)obj1).age); // 컴파일 오류!
-    System.out.println(((A)obj1).working);
+    System.out.println(((A)obj1).working);  // true
   }
 }
 

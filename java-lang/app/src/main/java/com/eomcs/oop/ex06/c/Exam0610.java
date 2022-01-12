@@ -5,6 +5,7 @@ public class Exam0610 {
 
   static class Car {}
   static class Sedan extends Car {}
+  static class Truck extends Car {}
   static class Tico extends Sedan {}
 
   static class CarFactory {
@@ -29,6 +30,10 @@ public class Exam0610 {
     Tico create() {
       return new Tico();
     }
+    /*Truck create() {   서브 타입이 아니니 오류!
+      return new Truck();
+    }*/
+
   }
 
 
