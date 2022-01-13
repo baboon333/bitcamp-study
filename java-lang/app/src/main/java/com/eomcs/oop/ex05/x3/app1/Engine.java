@@ -5,7 +5,7 @@ public class Engine {
   int valve;
 
   public void run () {
-    System.out.println("엔진이 돈다!");
+    System.out.println("씽씽 달린다.!");  // 이렇게 직접 하나하나 찾아서 바꾸다보면 오타 실수를 할 수 있다! 
   }
 
   // 자동차 기능 추가

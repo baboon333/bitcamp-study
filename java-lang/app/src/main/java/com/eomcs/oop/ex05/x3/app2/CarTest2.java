@@ -7,7 +7,7 @@ package com.eomcs.oop.ex05.x3.app2;
 public class CarTest2 {
 
   public static void main(String[] args) {
-    // Engine 클래스에 트럭을 위한 덤프 긴으을 추가한다.
+    // Engine 클래스에 트럭을 위한 덤프 기능을 추가한다.
     // => dump() 메서드 추가
 
     Engine car = new Engine();

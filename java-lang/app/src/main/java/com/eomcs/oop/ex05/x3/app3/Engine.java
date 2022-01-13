@@ -6,7 +6,7 @@ public class Engine {
 
   public void run () {
     if (trailer == null) {
-      System.out.println("엔진이 돈다!");
+      System.out.println("씽씽 달린다!");
     } else {
       System.out.println("느릿 느릿 조심히 움직인다!");
     }
