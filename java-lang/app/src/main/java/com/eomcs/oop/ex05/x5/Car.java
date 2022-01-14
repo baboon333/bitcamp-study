@@ -1,9 +1,6 @@
-package com.eomcs.oop.ex05.x4.app1;
+package com.eomcs.oop.ex05.x5;
 
-import com.eomcs.oop.ex05.x4.Engine;
-
-public class Car extends Engine {
-  // 자동차 기능 추가
+public abstract class Car {
   public void start() {
     System.out.println("시동 건다!");
   }
@@ -11,4 +8,6 @@ public class Car extends Engine {
   public void stop() {
     System.out.println("시동 끈다!");
   }
+
+  public abstract void run();
 }

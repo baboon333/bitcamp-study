@@ -2,7 +2,7 @@ package com.eomcs.oop.ex05.x3.app3;
 
 // 캠핑카 만들기
 //
-// 1) app1에서 복제해 온 Engine 클래스에 기능 덧붙이기
+// 2) app1에서 복제해 온 Engine 클래스에 기능 덧붙이기
 // 
 public class CarTest3 {
 
