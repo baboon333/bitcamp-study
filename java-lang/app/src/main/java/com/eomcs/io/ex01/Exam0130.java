@@ -18,7 +18,7 @@ public class Exam0130 {
     System.out.printf("절대경로: %s\n", currentDir.getAbsolutePath());
     System.out.printf("계산된 절대경로: %s\n", currentDir.getCanonicalPath());
 
-    // 존재하지 않는 폴더인 경우 크기는 0이다.
+    // 존재하지 않는 폴더인 경우 크기는 0이다. -> 의미없는 정보가 되니!!
     System.out.printf("총크기: %d\n", currentDir.getTotalSpace());
     System.out.printf("남은크기: %d\n", currentDir.getFreeSpace());
     System.out.printf("가용크기: %d\n", currentDir.getUsableSpace());

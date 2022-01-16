@@ -10,14 +10,19 @@ public class Exam0120 {
     // => 파일이나 디렉토리 정보를 관리
     // => 파일이나 디렉토리를 생성,삭제,변경
 
+    // 비트캠프건물/6층/601호
+    // 비트캠프건물/6층/601호/../602호 :  절대경로
+    // = 비트캠프건물/6층/602호 :  CanonicalPath
+
+
     // 상위 폴더 정보 조회
     // - ".." 으로 경로를 표시한다.
     //
     File currentDir = new File("./src/main/java/../../test/java");
     System.out.printf("폴더명: %s\n", currentDir.getName());
-    System.out.printf("경로: %s\n", currentDir.getPath());
+    System.out.printf("경로: %s\n", currentDir.getPath());  // 생성자가 넘겨준 경로가 그대로 잇다
     System.out.printf("절대경로: %s\n", currentDir.getAbsolutePath());
-    System.out.printf("계산된 절대경로: %s\n", currentDir.getCanonicalPath());
+    System.out.printf("계산된 절대경로: %s\n", currentDir.getCanonicalPath());  // ..을 다 계산한 최종경로를 보여줌
 
     System.out.printf("총크기: %d\n", currentDir.getTotalSpace());
     System.out.printf("남은크기: %d\n", currentDir.getFreeSpace());

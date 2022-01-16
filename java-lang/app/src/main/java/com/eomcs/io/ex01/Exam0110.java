@@ -13,23 +13,23 @@ public class Exam0110 {
     // 현재 디렉토리를 조회
     // => '.' 으로 표현한다.
     // => JVM을 실행하는 위치가 현재 폴더이다.
-    // => 이클립스 : 프로젝트 디렉토리를 가리킨다.
+    // => 이클립스 : 프로젝트 디렉토리를 가리킨다.  // 이클립스에서 실행하면 무조건 프로젝트 폴더를 가리킨다!! 프로젝트 폴더가 뭐냐면 java-lang안 app 폴더가 현재폴더이다!!!
     // => 콘솔 : 현재 명령어를 실행하는 위치를 가리킨다.
     //
-    File currentDir = new File("./src/main/java");
+    File currentDir = new File("./src/main/java");                    // ./src/main/java: 디렉토리명  // . 은 그냥 현재폴더를 의미한다
     System.out.printf("폴더명: %s\n", currentDir.getName());
     System.out.printf("경로: %s\n", currentDir.getPath());
     System.out.printf("절대경로: %s\n", currentDir.getAbsolutePath());
     System.out.printf("계산된 절대경로: %s\n", currentDir.getCanonicalPath());
 
     System.out.printf("총크기: %d\n", currentDir.getTotalSpace());
-    System.out.printf("남은크기: %d\n", currentDir.getFreeSpace());
-    System.out.printf("가용크기: %d\n", currentDir.getUsableSpace());
+    System.out.printf("남은크기: %d\n", currentDir.getFreeSpace());  // 진짜 남은 크기
+    System.out.printf("가용크기: %d\n", currentDir.getUsableSpace());  // 사용자별로 쓸 수 있는 크기
 
     System.out.printf("디렉토리여부: %b\n", currentDir.isDirectory());
     System.out.printf("파일여부: %b\n", currentDir.isFile());
     System.out.printf("감춤폴더: %b\n", currentDir.isHidden());
-    System.out.printf("존재여부: %b\n", currentDir.exists());
+    System.out.printf("존재여부: %b\n", currentDir.exists());  // 존재하지 않는 폴더면 false가 나온다.
     System.out.printf("실행가능여부: %b\n", currentDir.canExecute());
   }
 

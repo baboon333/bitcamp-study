@@ -1,9 +1,7 @@
 package com.eomcs.oop.ex05.x7;
 
-public class Sedan extends Car {
+public class Sedan2 extends Car {
 
-  int cc;
-  int valve;
   boolean auto;
   boolean openedSunroof;
 

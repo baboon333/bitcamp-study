@@ -1,9 +1,7 @@
 package com.eomcs.oop.ex05.x7;
 
-public class Truck extends Car {
+public class Truck2 extends Car {
 
-  int cc;
-  int valve;
   int weight;
 
   @Override
