@@ -1,4 +1,4 @@
-// 익명 클래스로 FileFilter 만들기
+// 익명 클래스로 FileFilter 만들기  // 아직 안함!!!
 package com.eomcs.io.ex01;
 
 import java.io.File;

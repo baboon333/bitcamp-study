@@ -18,6 +18,7 @@ public class Exam0620 {
         // true 이면 배열에 포함시키고,
         // false 이면 배열에서 제외한다.
         //
+        // FileFilter는 0611의 FilenameFilter와 달리 파일 객체가 넘어와 편리하다.
         if (file.isFile() && file.getName().endsWith(".java"))
           return true; // 조회 결과에 포함시켜라!
         return false; // 조회 결과에서 제외하라!

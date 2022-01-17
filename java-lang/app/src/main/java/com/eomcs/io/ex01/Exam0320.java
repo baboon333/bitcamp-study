@@ -9,7 +9,7 @@ public class Exam0320 {
 
     File dir = new File("temp/a");
 
-    // 하위 디렉토리 생성하기
+    // 하위 디렉토리 생성하기(temp 밑 a 디렉토리 생성)
     //
     if (dir.mkdir()) {
       System.out.println("temp/a 디렉토리를 생성하였습니다.");

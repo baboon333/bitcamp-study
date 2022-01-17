@@ -1,4 +1,4 @@
-// 활용: 필터와 Lambda 표현식을 사용하여 디렉토리 이름만 추출하라.
+// 활용: 필터와 Lambda 표현식을 사용하여 디렉토리 이름만 추출하라.  // 아직 안함!!!
 package com.eomcs.io.ex01;
 
 import java.io.File;

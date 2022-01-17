@@ -17,12 +17,12 @@ public class Exam0210 {
     System.out.printf("파일크기: %d\n", file1.length());
     System.out.printf("경로: %s\n", file1.getPath());
     System.out.printf("절대경로: %s\n", file1.getAbsolutePath());
-    System.out.printf("계산된 절대경로: %s\n", file1.getCanonicalPath());
+    System.out.printf("계산된 절대경로: %s\n", file1.getCanonicalPath());  // .까지 계산할 후 최종적인 경로
 
     // 존재하지 않는 폴더인 경우 크기를 알아낼 수 없다.
-    System.out.printf("총크기: %d\n", file1.getTotalSpace());
+    System.out.printf("총크기: %d\n", file1.getTotalSpace());  // 하드디스크의 총 크기
     System.out.printf("남은크기: %d\n", file1.getFreeSpace());
-    System.out.printf("가용크기: %d\n", file1.getUsableSpace());
+    System.out.printf("가용크기: %d\n", file1.getUsableSpace());  // 남은 것에서 쓸 수 있는 것의 크기
 
     // 존재하지 않는 폴더인 경우 정보를 알아낼 수 없다. 모두 false
     System.out.printf("디렉토리여부: %b\n", file1.isDirectory());

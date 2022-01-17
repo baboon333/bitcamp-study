@@ -10,9 +10,9 @@ public class Exam0431 {
     File file = new File("temp/b/test.txt");
 
     // 파일을 생성하기 전에 존재하지 않는 폴더를 생성하고 싶다면,
-    //    String path = file.getParent(); // => temp/b
-    //    File dir = new File(path);
-    File dir = file.getParentFile(); // 위의 코드와 같다.
+    //    String path = file.getParent(); // getParent() => temp/b 파일의 앞부분만 리턴한다.
+    //    File dir = new File(path); -> 그 경로로 파일 객체를 생성한 후
+    File dir = file.getParentFile(); // 위의 코드와 같다. 이 코드가 위 두줄의 코드를 한줄로 줄여주니 더 좋다!
     System.out.println(dir.getCanonicalPath());
 
     // 먼저 디렉토리를 생성한다.
