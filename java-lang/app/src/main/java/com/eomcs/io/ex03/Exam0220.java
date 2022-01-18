@@ -31,7 +31,7 @@ public class Exam0220 {
     // 30       ==> 00 30
     // 31       ==> 00 31
     // 32       ==> 00 32
-    // ea b0 80 ==> ac 00
+    // ea b0 80 ==> ac 00  -> 3byte 읽어서~
     // ea b0 81 ==> ac 01
     // ea b0 84 ==> ac 04
     // eb 98 98 ==> b6 18
@@ -45,7 +45,7 @@ public class Exam0220 {
 
     System.out.println();
 
-  }
+  } // 몇 개의 문자를 읽었는지!
 
 }
 

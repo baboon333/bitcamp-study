@@ -16,7 +16,7 @@ public class Exam0320 {
 
     in.close();
 
-    System.out.printf("%d\n", count);
+    System.out.printf("%d\n", count);  // 어차피 txt에 들어있는 문자개수는 3개니 3 출력
 
     for (int i = 0; i < 20; i++)
       System.out.printf("%c(%04x) ", buf[i], (int) buf[i]);

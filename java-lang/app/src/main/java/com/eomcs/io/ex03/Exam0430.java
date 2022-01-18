@@ -11,7 +11,7 @@ public class Exam0430 {
 
     // 데코레이터를 붙인다.
     // => 버퍼 기능 + 한 줄 읽기 기능
-    BufferedReader in2 = new BufferedReader(in);
+    BufferedReader in2 = new BufferedReader(in);  // FileReader에 BufferedReader 데코레이터를 붙이면 한 줄 읽기가 가능해진다!
 
     System.out.println(in2.readLine());
 

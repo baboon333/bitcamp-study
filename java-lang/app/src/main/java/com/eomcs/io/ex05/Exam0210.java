@@ -13,7 +13,7 @@ public class Exam0210 {
 
     // 인스턴스의 값을 출력하라!
     // 1) 이름 출력 
-    out.writeUTF(member.name); 
+    out.writeUTF(member.name);  // Exam0110이랑 비교해봐!! 훨씬 편하다!!
 
     // 2) 나이 출력 (4바이트)
     out.writeInt(member.age);

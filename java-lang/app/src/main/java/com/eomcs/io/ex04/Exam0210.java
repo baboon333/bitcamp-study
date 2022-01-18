@@ -15,7 +15,7 @@ public class Exam0210 {
     // 왜?
     // write()는 항상 변수의 마지막 1바이트만 출력하기 때문이다.
     out.write(money >> 24); // 00000008|0557d2
-    out.write(money >> 16); // 00000805|57d2
+    out.write(money >> 16); // 00000805|57d2  -> 맨뒤 05(1바이트)만 출력된다!
     out.write(money >> 8);  // 00080557|d2
     out.write(money);       // 080557d2
 
@@ -23,6 +23,6 @@ public class Exam0210 {
 
     System.out.println("데이터 출력 완료!");
 
-  }
+  } // 불편하지만 모두 출력하기 위해서는 이 방법밖에 없다
 
 }

@@ -9,7 +9,7 @@ public class Exam0110 {
     FileOutputStream out = new FileOutputStream("temp/test4.data");
 
     Member member = new Member();
-    member.name = "AB가각간";
+    member.name = "AB가각간";  // 11byte
     member.age = 27;
     member.gender = true;
 

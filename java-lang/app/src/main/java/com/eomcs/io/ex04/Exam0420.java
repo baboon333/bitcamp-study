@@ -19,7 +19,7 @@ public class Exam0420 {
     //    buf 배열에서 0번부터 10개의 바이트를 꺼낸다.
     //    그 바이트는 UTF-8 코드로 되어 있다.
     //    이 UTF-8 코드 배열을 UCS2 문자 배열로 만들어 String 객체를 리턴한다.
-    String str = new String(buf, 0, count, "UTF-8");
+    String str = new String(buf, 0, count, "UTF-8");  // 0부터 13개의 바이트를 읽어라(test3이 AB가각간 이니!)
 
     in.close();
 

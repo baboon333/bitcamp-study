@@ -14,7 +14,7 @@ public class Exam0122 {
     //    바이트를 읽어서 UCS2로 바꾼 후에 리턴한다.
 
     // 현재 JVM 환경 변수 'file.encoding' 값 알아내기
-    System.out.printf("file.encoding=%s\n", System.getProperty("file.encoding"));
+    System.out.printf("file.encoding=%s\n", System.getProperty("file.encoding")); // 기본 encoding은 utf-8인데 위 파일은 ms949잖아! 근데 파일이 뭘로 인코딩된 파일인지 안알려줬으니 이상하게 출력되는 것! 
 
     // file.encoding이 UTF-8로 되어 있다면,
     // => 영어는 1바이를 읽어서 2바이트 UCS2로 변환한다.

@@ -2,7 +2,7 @@ package com.eomcs.io.ex05;
 
 import java.io.FileOutputStream;
 
-public class DataFileOutputStream extends FileOutputStream {
+public class DataFileOutputStream extends FileOutputStream {  // 상속받아 만들어놓음
 
   public DataFileOutputStream(String filename) throws Exception {
     super(filename);

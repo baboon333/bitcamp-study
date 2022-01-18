@@ -8,7 +8,7 @@ public class Exam0120 {
   public static void main(String[] args) throws Exception {
     FileInputStream in = new FileInputStream("temp/jls11.pdf");
 
-    byte[] buf = new byte[8192]; // 보통 8KB 정도 메모리를 준비한다.
+    byte[] buf = new byte[8192]; // 보통 8KB(1KB: 1024byte) 정도 메모리를 준비한다.
     int len = 0;
 
     long startTime = System.currentTimeMillis(); // 밀리초
@@ -23,7 +23,7 @@ public class Exam0120 {
 
     System.out.println(endTime - startTime);
     System.out.println(callCount);
-    in.close();
+    in.close(); // 한 번 데이터를 읽었을 때 왕창 읽는게(8KB) 속도가 더 빠르다!
   }
 
 }

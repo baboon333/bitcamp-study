@@ -18,7 +18,7 @@ public class Exam0320 {
     value += (long)in.read() << 32;
     value += (long)in.read() << 24;
     value += (long)in.read() << 16;
-    value += (long)in.read() << 8;     
+    value += (long)in.read() << 8;      // 맨 왼쪽에서 7번째 바이트에 붙여서 합치는 것!
     value += in.read();            
 
 
