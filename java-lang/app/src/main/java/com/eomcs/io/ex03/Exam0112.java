@@ -14,7 +14,7 @@ public class Exam0112 {
     FileWriter out = new FileWriter("temp/test2.txt", charset);
 
     // 현재 JVM 환경 변수 'file.encoding' 값 알아내기
-    System.out.printf("file.encoding=%s\n", System.getProperty("file.encoding"));
+    System.out.printf("file.encoding=%s\n", System.getProperty("file.encoding")); // 얘는 무시해버리고 utf-16으로 출력한다.
 
     // UCS2에서 한글 '가'는 ac00이다.
     out.write(0x7a6bac00); 
