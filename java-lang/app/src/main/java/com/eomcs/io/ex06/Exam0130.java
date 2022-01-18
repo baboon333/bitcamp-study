@@ -11,10 +11,10 @@ public class Exam0130 {
     long startTime = System.currentTimeMillis(); // 밀리초
 
     int callCount = 0;
-    while ((b = in.read()) != -1)
+    while ((b = in.read()) != -1)  // 개발자 입장에서는 하나씩 읽어오더라도 내부적으로는 왕창 읽어와서 버퍼에 담아뒀다가 주는 것이니 빠르다! 이게 0110과 달리 빠른 이유!
       callCount++; // 파일을 끝까지 읽는다.
 
-    // => BufferedInputStream의 read() 메서드는
+    // => BufferedFileInputStream의 read() 메서드는
     //    FileInputStream에서 상속 받은 메서드를 이용하여
     //    바이트 배열로 데이터를 왕창 가져온 다음
     //    그 배열에서 1바이트를 리턴한다.

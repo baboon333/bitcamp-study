@@ -1,4 +1,4 @@
-package com.eomcs.io.ex07;
+package com.eomcs.io.ex07;   // 복사해 와!!! 뭐 삭제함ㅠㅠㅠㅠ
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,14 +21,6 @@ public class BufferedFileOutputStream extends FileOutputStream {
     // 1바이트 출력하라고 하면 일단 버퍼에 저장할 것이다.
     buf[cursor++] = (byte) b;
   }
-
-  @Override
-  public void write(byte[] buf) throws IOException {
-    for (byte b : buf) {
-      this.write(b & 0x000000ff);
-    }
-  }
-
 
   @Override
   public void close() throws IOException {
