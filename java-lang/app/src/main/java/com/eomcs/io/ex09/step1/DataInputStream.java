@@ -5,7 +5,7 @@ package com.eomcs.io.ex09.step1;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class DataInputStream extends InputStream {
+public class DataInputStream extends InputStream {  // 데코레이터 자체가 InputStream의 자손이어야 한다!
 
   InputStream 연결부품;
 

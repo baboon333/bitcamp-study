@@ -21,7 +21,7 @@ public class Exam0110 {
     // - 이제 BufferedInputStream과 DataInputStream도 
     //   InputStream의 자식이기 때문에 
     //   다른 객체에 연결할 수 있다.
-    DataInputStream in3 = new DataInputStream(in2); // OK!
+    DataInputStream in3 = new DataInputStream(in2); // OK!(ex08/Exam0410과는 다르게 연결이 가능하다)
 
     Member member = new Member();
     member.name = in3.readUTF();
