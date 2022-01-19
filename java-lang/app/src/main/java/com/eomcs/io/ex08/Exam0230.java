@@ -10,7 +10,7 @@ public class Exam0230 {
         (byte) 0x81, (byte) 0xea, (byte) 0xb0, (byte) 0x84, 0x00, 0x00, 0x00, 0x1b, 0x01};
 
     // 바이트 배열을 읽는 것은 ByteArrayInputStream에 맡긴다.
-    ByteArrayInputStream in1 = new ByteArrayInputStream(buf);
+    ByteArrayInputStream in1 = new ByteArrayInputStream(buf); // 생성자에 Byte~를 넘김
 
     // 문자열, int, long, boolean 값을 읽는 것은 DataInputStream 에 맡긴다.
     // =>ByteArrayInputStream에  DataInputStream 기능을 덧붙인다.

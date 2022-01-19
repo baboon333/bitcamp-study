@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class BufferedInputStream {
-  InputStream in;
+  InputStream in;  // 추상클래스의 레퍼런스를 받는다는건 그 객체가 아닌 자식 객체도 가리킬 수 있으니! 레퍼런스의 타입이 추상클래스, 인터페이스여도 쫄지마! 그걸 상속받은 클래스를 담는다는 거임! 그럼 왜 InputStream을 했냐? piped~, file~, 등등을 다 가리킬 수 있으니 훨씬 유연하다!
 
   byte[] buf = new byte[8192];
   int size; // 배열에 저장되어 있는 바이트의 수
@@ -21,7 +21,7 @@ public class BufferedInputStream {
       }
       cursor = 0;
     }
-    return buf[cursor++] & 0x000000ff;
+    return buf[cursor++] & 0x000000ff;  // 버퍼에 보관된 데이터를 리턴해준다.(read가 호출될 때마다! 버퍼에 있는게 다 사라질 때 까지)
   }
 
   public int read(byte[] buf) throws IOException {

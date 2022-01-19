@@ -3,11 +3,11 @@ package com.eomcs.io.ex08;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class DataOutputStream {
+public class DataOutputStream {  // 아무것도 상속받지 않는다
 
   OutputStream out;
 
-  public DataOutputStream(OutputStream out) throws Exception {
+  public DataOutputStream(OutputStream out) throws Exception { // 생성자에서 OutputStream을 받는다! out에는 File~ / Byte~ 가 들어갈 수 있음
     this.out = out;
   }
 
@@ -15,7 +15,7 @@ public class DataOutputStream {
     out.write(b);
   }
 
-  public void writeUTF(String str) throws Exception {
+  public void writeUTF(String str) throws Exception {  // 야야야 스트링 줄테니까 출력해
     byte[] bytes = str.getBytes("UTF-8");
     out.write(bytes.length);
     out.write(bytes);
