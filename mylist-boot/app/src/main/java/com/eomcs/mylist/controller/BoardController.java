@@ -2,10 +2,10 @@ package com.eomcs.mylist.controller;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Date;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,21 +20,20 @@ public class BoardController {
   public BoardController() throws Exception {
     System.out.println("BoardController() 호출됨!");
 
-    DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("boards.data")));
+    ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("boards.ser2")));
 
-    while (true) {
-      try { // 이 작업을 수행하다가
-        Board board = new Board();
-        board.setTitle(in.readUTF());
-        board.setContent(in.readUTF());
-        board.setViewCount(in.readInt());
-        board.setCreatedDate(Date.valueOf(in.readUTF()));
+    // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
+    //    while (true) {
+    //      try { // 이 작업을 수행하다가
+    //        Board board = (Board) in.readObject(); // 아 in.readObject() 얘가 내부적으로 객체를 만들어서 객체 주소(board 인스턴스라고 알려줘야 함)를 리턴하는구나
+    //        boardList.add(board);
+    //      } catch(Exception e) { // 만약 예외(오류)가 발생한다면 더 이상 데이터를 읽지말고 반복문을 나가라
+    //        break;
+    //      }
+    //    }
 
-        boardList.add(board);
-      } catch(Exception e) {// 만약 예외(오류)가 발생한다면 더 이상 데이터를 읽지말고 반복문을 나가라
-        break;
-      }
-    }
+    // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
+    boardList = (ArrayList) in.readObject(); // 단 기존의  생성한 ArrayList 객체는 버린다.
 
     in.close();
   }
@@ -87,18 +86,18 @@ public class BoardController {
 
   @RequestMapping("/board/save")
   public Object save() throws Exception {
-    DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("boards.data")));
+    ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("boards.ser2"))); // serialize의 ser을 따와서 파일 이름 바꿈
 
-    Object[] arr = boardList.toArray();
-    for (Object obj : arr) {
-      Board board = (Board) obj;
-      out.writeUTF(board.getTitle());  // 제목은 문자열이니 writeUTF로!
-      out.writeUTF(board.getContent());
-      out.writeInt(board.getViewCount());  // 조회수는 숫자이니 int로!
-      out.writeUTF(board.getCreatedDate().toString());
-    }
+    // 1) 다음과 같이 목록에 들어있는 객체를 한 개씩 순차적으로 serialize 할 수도 있고,
+    //    Object[] arr = boardList.toArray();
+    //    for (Object obj : arr) {
+    //      out.writeObject(obj);
+    //    }
 
+    // 2) 다음과 같이 목록 자체를 serialize 할 수도 있다. 
+    out.writeObject(boardList);
     out.close();  // 얘 close하면 얘가 포함하는 out1, out이 같이 close된다! 따라서 따로 out 안해줘도 된다
-    return arr.length;
+
+    return boardList.size();
   }
 }
