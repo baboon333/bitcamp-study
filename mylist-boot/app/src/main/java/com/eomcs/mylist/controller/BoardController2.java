@@ -1,18 +1,16 @@
-package com.eomcs.mylist.controller;
+/*package com.eomcs.mylist.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.sql.Date;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Board;
 import com.eomcs.util.ArrayList;
 
-@RestController
+@RestController 
 public class BoardController {
 
   ArrayList boardList = new ArrayList();
@@ -20,28 +18,24 @@ public class BoardController {
   public BoardController() throws Exception {
     System.out.println("BoardController() 호출됨!");
 
-    DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("boards.data")));
+    //1) 주 작업 객체(concrete component) 준비
+    FileReader in = new FileReader("boards.csv"); // FileReader: 파일에서 데이터를 읽는다
 
-    while (true) {
-      try { // 이 작업을 수행하다가
-        Board board = new Board();
-        board.setTitle(in.readUTF());
-        board.setContent(in.readUTF());
-        board.setViewCount(in.readInt());
-        board.setCreatedDate(Date.valueOf(in.readUTF()));
+    //2) 한 줄 단위로 데이터를 읽는 작업을 수행하는 데코레이터 준비
+    BufferedReader in2 = new BufferedReader(in);   // BufferedReader: 읽은 데이터를 모아서 주는 일을 함!
 
-        boardList.add(board);
-      } catch(Exception e) {// 만약 예외(오류)가 발생한다면 더 이상 데이터를 읽지말고 반복문을 나가라
-        break;
-      }
+    String line;
+    while ((line = in2.readLine()) != null) { // 한 줄의 문자열을 읽었으면,  // 더이상 읽을 문자가 없을 때 null을 리턴한다.
+      boardList.add(Board.valueOf(line)); 
     }
 
-    in.close();
+    in2.close();
+    // in.close(); 데코레이터를 close()하면 그 데코레이터와 연결된 객체들도 모두 close()된다. 따라서 안해도 된다! 
   }
 
   @RequestMapping("/board/list")
   public Object list() {
-    return boardList.toArray();
+    return boardList.toArray(); 
   }
 
   @RequestMapping("/board/add")
@@ -87,18 +81,24 @@ public class BoardController {
 
   @RequestMapping("/board/save")
   public Object save() throws Exception {
-    DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("boards.data")));
+    // 1) 주 작업 객체 준비
+    FileWriter out = new FileWriter("boards.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+
+    // 2) 한 줄 단위로 출력하는 데코레이터 객체 준비
+    PrintWriter out2 = new PrintWriter(out);
 
     Object[] arr = boardList.toArray();
     for (Object obj : arr) {
       Board board = (Board) obj;
-      out.writeUTF(board.getTitle());  // 제목은 문자열이니 writeUTF로!
-      out.writeUTF(board.getContent());
-      out.writeInt(board.getViewCount());  // 조회수는 숫자이니 int로!
-      out.writeUTF(board.getCreatedDate().toString());
+      out2.println(board.toCsvString());
     }
 
-    out.close();  // 얘 close하면 얘가 포함하는 out1, out이 같이 close된다! 따라서 따로 out 안해줘도 된다
+    out2.close();
+    // out.close(); // 데코레이터에서 close()하면 그 데코레이터와 연결된 모든 객체도 자동으로 close() 한다. 따로 close 안해줘도 된다.
     return arr.length;
   }
 }
+
+ */
+
+
