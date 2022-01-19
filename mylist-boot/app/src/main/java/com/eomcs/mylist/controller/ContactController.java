@@ -2,10 +2,10 @@ package com.eomcs.mylist.controller;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Contact;
@@ -20,22 +20,21 @@ public class ContactController {
     contactList = new ArrayList();
     System.out.println("ContactController() 호출됨!");
 
-    DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("contacts.data")));
+    ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("contacts.ser2")));
 
-    while (true) {
-      try {
-        Contact contact = new Contact();
-        contact.setName(in.readUTF());
-        contact.setEmail(in.readUTF());
-        contact.setTel(in.readUTF());
-        contact.setCompany(in.readUTF());
+    // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
+    //    while (true) {
+    //      try {
+    //        Contact contact = (Contact) in.readObject();
+    //        contactList.add(contact);
+    //
+    //      } catch (Exception e) {
+    //        break;
+    //      }
+    //    }
 
-        contactList.add(contact);
-
-      } catch (Exception e) {
-        break;
-      }
-    }
+    // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
+    contactList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.
 
     in.close();
   }
@@ -86,19 +85,19 @@ public class ContactController {
   @RequestMapping("/contact/save")
   public Object save() throws Exception {
 
-    DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("contacts.data"))); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("contacts.ser2"))); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
 
-    Object[] arr = contactList.toArray();
-    for (Object obj : arr) {
-      Contact contact = (Contact) obj;
-      out.writeUTF(contact.getName());
-      out.writeUTF(contact.getEmail());
-      out.writeUTF(contact.getTel());
-      out.writeUTF(contact.getCompany());
-    }
+    // 1) 다음과 같이 목록에 들어 있는 객체를 한 개씩 순차적으로 serialize 할 수도 있고,
+    //    Object[] arr = contactList.toArray();
+    //    for (Object obj : arr) {
+    //      out.writeObject(obj);
+    //    }
+
+    // 2) 다음과 같이 목록 자체를 serialize 할 수도 있다.
+    out.writeObject(contactList);
 
     out.close();
-    return arr.length;
+    return contactList.size();
   }
 
 

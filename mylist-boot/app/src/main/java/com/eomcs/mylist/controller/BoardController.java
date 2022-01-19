@@ -33,7 +33,7 @@ public class BoardController {
     //    }
 
     // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
-    boardList = (ArrayList) in.readObject(); // 단 기존의  생성한 ArrayList 객체는 버린다.
+    boardList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.
 
     in.close();
   }
@@ -96,8 +96,8 @@ public class BoardController {
 
     // 2) 다음과 같이 목록 자체를 serialize 할 수도 있다. 
     out.writeObject(boardList);
-    out.close();  // 얘 close하면 얘가 포함하는 out1, out이 같이 close된다! 따라서 따로 out 안해줘도 된다
 
+    out.close();  // 얘 close하면 얘가 포함하는 out1, out이 같이 close된다! 따라서 따로 out 안해줘도 된다
     return boardList.size();
   }
 }
