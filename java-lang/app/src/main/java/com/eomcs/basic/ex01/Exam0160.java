@@ -10,7 +10,7 @@ public class Exam0160 {
     My obj1 = new My();
 
     // 레퍼런스를 통해서 인스턴스의 클래스 정보를 알아낼 수 있다.
-    Class classInfo = obj1.getClass();
+    Class classInfo = obj1.getClass(); // getClass() 얘가 class를 치언하니 classInfo의 타입이 Class인거임
 
     // 클래스 정보로부터 다양한 값을 꺼낼 수 있다. 
     System.out.println(classInfo.getName()); // 패키지명 + 바깥 클래스명 + 클래스명

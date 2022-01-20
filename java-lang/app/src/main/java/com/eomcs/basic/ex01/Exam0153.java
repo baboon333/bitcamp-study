@@ -5,10 +5,10 @@ import java.util.HashMap;
 
 
 public class Exam0153 {
-  
+
   static class MyKey2 {
     String contents;
-    
+
     public MyKey2(String contents) {
       this.contents = contents;
     }
@@ -26,7 +26,7 @@ public class Exam0153 {
       return result;
     }
 
-    @Override
+    @Override // 주석으로 막아봐! 해시코드가 같더라도 equals가 false면 키로 못꺼낸다!
     public boolean equals(Object obj) {
       if (this == obj)
         return true;
@@ -45,21 +45,21 @@ public class Exam0153 {
   }
   public static void main(String[] args) {
     HashMap<MyKey2,Student> map = new HashMap<>();
-    
+
     MyKey2 k1 = new MyKey2("ok");
     MyKey2 k2 = new MyKey2("no");
     MyKey2 k3 = new MyKey2("haha");
     MyKey2 k4 = new MyKey2("ohora");
     MyKey2 k5 = new MyKey2("hul");
-    
+
     map.put(k1, new Student("홍길동", 20, false));
     map.put(k2, new Student("임꺽정", 30, true));
     map.put(k3, new Student("유관순", 17, true));
     map.put(k4, new Student("안중근", 24, true));
     map.put(k5, new Student("윤봉길", 22, false));
-    
+
     System.out.println(map.get(k3));
-    
+
     // 다른 key 객체를 사용하여 값을 꺼내보자.
     MyKey2 k6 = new MyKey2("haha");
 
@@ -74,7 +74,7 @@ public class Exam0153 {
     System.out.println(k3.hashCode()); // hash code는 같다.
     System.out.println(k6.hashCode()); // hash code는 같다.
     System.out.println(k3.equals(k6)); // equals()의 비교 결과도 같다.
-  }
+  }// 반드시 equals & hashcode 둘 다 같아야 같은 키로 간주한다. 따라서 이클립스에서도 해시코드와 이퀄스 오버라이드 하는 걸 묶어서 제공하는거임
 }
 
 
