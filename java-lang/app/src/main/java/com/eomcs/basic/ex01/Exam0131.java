@@ -40,18 +40,18 @@ public class Exam0131 {
     int gender;
     boolean working;
 
-    @Override
+    @Override // 내용이 같으면 똑같다고 재정의 함
     public boolean equals(Object obj) {
       if (this == obj)
         return true;
       if (obj == null)
         return false;
-      if (getClass() != obj.getClass())
+      if (getClass() != obj.getClass()) // 타입이 다르면 false이다
         return false;
       My other = (My) obj;
       return age == other.age && Objects.equals(email, other.email) && gender == other.gender
           && Objects.equals(name, other.name) && Objects.equals(tel, other.tel)
-          && working == other.working;
+          && working == other.working; // return this.age => 이렇게 다 this가 생략된거임
     }
 
   }

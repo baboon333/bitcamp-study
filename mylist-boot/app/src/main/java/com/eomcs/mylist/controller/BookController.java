@@ -19,23 +19,28 @@ public class BookController {
   public BookController() throws Exception {
     System.out.println("BookController() 호출됨!");
 
-    ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("books.ser2"))); // 주 객체에 데코레이터 객체를 연결 // 실무에서는 이렇게 안에다 바로 써준다
+    try{
+      ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("books.ser2"))); // 주 객체에 데코레이터 객체를 연결 // 실무에서는 이렇게 안에다 바로 써준다
 
-    // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
-    //    while (true) {
-    //      try {
-    //        Book book = (Book) in.readObject();
-    //        bookList.add(book);
-    //
-    //      } catch (Exception e) {
-    //        break;
-    //      }
-    //    }
+      // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
+      //    while (true) {
+      //      try {
+      //        Book book = (Book) in.readObject();
+      //        bookList.add(book);
+      //
+      //      } catch (Exception e) {
+      //        break;
+      //      }
+      //    }
 
-    // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
-    bookList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.  // () 이걸로 얘가 리턴하는건 ArrayList 임을 명시하자
+      // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
+      bookList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.  // () 이걸로 얘가 리턴하는건 ArrayList 임을 명시하자
 
-    in.close();
+      in.close();
+
+    } catch (Exception e) {
+      System.out.println("독서록 데이터를 로딩하는 중 오류 발생!");
+    }
   }
 
   @RequestMapping("/book/list")

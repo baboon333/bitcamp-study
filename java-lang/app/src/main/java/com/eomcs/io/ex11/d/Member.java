@@ -14,7 +14,7 @@ public class Member implements java.io.Serializable {
   // 필드를 추가하거나 변경하더라도 버전 번호가 같다면
   // JVM은 같은 형식으로 판단한다.
   //
-  private static final long serialVersionUID = 1280L;
+  private static final long serialVersionUID = 1280L;  // 주석으로 가리면 경고가 뜬다. Serializable 인터페이스를 구현한 클래스는 항상 serialVersionUID 라는 스태틱 상수를 가지니! 우리가 직접 추가 안하면 컴파일러가 자동으로 부여한다.
 
   // serialVersionUID의 사용법
   // => 클래스를 변경하더라도 기존 데이터를 읽는데 문제가 없다면
@@ -24,6 +24,7 @@ public class Member implements java.io.Serializable {
   // => Member의 경우 클래스를 변경할 때 tel 변수를 추가하였다.
   //    따라서 이전 데이터를 읽는데는 문제가 없다.
   //    그래서 버전 번호를 바꾸지 않은 것이다.
+  // => serialVersionUID은 long 8byte를 쓰는 게 규칙이다. serialVersionUID가 8byte로 고정되어 읽거나 쓸 때 편하다.
 
   String name;
 
@@ -32,8 +33,8 @@ public class Member implements java.io.Serializable {
 
   boolean gender; // true(여자), false(남자)
 
-  // Exam0420의 두 번째 테스트를 실행할 때 주석을 풀라!
-  //  String tel;
+  // Exam0420의 두 번째 테스트를 실행할 때 주석을 풀라! 이렇게 변수가 추가되거나 삭제되는건 상관없지만 변수 타입만 바꾼다든지 그런거는 오류난다!
+  // String tel; 
 
   @Override
   public String toString() {
@@ -42,7 +43,7 @@ public class Member implements java.io.Serializable {
         ", age=" + age +
         ", gender=" + gender +
         // Exam0420의 두 번째 테스트를 실행할 때 주석을 풀라!
-        //        ", tel=" + tel +
+        // ", tel=" + tel +
         "]";
   }
 }

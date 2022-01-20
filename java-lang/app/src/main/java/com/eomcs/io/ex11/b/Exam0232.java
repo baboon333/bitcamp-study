@@ -22,11 +22,11 @@ public class Exam0232 {
     Score obj = new Score();
     obj.name = "홍길동";
 
-    System.out.println(obj instanceof Cloneable);
+    System.out.println(obj instanceof Cloneable);  // 복제가 활성화된 객체이기 때문에 true가 나옴!
 
     Score copy = obj.clone();
 
-    System.out.println(obj == copy); // OK! Score3 클래스는 복제를 허락했기 때문이다.
+    System.out.println(obj == copy); // OK! Score3 클래스는 복제를 허락했기 때문이다. // 값은 같으나 다른 객체이니 false
     System.out.println(obj.name);
     System.out.println(copy.name);
 

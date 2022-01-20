@@ -19,7 +19,7 @@ public class Exam0140 {
 
     // Object에서 상속 받은 hashCode()는 인스턴스마다 고유의 4바이트 정수 값을 리턴한다.
     // => 이 값은 toString()의 출력 값으로 사용된다.
-    System.out.println(Integer.toHexString(obj1.hashCode()));
+    System.out.println(Integer.toHexString(obj1.hashCode()));  // hashCode()의 리턴값은 10진수인데 16진수로 출력하고 싶으면 toHexString를 해주면 된다.
     System.out.println(Integer.toHexString(obj2.hashCode()));
 
     System.out.println(obj1);

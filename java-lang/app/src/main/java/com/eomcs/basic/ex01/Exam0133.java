@@ -14,8 +14,11 @@ public class Exam0133 {
       this.age = age;
     }
 
-    // Object로부터 상속 받은 equals() 메서드를 
-    // Member 클래스의 역할에 맞게 재정의해보자! => "오버라이딩"
+    @Override
+    public int hashCode() {
+      return Objects.hash(age, name);
+    }
+
     @Override
     public boolean equals(Object obj) {
       if (this == obj)
@@ -26,7 +29,11 @@ public class Exam0133 {
         return false;
       Member other = (Member) obj;
       return age == other.age && Objects.equals(name, other.name);
-    }
+    }  // 직접 코딩하는게 아니다!! 우클릭-source-Generate hashcode and equals해서 자동으로 만들면 된다!
+
+    // Object로부터 상속 받은 equals() 메서드를 
+    // Member 클래스의 역할에 맞게 재정의해보자! => "오버라이딩"
+
   }
 
   public static void main(String[] args) {

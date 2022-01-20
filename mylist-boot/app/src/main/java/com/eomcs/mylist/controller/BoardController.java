@@ -20,22 +20,26 @@ public class BoardController {
   public BoardController() throws Exception {
     System.out.println("BoardController() 호출됨!");
 
-    ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("boards.ser2")));
+    try {
+      ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("boards.ser2")));
 
-    // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
-    //    while (true) {
-    //      try { // 이 작업을 수행하다가
-    //        Board board = (Board) in.readObject(); // 아 in.readObject() 얘가 내부적으로 객체를 만들어서 객체 주소(board 인스턴스라고 알려줘야 함)를 리턴하는구나
-    //        boardList.add(board);
-    //      } catch(Exception e) { // 만약 예외(오류)가 발생한다면 더 이상 데이터를 읽지말고 반복문을 나가라
-    //        break;
-    //      }
-    //    }
+      // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
+      //    while (true) {
+      //      try { // 이 작업을 수행하다가
+      //        Board board = (Board) in.readObject(); // 아 in.readObject() 얘가 내부적으로 객체를 만들어서 객체 주소(board 인스턴스라고 알려줘야 함)를 리턴하는구나
+      //        boardList.add(board);
+      //      } catch(Exception e) { // 만약 예외(오류)가 발생한다면 더 이상 데이터를 읽지말고 반복문을 나가라
+      //        break;
+      //      }
+      //    }
 
-    // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
-    boardList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.
+      // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
+      boardList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.
 
-    in.close();
+      in.close();
+    } catch (Exception e) {
+      System.out.println("게시글 데이터 로딩 중 오류 발생!");
+    }
   }
 
   @RequestMapping("/board/list")

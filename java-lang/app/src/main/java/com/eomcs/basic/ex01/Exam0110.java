@@ -5,29 +5,29 @@ package com.eomcs.basic.ex01;
 
 //클래스를 정의할 때 수퍼 클래스를 지정하지 않으면 
 //컴파일러는 자동으로 Object를 상속 받는다.
-public class Exam0110 /*extends Object*/ {
-  
+public class Exam0110 /*extends Object*/ { // navigator에서 확인해보기
+
   static class My /*extends Object*/ {
   }
 
   public static void main(String[] args) {
-    
+
     // instanceof 연산자를 사용하여 해당 인스턴스가 Object 타입인지 확인해 보자.
     // instanceof 연산자?
     // => 레퍼런스가 가리키는 인스턴스가 지정한 클래스를 인스턴스 이거나 또는 조상으로 갖는지 검사한다.
-    Object obj = new My();
+    Object obj = new My(); // 상위분류명은 하위 분류명을 가리킬 수 있다.
     // Object의 레퍼런스에 My 인스턴스 주소를 저장할 수 있다는 것은
     // My 클래스가 Object 크래스의 서브 클래스임을 증명하는 것이다.
-    
-    System.out.println(obj instanceof My);
+
+    System.out.println(obj instanceof My); // 치와와는 개 맞냐
     System.out.println(obj instanceof String);
-    System.out.println(obj instanceof Object);
-    
+    System.out.println(obj instanceof Object); // 치와와는 동물 맞냐
+
     // Object를 조상으로 갖는다면 당연히 Object의 메서드를 사용할 수 있을 것이다.
-    System.out.println(obj.toString());
-    System.out.println(obj.hashCode());
-    System.out.println(obj.equals("Hello"));
-    
+    System.out.println(obj.toString()); // toString은 인스턴스에 대한 정보 // @다음에 오는 건 해시코드!
+    System.out.printf("%08x, %1%d\n", obj.hashCode());
+    System.out.println(obj.equals("Hello")); // 서로 다른 인스턴스이니 false
+
     // 결론!
     // => 자바의 모든 클래스는 Object의 자손이다.
   }

@@ -37,7 +37,7 @@ public class Exam0120 {
     My obj2 = new My();
     My obj3 = new My();
 
-    System.out.println(obj2 == obj3);
+    System.out.println(obj2 == obj3);  // 인스턴스 필드가 없더라도 클래스 정보 등을 저장한 기본 객체가 생성되기 때문!
 
     System.out.println(obj2.toString());
     System.out.println(obj3.toString());

@@ -20,23 +20,28 @@ public class ContactController {
     contactList = new ArrayList();
     System.out.println("ContactController() 호출됨!");
 
-    ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("contacts.ser2")));
+    try {
+      ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("contacts.ser2")));
 
-    // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
-    //    while (true) {
-    //      try {
-    //        Contact contact = (Contact) in.readObject();
-    //        contactList.add(contact);
-    //
-    //      } catch (Exception e) {
-    //        break;
-    //      }
-    //    }
+      // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
+      //    while (true) {
+      //      try {
+      //        Contact contact = (Contact) in.readObject();
+      //        contactList.add(contact);
+      //
+      //      } catch (Exception e) {
+      //        break;
+      //      }
+      //    }
 
-    // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
-    contactList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.
+      // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
+      contactList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.
 
-    in.close();
+      in.close();
+
+    } catch (Exception e) {
+      System.out.println("연락처 데이터를 로딩 하는 중에 오류 발생!");
+    }
   }
 
   @RequestMapping("/contact/list")

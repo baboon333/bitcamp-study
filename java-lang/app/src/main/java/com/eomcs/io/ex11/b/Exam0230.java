@@ -1,4 +1,4 @@
-// java.io.Serializable 처럼 사용되는 인터페이스 : java.lang.Cloneable 인터페이스
+// java.io.Serializable 처럼 사용되는 인터페이스 : java.lang.Cloneable 인터페이스 -> 이 클래스 복제할 수 있어요~의 허락을 의미함
 package com.eomcs.io.ex11.b;
 
 public class Exam0230 {

@@ -26,7 +26,7 @@ public class Exam0122 extends Object {
   public static void main(String[] args) {
     Score s1 = new Score("홍길동", 100, 100, 100);
 
-    String str = s1.toString();
+    String str = s1.toString(); // 출력 결과는 Object의 toString()이 호출되어 출력된 것이다.
     // toString()?
     // => Score 클래스의 수퍼 클래스인 Object의 메서드이다.
     // => 클래스를 정의할 때 수퍼 클래스를 지정하지 않으면 

@@ -11,7 +11,7 @@ public class Exam0121 {
 
     // 개발을 하다 보면 인스턴스의 현재 값을 간단히 확인하고 싶을 경우가 있다.
     // 그럴 경우 toString()을 오버라이딩 하라!
-    @Override
+    @Override // 재정의하지 않으면 Object에 있는 toString()이 호출되는데 그럼 클래스명@식별번호가 출력된다.
     public String toString() {
       return "My [name=" + name + ", age=" + age + "]";
     }
