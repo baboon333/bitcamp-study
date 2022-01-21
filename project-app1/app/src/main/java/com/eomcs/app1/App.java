@@ -1,43 +1,73 @@
 package com.eomcs.app1;
 
+import java.util.Scanner;
+
 public class App {
+
+  static Scanner keyScan = new Scanner(System.in);  // 이렇게 위에 써줘야 메인메서드랑 밑에 클래스랑 둘다 쓸 수 있다.
 
   public static void main(String[] args) {
 
-    java.util.Scanner keyboardScanner = new java.util.Scanner(System.in);
+    while (true) {
+      String input = prompt();
 
-    if (keyboardScanner.nextLine() == "help") {
-      int age = keyboardScanner.nextInt();
-      keyboardScanner.nextLine();
+      if (input.equals("quit") || input.equals("exit")) {
+        break;
 
-      String name = keyboardScanner.nextLine();
+      } else if (input.length() == 0) {
+        continue;
 
-      keyboardScanner.close();
+      } else if (input.equals("help")) {
+        doHelp();
 
-      System.out.printf("%d(%s)\n", age, name);
+      } else {
+        String[] values = input.split(" ");
+        if (values[0].equals("add")) {
+          doAdd(values);
 
+        } else if (values[0].equals("minus")) {
+          doMinus(values);
+
+        } else {
+          System.out.println("지원하지 않는 연산자입니다.");
+        }
+      }
     }
 
+    keyScan.close();
+  }
+  static void doHelp() {
+    System.out.println("add   [값1] [값2]     더하기 계산을 수행한다.");
+    System.out.println("minus [값1] [값2]     빼기 계산을 수행한다.");
+    System.out.println("help                  도움말을 출력한다.");
+  }
 
-    if (args.length == 0) {          
-      System.out.println("사용법:\n"
-          + "App [명령] [값1] [값2]\n"
-          + "명령: \n"
-          + "add   [값1] [값2]   더하기 계산을 수행한다. 예) App add 100 200\n"
-          + "minus [값1] [값2]   빼기 계산을 수행한다.   예) App minus 100 200\n");
+  static void doAdd(String[] values) {
+    if (values.length != 3) {
+      System.out.println("add 명령어 입력 형식이 올바르지 않습니다.");
+      System.out.println("형식: add 값1 값2");
+      System.out.println("예) add 100 200");
     } else {
-      if (args[0].equals("add")) {
-        int v1 = Integer.parseInt(args[1]);
-        int v2 = Integer.parseInt(args[2]);
-        System.out.printf("%d + %d = %d\n", v1, v2, (v1 + v2));
-      }
-
-      if (args[0].equals("minus")) {
-        int v1 = Integer.parseInt(args[1]);
-        int v2 = Integer.parseInt(args[2]);
-        System.out.printf("%d - %d = %d\n", v1, v2, (v1 - v2));
-      }
-
+      int v1 = Integer.parseInt(values[1]);
+      int v2 = Integer.parseInt(values[2]);
+      System.out.printf("%d + %d = %d\n", v1, v2, (v1 + v2));
     }
   }
-} // 아규먼트가 안만들어지면 빈배열이 만들어진다!! null이 아니라!!
+
+  static void doMinus(String[] values) {
+    if (values.length != 3) {
+      System.out.println("minus 명령어 입력 형식이 올바르지 않습니다.");
+      System.out.println("형식: minus 값1 값2");
+      System.out.println("예) minus 100 200");
+    } else {
+      int v1 = Integer.parseInt(values[1]);
+      int v2 = Integer.parseInt(values[2]);
+      System.out.printf("%d - %d = %d\n", v1, v2, (v1 - v2));
+    }
+  }
+
+  static String prompt() {
+    System.out.print("> ");
+    return keyScan.nextLine();
+  }
+}
