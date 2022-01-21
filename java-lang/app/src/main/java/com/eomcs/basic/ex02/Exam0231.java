@@ -10,9 +10,10 @@ public class Exam0231 {
     // auto-boxing이나 valueOf()로 생성한 wrapper 객체는
     // constants pool에 오직 한 개만 생성되기 때문에
     // 값을 비교할 때 그냥 == 연산자를 사용하여 인스턴스 주소로 비교해도 된다.
+    // 단, -128 ~ 127 범위의 값에 대해서만 적용된다.
 
     // 그러나 다음과 같이 new 연산자로 만든 wrapper 객체는
-    // 값이 같더라도 인스턴스가 따로 생성되기 때문에,
+    // 값이 같더라도 인스턴스가 따로 생성되기 때문에, (상수풀 노노)
     Integer obj3 = new Integer(100); // Heap에 인스턴스 생성
     Integer obj4 = new Integer(100); // Heap에 인스턴스 생성
 
@@ -21,7 +22,7 @@ public class Exam0231 {
 
     // String 클래스의 경우처럼
     // Integer 클래스가 오버라이딩한 equals()를 호출해야 한다.
-    System.out.println(obj3.equals(obj4));
+    System.out.println(obj3.equals(obj4)); // 값은 같으니 true가 나옴 // String과 Wrapper 클래스는 equals를 오버라이드해서 값이 같으면 true가 나온다
 
     // 결론:
     // => wrapper 객체를 생성할 때는 new 를 사용하지 말고,

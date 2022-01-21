@@ -17,7 +17,7 @@ public class Exam0230 {
     // auto-boxing 으로 Wrapper 객체를 생성할 경우,
     Integer obj3 = 100; // Integer.valueOf(100)
     Integer obj4 = 100; // Integer.valueOf(100);
-    System.out.println(obj3 == obj4); // true
+    System.out.println(obj3 == obj4); // true -> 같은 값이 한번 저장되면 그 객체를 그대로 쓴다. 근데 모든 객체를 캐시로 저장하는게 아니라 -128~127 범위에서만 그런다!
     // 설명:
     // => 정수 값이 -128 ~ 127 범위일 경우
     //    자주 사용되는 수이기 때문에
@@ -54,7 +54,7 @@ public class Exam0230 {
 
     // 따라서 이렇게 생성된 wrapper 객체의 값을 비교할 때는
     // String 처럼 equals()로 비교하라!
-    System.out.println(obj7.equals(obj8));
+    System.out.println(obj7.equals(obj8)); // 값은 같다 
 
     // 결론!
     // - wrapper 객체의 값을 비교할 때 == 연산자를 사용하지 말라!

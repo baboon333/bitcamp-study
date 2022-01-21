@@ -3,7 +3,7 @@ package com.eomcs.basic.ex02;
 
 public class Exam0210 {
   public static void main(String[] args) {
-    // 자바는 primitive data 를 객체처럼 다룰 수 있도록
+    // 자바는 primitive type의 data 를 객체처럼 다룰 수 있도록
     // 각 타입에 대응하는 클래스를 제공한다.
     // 예)
     Byte b = new Byte((byte)100);               // ==> byte
@@ -31,8 +31,9 @@ public class Exam0210 {
     //
 
 
-    // Wrapper 클래스의 인스턴스를 생성할 때는 생성자 대신 클래스 메서드를 사용하라.
-    Byte b2 = Byte.valueOf((byte)100);
+    // Wrapper 클래스의 인스턴스를 생성할 때는 생성자 대신 클래스 메서드를 사용하라. (위에 deprecated 쓰지말고 이거 써!)
+
+    Byte b2 = Byte.valueOf((byte)100); // byte x = 100;은 된다. 할당 연산자를 사용해서 값을 넣으려고 할 때는 가능함! 근데 얘는 할당 연산자가 아니니 불가!
     Short s2 = Short.valueOf((short)20000);
     Integer i2 = Integer.valueOf(3000000);
     Long l2 = Long.valueOf(60000000000L);

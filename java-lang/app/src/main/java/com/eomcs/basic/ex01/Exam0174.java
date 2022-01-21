@@ -3,7 +3,7 @@ package com.eomcs.basic.ex01;
 
 public class Exam0174 {
 
-  static class Engine implements Cloneable {
+  static class Engine implements Cloneable { // 0173과 다르게 엔진도 clone!
     int cc;
     int valve;
 
@@ -43,7 +43,7 @@ public class Exam0174 {
     public Car clone() throws CloneNotSupportedException {
       // deep copy
       // => 포함하고 있는 하위 객체에 대한 복제를 수행하려면 다음과 같이 
-      //    개발자가 직접 하위 객체를 복제하는 코드를 작성해야 한다.
+      //    개발자가 직접 포함하는 객체를 복제하는 코드를 작성해야 한다.
       // 
       Car copy = (Car) super.clone();
       copy.engine = this.engine.clone();

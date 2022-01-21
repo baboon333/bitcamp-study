@@ -19,7 +19,7 @@ public class Exam0224 {
     // primitive data type의 값을 객체로 다룰 수 있다.
     Object obj;
 
-    String str = new String("Hello");
+    String str = new String("Hello"); // String은 Object의 자손이기 때문에 obj에 담길 수 있다.
     obj = str; // 다형적 변수 문법에 따라 상위 클래스의 레퍼런스에 저장할 수 있다.
 
     Member member = new Member();

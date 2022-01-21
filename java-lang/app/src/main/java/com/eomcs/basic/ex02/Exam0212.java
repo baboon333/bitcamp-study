@@ -8,19 +8,19 @@ public class Exam0212 {
     Double obj2 = Double.valueOf(3.14);
     Boolean obj3 = Boolean.valueOf(true);
 
-    int i = obj1.intValue();
+    int i = obj1.intValue();      // 값을 꺼낼 때: obj.xxxValue()
     long l = obj2.longValue();
     boolean bool = obj3.booleanValue();
 
     // 문자열로 꺼내기
-    String s1 = obj1.toString();
-    String s2 = obj2.toString();
-    String s3 = obj3.toString();
+    String s1 = obj1.toString(); // Object의 toString()이 아니다. Long에서 오버라이딩한 toString()이다.
+    String s2 = obj2.toString(); // Object의 toString()이 아니다. Double에서 오버라이딩한 toString()이다.
+    String s3 = obj3.toString(); // Object의 toString()이 아니다. Boolean에서 오버라이딩한 toString()이다.
 
     // 다른 진수로 변환하여 문자열로 꺼내기
-    System.out.println(Integer.toHexString(i));
+    System.out.println(Integer.toHexString(i)); // 스태틱 메서드 // 16진수
     System.out.println(Integer.toOctalString(i));
-    System.out.println(Integer.toBinaryString(i));
+    System.out.println(Integer.toBinaryString(i)); // 2진수
   }
 }
 
