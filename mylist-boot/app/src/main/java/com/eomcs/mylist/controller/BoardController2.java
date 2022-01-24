@@ -94,7 +94,7 @@ public class BoardController {
     }
 
     out2.close();
-    // out.close(); // 데코레이터에서 close()하면 그 데코레이터와 연결된 모든 객체도 자동으로 close() 한다. 따로 close 안해줘도 된다.
+    // out.close(); // 데코레이터에서 close()하면 그 데코레이터와 연결된 모든 객체도 자동으로 close() 한다. 따로 close 안해줘도 된다.// 얘 close하면 얘가 포함하는 out1, out이 같이 close된다! 따라서 따로 out 안해줘도 된다
     return arr.length;
   }
 }

@@ -1,15 +1,15 @@
 package com.eomcs.mylist.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Book;
 import com.eomcs.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController 
 public class BookController {
@@ -19,22 +19,16 @@ public class BookController {
   public BookController() throws Exception {
     System.out.println("BookController() 호출됨!");
 
-    try{
-      ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("books.ser2"))); // 주 객체에 데코레이터 객체를 연결 // 실무에서는 이렇게 안에다 바로 써준다
+    try {
+      BufferedReader in = new BufferedReader(new FileReader("books.json"));
 
-      // 1) 객체가 각각 따로 serialize 되었을 경우, 다음과 같이 객체 단위로 읽으면 되고,
-      //    while (true) {
-      //      try {
-      //        Book book = (Book) in.readObject();
-      //        bookList.add(book);
-      //
-      //      } catch (Exception e) {
-      //        break;
-      //      }
-      //    }
+      ObjectMapper mapper = new ObjectMapper();
 
-      // 2) 목록이 통째로 serialize 되었을 경우, 한 번에 목록을 읽으면 된다.
-      bookList = (ArrayList) in.readObject(); // 단 기존의 생성한 ArrayList 객체는 버린다.  // () 이걸로 얘가 리턴하는건 ArrayList 임을 명시하자
+      //      String jsonStr = in.readLine();
+      //      Book[] books = mapper.readValue(jsonStr, Book[].class);
+      //      bookList = new ArrayList(books);
+
+      bookList = new ArrayList(mapper.readValue(in.readLine(), Book[].class));
 
       in.close();
 
@@ -81,16 +75,10 @@ public class BookController {
 
   @RequestMapping("/book/save")
   public Object save() throws Exception {
-    ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("books.ser2"))); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("books.json")));
 
-    // 1) 다음과 같이 목록에 들어 있는 객체를 한 개씩 순차적으로 serialize 할 수도 있고,
-    //  Object[] arr = bookList.toArray();
-    //  for (Object obj : arr) {
-    //      out.writeUTF(obj);
-    //  }
-
-    // 2) 다음과 같이 목록 자체를 serialize 할 수도 있다.
-    out.writeObject(bookList);
+    ObjectMapper mapper = new ObjectMapper();
+    out.println(mapper.writeValueAsString(bookList.toArray()));
 
     out.close();
     return bookList.size();

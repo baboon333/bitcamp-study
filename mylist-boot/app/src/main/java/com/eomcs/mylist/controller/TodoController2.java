@@ -1,30 +1,27 @@
-package com.eomcs.mylist.controller;
+/*package com.eomcs.mylist.controller;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Todo;
 import com.eomcs.util.ArrayList;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController 
-public class TodoController {
+public class TodoController2 {
 
   ArrayList todoList = new ArrayList();
 
-  public TodoController() throws Exception {
+  public TodoController2() throws Exception {
     System.out.println("TodoController() 호출됨!");
 
     try {
-      BufferedReader in = new BufferedReader(new FileReader("todos.json"));
-
-      ObjectMapper mapper = new ObjectMapper();
-      todoList = new ArrayList(mapper.readValue(in.readLine(), Todo[].class));
-
+      ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("todos.ser2")));
+      todoList = (ArrayList) in.readObject();
       in.close();
     } catch (Exception e) {
       System.out.println("해야 할 일 데이터를 로딩하는 중에 오류 발생!");
@@ -76,16 +73,13 @@ public class TodoController {
 
   @RequestMapping("/todo/save")
   public Object save() throws Exception {
-    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("todos.json")));
-
-    ObjectMapper mapper = new ObjectMapper();
-    out.println(mapper.writeValueAsString(todoList.toArray()));
-
+    ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("todos.ser2")));
+    out.writeObject(todoList);
     out.close();
     return todoList.size();
   }
 }
-
+ */
 
 
 
