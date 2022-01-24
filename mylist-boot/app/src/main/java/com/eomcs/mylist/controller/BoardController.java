@@ -32,7 +32,7 @@ public class BoardController {
 
       // 2) JSON 문자열을 가지고 자바 객체를 생성한다.
       // => 배열 형식의 JSON 문자열에서 Board의 배열 객체를 생성한다.
-      Board[] boards = mapper.readValue(jsonStr, Board[].class);
+      Board[] boards = mapper.readValue(jsonStr, Board[].class); // Board[].class: class는 Class 타입의 변수이다! 변수 안에 class 객체 주소가 들어있는 빌트인 변수이다! 따라서 Class의 다양한 변수를 사용할 수 있다! 주의하라 class는 파일 확장자명이 아니라 변수이다! 
 
       // 3) 배열 객체를 ArrayList 에 저장한다.
       // => 다음과 같이 배열에서 한 개씩 꺼내 목록에 추가할 수 있다.
