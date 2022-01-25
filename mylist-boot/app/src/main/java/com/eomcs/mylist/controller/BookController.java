@@ -43,7 +43,7 @@ public class BookController {
   }
 
   @RequestMapping("/book/add")
-  public Object add(Book book) {
+  public Object add(Book book) throws Exception {
     bookList.add(book);
     return bookList.size();
   }
@@ -58,7 +58,7 @@ public class BookController {
   }
 
   @RequestMapping("/book/update")
-  public Object update(int index, Book book) {
+  public Object update(int index, Book book) throws Exception {
     if (index < 0 || index >= bookList.size()) {
       return 0;
     }
@@ -66,7 +66,7 @@ public class BookController {
   }
 
   @RequestMapping("/book/delete")
-  public Object delete(int index) {
+  public Object delete(int index) throws Exception {
     if (index < 0 || index >= bookList.size()) {
       return 0;
     }
