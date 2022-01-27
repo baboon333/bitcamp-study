@@ -28,7 +28,7 @@ interface MyInterface {
 
 }
 
-// 2) 인터페이스 구현
+// 2) 인터페이스 구현 -> 이것도 override라고 한다!
 abstract class MyInterfaceImpl implements MyInterface {
   @Override
   public void m1() {}

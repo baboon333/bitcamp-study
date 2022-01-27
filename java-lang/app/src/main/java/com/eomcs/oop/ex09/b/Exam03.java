@@ -24,7 +24,7 @@ interface MyInterface3 {
 }
 
 // 2) 인터페이스 구현
-class MyInterface3Impl implements MyInterface3 {
+class MyInterface3Impl implements MyInterface3 {  // 이름을 이렇게 인터페이스 명에 impl을 붙여서 많이 만든다! MyInterface3Impl 
 
   // 추상 메서드는 반드시 구현해야 한다.
   @Override

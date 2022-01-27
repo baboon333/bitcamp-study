@@ -1,3 +1,4 @@
+// 쓰다 말음!!!!!!!!!!!!
 // 인터페이스 - private 메서드
 package com.eomcs.oop.ex09.b;
 
@@ -23,7 +24,7 @@ interface MyInterface4 {
 class MyInterface4Impl implements MyInterface4 {
   @Override
   public void m3() {
-    // 인터페이스에 선언된 다른 default 메서드를 호출하고 싶다면,
+    // 인터페이스에 선언된 다른 default 메서드를 호출하고 싶다면, -> 앞에 인터페이스명을 안붙여주면 수퍼 클래스의 메서드가 호출된다.
     MyInterface4.super.m2();
 
     System.out.println("MyInterface4Impl.m3()");
@@ -40,8 +41,8 @@ public class Exam04 {
 
     obj.m3();
 
-    // 인터페이스에 정의된 private 메서드는 호출할 수 없다.
-    //    obj.m1(); // 컴파일 오류!
+    // 인터페이스에 정의된 private 메서드는 호출할 수 없다. 내부적으로만 쓰는 것이기 때문에!
+    //    obj.x(); // 컴파일 오류!
 
   }
 

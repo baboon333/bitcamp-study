@@ -1,4 +1,4 @@
-// 인터페이스 - static 메서드
+// 인터페이스 - static 메서드 -> 웬만하면 인터페이스에 private이니 static이니 쓰지마라! 도저히 안될 때만 쓰고 하지마라!
 package com.eomcs.oop.ex09.b;
 
 interface MyInterface5 {
