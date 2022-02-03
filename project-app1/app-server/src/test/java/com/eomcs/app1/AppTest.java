@@ -3,11 +3,11 @@
  */
 package com.eomcs.app1;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class AppTest {
   @Test public void appHasAGreeting() {
     App classUnderTest = new App();
-    //assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+    //    assertNotNull("app should have a greeting", classUnderTest.getGreeting());
   }
 }

@@ -16,5 +16,4 @@ public class Console {
   void close() {
     keyScan.close();
   }
-
 }
