@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class Sender4 {
 
   public static void main(String[] args) throws Exception {
-    File file = new File("temp/jls11.pdf");
+    File file = new File("temp/cute.jpg");
 
     FileInputStream fileIn = new FileInputStream(file);
 
     System.out.println("서버에 연결 중...");
-    Socket socket = new Socket("192.168.0.61", 8888);
+    Socket socket = new Socket("localhost", 8888);
     System.out.println("서버에 연결 완료!");
 
     DataOutputStream out = new DataOutputStream(socket.getOutputStream());
@@ -26,14 +26,14 @@ public class Sender4 {
     long startTime = System.currentTimeMillis();
 
     // 1) 파일 크기 보내기
-    out.writeLong(file.length());
+    out.writeLong(file.length()); // 파일 크기가 int값을 넘을 수 있으니 writeLong으로!
 
     // 2) 파일 이름 보내기
     out.writeUTF(file.getName());
 
     // 3) 파일 데이터 보내기
     int b;
-    while ((b = fileIn.read()) != -1) {
+    while ((b = fileIn.read()) != -1) { // 파일 크기를 보내나 이름을 보내나 데이터를 보내나 다 바이트 배열을 보내는 것!
       out.write(b);
     }
 
