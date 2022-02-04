@@ -1,4 +1,4 @@
-// 예외 처리 문법을 적용한 후 - 메서드가 던지는 예외 정보를 받는다.
+// 예외 처리 문법을 적용한 후 - 메서드가 던지는 예외 정보를 받는다. // 예외를 받는 문법
 package com.eomcs.exception.ex2;
 
 public class Exam0110 {
@@ -14,7 +14,7 @@ public class Exam0110 {
       int result = Calculator3.compute(op, a, b);
       System.out.println(result);
 
-    } catch (RuntimeException e) {
+    } catch (RuntimeException e) { // 예외가 발생하지 않으면 catch 블록은 실행되지 않는다.
       // try 블록 안에서 메서드를 호출하다가 예외가 발생하면
       // catch 블록에서 파라미터로 받는다.
       System.out.println(e.getMessage());

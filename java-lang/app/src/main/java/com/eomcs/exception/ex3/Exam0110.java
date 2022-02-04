@@ -13,7 +13,7 @@ public class Exam0110 {
   static void m() {
     // 예외를 호출자에게 알려주는 문법
     // => throw [Throwable 객체];
-    //    throw new String("예외가 발생했습니다!"); // 컴파일 오류!
+    // throw new String("예외가 발생했습니다!"); // 컴파일 오류! 던질 수 있는 객체가 아니다
     throw new RuntimeException("예외가 발생했습니다!");
   }
 
@@ -27,7 +27,7 @@ public class Exam0110 {
       // 메서드에서 던진 예외 객체는 catch의 파라미터가 받는다.
       // catch 블록에는 예외에 대한 적절한 조치를 수행하는 코드를 둔다.
       // 예) 다음과 같이 예외가 발생된 이유를 간단히 출력할 수 있다.
-      System.out.println(e.getMessage());
+      System.out.println(e.getMessage()); // getMessage() : 생성자에 넘겨준 값을 그대로 리턴한다.
     }
 
     System.out.println("시스템을 종료합니다.");
