@@ -12,7 +12,7 @@ public class Exam0610 {
     // 스캐너 객체를 사용하여 키보드 입력을 읽어들인다.
     // => 예외가 발생한다면?
     System.out.print("입력> ");
-    int value = keyScan.nextInt();
+    int value = keyScan.nextInt(); // nextInt이니 문자를 넣으면 오류남
     System.out.println(value * value);
 
     // 프로그램을 즉시 종료한다면,
@@ -40,7 +40,7 @@ public class Exam0610 {
     keyScan.close();
 
     // 문제는 close()를 호출하기 전에 예외가 발생한다면,
-    // 제대로 자원을 해제시키지도 못한다는 것이다.
+    // 제대로 자원을 해제시키지도 못한다는 것이다. (그럼 나중에 자원부족 현상이 일어난다)
     // 이것을 해결하는 방법은 finally 블록을 사용하는 것이다.
   }
 }

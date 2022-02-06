@@ -21,13 +21,13 @@ public class Exam0641 {
   public static void main(String[] args) throws Exception {
     try (B obj = new B() /* 마지막 문장에는 세미콜론을 붙이지 않아도 된다. */) {
       System.out.println("try 블록 실행...시작");
-      obj.m(-100);
+      obj.m(-100); // 100으로도 해봐
       // 예외가 발생하면 try{} 블록을 나가기 전에 close()가 먼저 호출된다.
 
       System.out.println("try 블록 실행...종료");
 
     } catch (Exception e) {
-      // close()가 호출된 후 catch 블록이 실행된다.
+      // close()가 호출된 후 catch 블록이 실행된다. try-with-resources는 finally와 순서가 다르다.
       System.out.println("예외 발생!: " + e.getMessage());
     }
   }

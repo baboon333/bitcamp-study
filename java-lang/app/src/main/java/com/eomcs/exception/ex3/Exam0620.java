@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Exam0620 {
 
   public static void main(String[] args) {
-    Scanner keyScan = null;
+    Scanner keyScan = null; // try 안에 변수를 선언하면 finally에서는 못쓰니! 변수는 블록안에서만 사용할 수 있잖아!
     try {
       keyScan = new Scanner(System.in);
 

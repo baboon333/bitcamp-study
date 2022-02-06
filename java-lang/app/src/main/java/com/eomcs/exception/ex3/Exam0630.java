@@ -20,10 +20,10 @@ public class Exam0630 {
         FileReader in = new FileReader("Hello.java"); // OK!
 
         // 반드시 AutoCloseable 구현체이어야 한다.
-        //        String s = "Hello"; // 컴파일 오류!
+        //        String s = "Hello"; // 컴파일 오류! String은 AutoCloseable을 상속받지 않았다.
 
         // 변수 선언만 올 수 있다.
-        //                if (true) {} // 컴파일 오류!
+        //                if (true) {} // 컴파일 오류! try() 안에는 일반문은 올 수 없다.
 
         ) {
       System.out.print("입력> ");

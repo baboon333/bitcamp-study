@@ -54,7 +54,7 @@ public class Client0110 {
     } finally {
       try {out.close();} catch (Exception e) {}
       try {in.close();} catch (Exception e) {}
-      try {socket.close();} catch (Exception e) {}
+      try {socket.close();} catch (Exception e) {} // 입/출력 스트림 닫고 socket 닫아줘야!
     }
 
     keyScan.close();

@@ -11,8 +11,8 @@ public class Server0111 {
   public static void main(String[] args) {
 
 
-    try (Scanner keyboard = new Scanner(System.in);
-        ServerSocket serverSocket = new ServerSocket(8888)) {
+    try (Scanner keyboard = new Scanner(System.in); // try with source 문법을 사용해서 자동으로 close 하기 때문에 따로 finally를 안해도 된다. 0110 대신 이 방법을 써라. 그래도 0110 코드를 봤을 때 finally를 왜 써줬는지 이해할 수 있어야 함
+        ServerSocket serverSocket = new ServerSocket(8888)) { // 마지막 문장은 ; 안붙여도 된다. ServerSocket serverSocket = new ServerSocket(8888); 도 가능함!
 
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
@@ -57,7 +57,7 @@ public class Server0111 {
     } catch (Exception e) {
       e.printStackTrace();
 
-    }
+    } // 0110과의 차이는 finally가 없다! 자동으로 close 하기 때문!
     System.out.println("서버 종료!");
   }
 

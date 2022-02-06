@@ -17,7 +17,7 @@ public class Exam0650 {
     B obj2 = null;
 
     try (
-        obj2 = new B(); // 컴파일 오류!
+        obj2 = new B(); // 컴파일 오류! 이거는 변수 선언이 아니라 그냥 변수에 값을 집어넣는 것이니!
         // 이유: 변수 선언은 반드시 괄호 안에 해야 한다.
 
         B obj3 = new B(); // OK

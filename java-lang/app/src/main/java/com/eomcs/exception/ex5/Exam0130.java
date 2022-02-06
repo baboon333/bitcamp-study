@@ -35,25 +35,18 @@ public class Exam0130 {
       // => 게시물 예외를 직관적으로 알 수 있는 클래스를 만든다.
       // => 그 클래스가 BoardException 이다.
       //
+      // 클래스 이름을 사용하기 위해서 이 방법을 사용한다. 클래스 이름만으로 왜 에러가 발생했는지 직관적으로 알 수 있으니!
       throw new BoardException("게시물 입력 도중 오류 발생!", 원본오류);
     }
   }
 
   public static void main(String[] args) {
-    try {
-      Board board = read();
-      System.out.println("---------------------");
-      System.out.printf("번호: %d\n", board.getNo());
-      System.out.printf("제목: %s\n", board.getTitle());
-      System.out.printf("내용: %s\n", board.getContent());
-      System.out.printf("등록일: %s\n", board.getCreatedDate());
-
-    } catch (BoardException e) {
-      System.out.println(e.getMessage());
-      e.printStackTrace();
-    }
-
+    Board board = read();
+    System.out.println("---------------------");
+    System.out.printf("번호: %d\n", board.getNo());
+    System.out.printf("제목: %s\n", board.getTitle());
+    System.out.printf("내용: %s\n", board.getContent());
+    System.out.printf("등록일: %s\n", board.getCreatedDate());
   }
 }
-
 

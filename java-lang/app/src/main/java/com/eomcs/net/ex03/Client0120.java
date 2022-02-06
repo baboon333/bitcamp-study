@@ -30,7 +30,7 @@ public class Client0120 {
       // 서버에 바이트 배열을 전송한다.
       out.write(bytes);
       // out.flush();
-      // byte stream 을 사용할 때는 바로 출력한다.
+      // byte stream 을 사용할 때는 write() 하는 순간 바로 출력한다.
       // 따라서 flush()를 호출하지 않아도 된다.
       System.out.println("서버에 데이터를 보냈음!");
 

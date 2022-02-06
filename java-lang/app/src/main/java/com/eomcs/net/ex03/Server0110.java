@@ -57,7 +57,7 @@ public class Server0110 {
         // 서버가 데이터를 보내지 않으면 클라이언트의 read()는 리턴하지 않는다.
         // 이를 확인하기 위해 잠시 실행을 멈춘다.
         System.out.print("데이터를 보내기 전에 잠깐!");
-        keyboard.nextLine();
+        keyboard.nextLine(); // 의미 없음. 그냥 한단계 한단계 실행을 제어하려고 써준 것
 
         // => 클라이언트에게 받은 문자열을 그대로 보낸다.
         // 물론 클라이언트가 보낸 데이터를 다 읽을 때까지 리턴하지 않는다.
@@ -71,19 +71,21 @@ public class Server0110 {
         e.printStackTrace();
 
       } finally {
-        try {out.close();} catch (Exception e) {}
-        try {in.close();} catch (Exception e) {}
+        try {out.close();} catch (Exception e) {} // 보통 입력 스트림보다 출력 스트림을 먼저 닫는다.
+        try {in.close();} catch (Exception e) {} // try {out.close(); in.close();} catch (Exception e) {} 이렇게 한번에 닫지 않는 이유는 이렇게 할 경우 출력 스트림을 닫다가 오류가 날 경우 입력 스트림은 닫지도 못하기 때문이다.
         try {socket.close();} catch (Exception e) {}
         System.out.println("클라이언트와의 연결을 끊었음.");
       }
 
 
     } catch (Exception e) {
-      e.printStackTrace();
+      System.out.println("상세 예외 정보:");
+      e.printStackTrace(); // 주석으로 막아봐!
 
     } finally {
-      try { keyboard.close(); } catch (Exception e) {}
-      try { serverSocket.close();} catch (Exception e) {}
+      System.out.println("키보드 자원해제 및 서버 소켓 자원 해제!");
+      keyboard.close(); // try { keyboard.close(); } catch (Exception e) {} -> close()도 예외가 날 수 있다. 그러나 꼭 안써줘도 된다.
+      try { serverSocket.close();} catch (Exception e) {} // 얘는 close()에 들어가보면 IOException을 던지기 때문에 꼭 try~catch를 해주거나 main()에 throws Exception 선언을 해줘야 한다.
     }
     System.out.println("서버 종료!");
   }

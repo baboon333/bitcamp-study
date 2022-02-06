@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Server0121 {
   public static void main(String[] args) {
     // 소켓을 연결한 후에 꼭 클라이언트가 먼저 데이터를 보낼 필요는 없다.
-    // 서버가 먼저 데이터를 보내도 된다.
+    // 서버가 먼저 데이터를 보내도 된다. 그러나 통상적으로 클라이언트가 데이터를 서버에게 먼저 보낸다.
     // 즉 읽고 쓰기 순서만 맞으면 누가 먼저 보내든지 상관없다.
     try (Scanner keyboard = new Scanner(System.in);
         ServerSocket serverSocket = new ServerSocket(8888)) {

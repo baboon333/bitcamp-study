@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Exam0110 {
 
-  static Board read() {
-    try (Scanner keyScan = new Scanner(System.in)) {
+  static Board read() { // IllegalStateException 예외가 날 수 있는데 얘는 Exception을 상속받았기 때문에 throws~ 안써줘도 된 것.
+    try (Scanner keyScan = new Scanner(System.in)) { // try-with-resources로 스캐너가 try 블록이 끝나면 해제된다.
       Board board = new Board();
 
       System.out.print("번호> ");
