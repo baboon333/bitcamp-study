@@ -7,7 +7,7 @@ package com.eomcs.lang.ex01;
 //- 프로그램을 실행하는 시작점이라는 의미에서  "entry point" 라 부른다.
 //
 //## JVM이 클래스를 실행하는 과정
-//1) 실행할 클래스 파일을 CLASSPATH에 등록된 디렉토리 경로에서 찾는다. eclipse가 자동으로 classpath 등록해줘서 class파일을 실행하면 자동으로 등록된 디렉토리 파일에 찾아가는거임. 이클립스 다 자동. 굿.
+//1) 실행할 클래스 파일을 CLASSPATH에 등록된 디렉토리 경로에서 찾는다.
 //2) 클래스 파일이 유효한 바이트코드(bytecode) 인지 검사한다.
 //3) 메모리에 바이트코드를 적재(load)한다.
 //4) public static void main(String[] args) {} 블록을 찾는다.

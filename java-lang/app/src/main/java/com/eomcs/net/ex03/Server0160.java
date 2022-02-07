@@ -1,4 +1,4 @@
-// 클라이언트와 입출력 테스트 - byte stream + buffer
+// 클라이언트와 입출력 테스트 - byte stream + buffer // 중요!
 package com.eomcs.net.ex03;
 
 import java.io.BufferedInputStream;
@@ -21,7 +21,7 @@ public class Server0160 {
 
         System.out.println("클라이언트가 보낸 한 줄의 문자열을 기다리고 있음!");
 
-        String str = in.nextLine();
+        String str = in.nextLine(); // 한 줄의 데이터를 기다리고 있음
         System.out.println(str);
 
         // 서버가 데이터를 보내지 않으면 클라이언트의 read()는 리턴하지 않는다.
@@ -30,7 +30,7 @@ public class Server0160 {
         keyboard.nextLine();
 
         out.println(str);
-        //        out.flush();
+        //        out.flush(); server에서는 주석으로 막아도 되는 이유는 이 블록이 끝나면서 try이에 있는게 종료되며 자연스럽게 방출되기 때문! 그래도 강사님이 강조하시는건 버퍼를 쓰면 무슨 경우든 flush()를 써줘라!
         // 버퍼를 사용할 때는
         // 데이터를 보내기 위해 반드시 flush()를 호출해야 한다.
         // => 버퍼에 남아 있는 데이터를 연결된 출력 스트림을 이용하여 내보낸다.

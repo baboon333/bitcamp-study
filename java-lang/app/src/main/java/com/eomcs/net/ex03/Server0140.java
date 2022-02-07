@@ -14,13 +14,13 @@ public class Server0140 {
 
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
-      try (Socket socket = serverSocket.accept();
-          DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+      try (Socket socket = serverSocket.accept(); // 연결되어 대기열에 등록된 클라이언트 중 하나를 꺼냄
+          DataOutputStream out = new DataOutputStream(socket.getOutputStream()); // try 블록 안에 이렇게 넣어주는 이유는 close가 자동으로 되기 때문!
           DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
         System.out.println("클라이언트가 보낸 Data를 기다리고 있음!");
 
-        int value = in.readInt();
+        int value = in.readInt(); // 보낸 순서에 맞게 읽어야 한다.
         byte value2 = in.readByte();
         float value3 = in.readFloat();
         String value4 = in.readUTF();

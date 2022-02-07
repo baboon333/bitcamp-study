@@ -22,7 +22,7 @@ public class Client0210 {
       keyScan.nextLine(); // blocking : 키보드에서 한 줄을 읽을 때까지
 
       out.println("ABC가각간");
-      out.flush();
+      out.flush(); // 주석으로 막아봐 PrintStream을 사용하면 flush() 호출 안해도 되지만 PrintWriter는 무조건 flush() 호출 해줘야 한다.
       // character stream 클래스의 경우
       // 출력 데이터를 내부 버퍼에 보관하고 있다가
       // 버퍼가 꽉차거나 flush()를 호출할 때 출력을 수행한다.

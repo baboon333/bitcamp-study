@@ -14,7 +14,7 @@ public class Server0150 {
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
       try (Socket socket = serverSocket.accept();
-          Scanner in = new Scanner(socket.getInputStream());
+          Scanner in = new Scanner(socket.getInputStream()); // Scanner: 한 줄의 문자열을 읽어들이는 메서드가 있기 때문에 이걸 쓴 것! 데코레이터는 아닌데 데코레이터 같은 역할!
           PrintStream out = new PrintStream(socket.getOutputStream())) {
 
         System.out.println("클라이언트가 보낸 한 줄의 문자열을 기다리고 있음!");

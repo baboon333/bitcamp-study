@@ -10,7 +10,7 @@ public class Client0150 {
 
     try (Scanner keyScan = new Scanner(System.in);
         Socket socket = new Socket("localhost", 8888);
-        PrintStream out = new PrintStream(socket.getOutputStream());
+        PrintStream out = new PrintStream(socket.getOutputStream()); // Stream으로 끝나면 바이트 스트림이라고??? 9시 56-57분 writer/reader로 끝나면 character stream! 
         Scanner in = new Scanner(socket.getInputStream())) {
 
       System.out.println("서버와 연결되었음!");
@@ -22,7 +22,7 @@ public class Client0150 {
       out.println("ABC가각간");
       // out.flush();
       // byte stream 을 사용할 때는 바로 출력한다.
-      // 따라서 flush()를 호출하지 않아도 된다.
+      // 따라서 flush()를 호출하지 않아도 된다. // PrintStream을 사용하였기 때문
       System.out.println("서버에 데이터를 보냈음!");
 
       String str = in.nextLine();

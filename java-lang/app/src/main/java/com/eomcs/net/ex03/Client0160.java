@@ -1,4 +1,4 @@
-// 서버와 입출력 테스트 - byte stream + buffer
+// 서버와 입출력 테스트 - byte stream + buffer // 중요!
 package com.eomcs.net.ex03;
 
 import java.io.BufferedInputStream;
@@ -21,8 +21,8 @@ public class Client0160 {
       System.out.print(">");
       keyScan.nextLine();
 
-      out.println("ABC가각간");
-      //      out.flush();
+      out.println("ABC가각간"); // BufferedOutputStream 객체의 바이트 배열에 있는 상태! 아직 서버에 간게 아니다! Buffer에 한 줄의 데이터 출력! 서버로 출력되는게 아니다
+      out.flush(); // 버퍼에 있는거 방출해! 주석 풀어서 확인해봐
       // 버퍼를 사용할 때는
       // 데이터를 보내기 위해 반드시 flush()를 호출해야 한다.
       // => 버퍼에 남아 있는 데이터를 연결된 출력 스트림을 이용하여 내보낸다.
