@@ -1,4 +1,4 @@
-// stateless 방식에서 클라이언트를 구분하고 작업 결과를 유지하는 방법
+// stateless 방식에서 클라이언트를 구분하고 작업 결과를 유지하는 방법 (중요)
 package com.eomcs.net.ex04.stateless2;
 
 import java.io.DataInputStream;
@@ -11,7 +11,7 @@ import java.util.Map;
 public class CalcServer {
 
   // 각 클라이언트의 작업 결과를 보관할 맵 객체
-  // => Map<clientID, result>
+  // => Map<clientID, result> : 고객번호, 계산결과
   static Map<Long, Integer> resultMap = new HashMap<>();
 
   public static void main(String[] args) throws Exception {
@@ -50,7 +50,7 @@ public class CalcServer {
       Integer obj = resultMap.get(clientId);
       int result = 0;
 
-      if (obj != null) {
+      if (obj != null) { // 신규 고객은 null이기 때문에 새로운 ID 부여
         System.out.printf("%d 기존 고객 요청 처리!\n", clientId);
         result = obj; // auto-unboxing
       } else {
@@ -74,6 +74,7 @@ public class CalcServer {
           result *= value;
           break;
         case "/":
+          Thread.sleep(10000);
           result /= value;
           break;
         default:

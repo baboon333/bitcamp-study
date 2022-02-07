@@ -1,4 +1,4 @@
-// 통신 방식 - Stateful + 여러 클라이언트 요청 처리
+// 통신 방식 - Stateful + 여러 클라이언트 요청 처리 // 0110과 다르게 한명의 고객과 대화가 끝나면 다음 고객과 얘기를 나누는 것
 package com.eomcs.net.ex04;
 
 import java.io.BufferedReader;
@@ -28,7 +28,7 @@ public class Server0120 {
             if (name.equalsIgnoreCase("quit")) {
               out.println("Goodbye!");
               out.flush();
-              break;
+              break; // 현재의 반복문만 나가니 루프는 계속 돈다.
             }
             out.printf("%s 님 반갑습니다!\n", name);
             out.flush();

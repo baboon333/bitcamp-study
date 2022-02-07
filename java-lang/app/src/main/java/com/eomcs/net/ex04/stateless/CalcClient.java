@@ -27,7 +27,7 @@ public class CalcClient {
         out.writeUTF(op);
         out.writeInt(b);
 
-        String str = in.nextLine();
+        String str = in.nextLine(); // 서버의 응답을 기다림
         System.out.println(str);
 
       } catch (Exception e) {

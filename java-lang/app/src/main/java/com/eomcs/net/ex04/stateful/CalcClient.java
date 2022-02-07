@@ -22,11 +22,12 @@ public class CalcClient {
 
       System.out.print("값2? ");
       out.writeInt(Integer.parseInt(keyScan.nextLine()));
+      out.flush();
 
       String str = in.nextLine();
       System.out.println(str);
 
-      if (str.equals("Goodbye!"))
+      if (str.equals("Goodbye!")) // 아! 서버에서 goodbye라고 보냈으니 연결을 끝내자는 의미구나
         break;
     }
 

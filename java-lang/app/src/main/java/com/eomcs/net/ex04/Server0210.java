@@ -24,9 +24,9 @@ public class Server0210 {
 
           System.out.println("클라이언트가 연결되었음!");
 
-          String name = in.readLine();
+          String name = in.readLine(); // 클라이언트가 요청한걸 받는다
 
-          if (name.equals("stop")) {
+          if (name.equals("stop")) { // 요청을 끊는다
             out.println("Goodbye!");
             out.flush();
             break loop;

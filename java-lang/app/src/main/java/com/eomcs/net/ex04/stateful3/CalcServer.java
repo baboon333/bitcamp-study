@@ -21,11 +21,46 @@ public class CalcServer {
 
     @Override
     public void run() {
-      // JVM과 분리하여 별도로 실행할 코드를 이 메서드에 둔다.
-      try {
-        processRequest(socket);
+      // main() 메서드 호출과 분리하여 별도로 실행할 코드가 있다면
+      // 이 메서드에 둔다.
+      try (Socket socket2 = socket; // socket2를 만든 이유: try 블록을 나갈 때 socket2 close를 자동으로 해주니!! 따라서 socket이 자동으로 닫혀지니! 밑에서 따로 socket.close()로 안해도 된다.
+          DataInputStream in = new DataInputStream(socket.getInputStream());
+          PrintStream out = new PrintStream(socket.getOutputStream());) {
+
+        // 작업 결과를 유지할 변수
+        int result = 0;
+
+        loop: while (true) {
+          String op = in.readUTF();
+          int a = in.readInt();
+
+          switch (op) {
+            case "+":
+              result += a;
+              break;
+            case "-":
+              result -= a;
+              break;
+            case "*":
+              result *= a;
+              break;
+            case "/":
+              result /= a;
+              break;
+            case "quit":
+              break loop;
+            default:
+              out.println("해당 연산을 지원하지 않습니다.");
+              continue;
+          }
+
+          out.printf("계산 결과: %d\n", result);
+        }
+        out.println("quit");
+
       } catch (Exception e) {
         System.out.println("클라이언트 요청 처리 중 오류 발생!");
+
       } finally {
         System.out.println("클라이언트 연결 종료!");
       }
@@ -40,9 +75,9 @@ public class CalcServer {
     while (true) {
       System.out.println("클라이언트의 연결을 기다림!");
       Socket socket = ss.accept();
-      InetSocketAddress remoteAddr = (InetSocketAddress) socket.getRemoteSocketAddress();
+      InetSocketAddress remoteAddr = (InetSocketAddress) socket.getRemoteSocketAddress(); // getRemoteSocketAddress()가 리턴하는건 InetSocketAddress이다.
       System.out.printf("클라이언트(%s:%d)가 연결되었음!\n", //
-          remoteAddr.getAddress(), remoteAddr.getPort());
+          remoteAddr.getAddress(), remoteAddr.getPort()); // InetSocketAddress에는 클라이언트 포트번호와 ip주소를 알아내는 메서드가 있다.
 
       // 연결된 클라이언트가 연결을 끊기 전까지는
       // 대기하고 있는 다른 클라이언트의 요청을 처리할 수 없다.
@@ -60,43 +95,6 @@ public class CalcServer {
     // ss.close();
   }
 
-  static void processRequest(Socket socket) throws Exception {
-    try (Socket socket2 = socket;
-        DataInputStream in = new DataInputStream(socket.getInputStream());
-        PrintStream out = new PrintStream(socket.getOutputStream());) {
-
-      // 작업 결과를 유지할 변수
-      int result = 0;
-
-      loop: while (true) {
-        String op = in.readUTF();
-        int a = in.readInt();
-
-        switch (op) {
-          case "+":
-            result += a;
-            break;
-          case "-":
-            result -= a;
-            break;
-          case "*":
-            result *= a;
-            break;
-          case "/":
-            result /= a;
-            break;
-          case "quit":
-            break loop;
-          default:
-            out.println("해당 연산을 지원하지 않습니다.");
-            continue;
-        }
-
-        out.printf("계산 결과: %d\n", result);
-      }
-      out.println("quit");
-    }
-  }
 }
 
 

@@ -32,7 +32,7 @@ public class Server0130 {
             } else if (name.equalsIgnoreCase("stop")) { // 서버 종료하기
               out.println("Goodbye!");
               out.flush();
-              break loop;
+              break loop; // 0120과 다르게 아예 반복문을 나가버려서 서버가 종료된다. 따라서 다른 클라이언트와의 연결도 끊겼다. 잉 되는데???11시 30분인가? 이 시간 마지막 부분 다시 봐야할듯
             }
 
             out.printf("%s 님 반갑습니다!\n", name);
