@@ -30,7 +30,7 @@ public class MyStack extends MyList {
 
     @Override
     public boolean hasNext() {
-      return size() > 0 ; // MyStack.this. 생략함
+      return size() > 0 ; // MyStack.this. 생략가능! 현재 클래스에는 size라는 메서드가 없는데 바깥 클래스에만 있는 경우에만!!!
     }
 
     @Override
