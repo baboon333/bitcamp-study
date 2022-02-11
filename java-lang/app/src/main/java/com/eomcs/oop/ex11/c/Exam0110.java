@@ -1,16 +1,17 @@
 // inner class : 클래스 정의와 인스턴스 생성
 package com.eomcs.oop.ex11.c;
 
-class X {} // Top Level Class
+class X {} // Top Level Class(패키지 멤버 클래스를 탑레벨클래스라고 한다.)
 
 class A {
 
   class X { // inner class
-    // 컴파일러는 inner 클래스를 컴파일 할 때 다음과 같이 
+    // 컴파일러는 inner 클래스를 컴파일 할 때 다음과 같이 (자동으로)
     // - 바깥 클래스의 인스턴스 주소를 저장할 필드를 추가하고,
-    // - 바깥 인스턴스의 주소를 받는 파라미터로 받는 생성자를 만든다.
+    // - 바깥 클래스의 인스턴스의 주소를 파라미터로 받는 생성자를 만든다.
     //
-    //    A outer;
+    //    static을 붙여도 바깥 클래스의 인스턴스 주소를 받고 싶으면 inner class 컴파일러가 자동으로 생성해주는 아래와 같은 코드를 직접 작성해주면 된다.
+    //    A outer;  
     //    public X(A obj) {
     //      this.outer = obj;
     //    }

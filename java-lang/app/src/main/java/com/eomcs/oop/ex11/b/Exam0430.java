@@ -2,7 +2,7 @@
 package com.eomcs.oop.ex11.b;
 
 // 각각의 스태틱 멤버를 지정하는 대신 
-// 다음과 같이 wildcard(*)를 사용하여 전체 스태틱 멤버를 한 번에 지정할 수 있다.
+// 다음과 같이 wildcard(*)를 사용하여 전체 스태틱 멤버를 한 번에 지정할 수 있다. // 많지 않으면 와일드카드 쓰지 않는게 다른 개발자들이 보기에 편하다.
 import static com.eomcs.oop.ex11.b.F.m1;
 import static com.eomcs.oop.ex11.b.F.v1;
 import static com.eomcs.oop.ex11.b.sub.M.m2;
