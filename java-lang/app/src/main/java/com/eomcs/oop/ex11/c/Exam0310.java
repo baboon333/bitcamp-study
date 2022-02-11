@@ -1,4 +1,4 @@
-// inner class : 다른 멤버가 중첩 클래스 사용하기
+// inner class : 다른 멤버가 중첩 클래스 사용하기  // 쓰다 말음!!
 package com.eomcs.oop.ex11.c;
 
 class C {
@@ -37,7 +37,8 @@ public class Exam0310 {
   public static void main(String[] args) {
     C.m1();
 
-    C outer = new C();
+    C outer = null; // new C();
+
     outer.m2();
   }
 
