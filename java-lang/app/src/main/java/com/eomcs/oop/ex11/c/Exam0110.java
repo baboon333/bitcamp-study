@@ -1,7 +1,7 @@
 // inner class : 클래스 정의와 인스턴스 생성
 package com.eomcs.oop.ex11.c;
 
-class X {} // Top Level Class(패키지 멤버 클래스를 탑레벨클래스라고 한다.)
+class X {} // Top Level Class(패키지 멤버 클래스를 최상위 수준의 클래스인 탑레벨클래스라고 한다.)
 
 class A {
 

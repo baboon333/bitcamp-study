@@ -56,7 +56,7 @@ public class Exam0210 {
     Object obj = new Object() { // 익명 클래스는 이름이 없으니 그 수퍼 클래스인 Object로 받을 수 있다. 인터페이스라면 저기에 Object 대신 인터페이스명이 올 수도 있다. 
       // Object 클래스를 상속 받은 익명 클래스를 만들고,
       // m1() 메서드를 추가한다.
-      public void m1() {
+      public void m1() { // 이 메서드는 호출할 방법이 없기 때문에 메서드 추가 용도라면 익명 클래스를 써서는 안된다. 
         System.out.println("Hello!");
       }
     }; 

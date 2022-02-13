@@ -16,7 +16,7 @@ class C {
     obj.test();
   }
 
-  static class X {
+  static class X { // 스태틱 멤버가 됐건 인스턴스 멤버가 됐건 static 멤버에 접근할 수 있다!
     void test() {
       System.out.println("X.test()");
     }

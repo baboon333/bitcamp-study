@@ -1,7 +1,7 @@
 //static nested class : import static 사용 후
 package com.eomcs.oop.ex11.b;
 
-// 스태틱 멤버를 임포트하기
+// 스태틱 멤버를 임포트하기 -> 인스턴스 멤버는 안된다! 스태틱 멤버에 한해서만 import static으로 미리 설정해두고 마치 자기 클래스인양 앞의 경로를 생략하고 쓸 수 있다.
 import static com.eomcs.oop.ex11.b.E.m1;
 import static com.eomcs.oop.ex11.b.E.v1;
 import static com.eomcs.oop.ex11.b.sub.M.m2;
