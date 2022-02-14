@@ -3,7 +3,7 @@ package com.eomcs.oop.ex11.c;
 
 class X {} // Top Level Class(패키지 멤버 클래스를 최상위 수준의 클래스인 탑레벨클래스라고 한다.)
 
-class A {
+class A { // Top Level Class
 
   class X { // inner class
     // 컴파일러는 inner 클래스를 컴파일 할 때 다음과 같이 (자동으로)
