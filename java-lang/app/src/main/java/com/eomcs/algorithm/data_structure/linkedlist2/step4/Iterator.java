@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex11.h.test;
+package com.eomcs.algorithm.data_structure.linkedlist2.step4;
 
 // 컬렉션의 값을 조회하는 객체 사용법
 //
