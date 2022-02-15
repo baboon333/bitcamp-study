@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Exam0120 {
 
-  public static String echo(String obj) {
+  public static String echo(String obj) { // String을 받아서 String을 리턴하는!
     return obj;
   }
 
@@ -34,7 +34,7 @@ public class Exam0120 {
     // 그것도 똑같은 기능을 수행하는 메서드를 여러 개 만들어야 하기 때문에
     // 유지보수에 좋지 않다.
     //
-    // Object의 다형적 변수를 이용한 방법과 각 메서드를 타입별로 만들어
+    // Object의 다형적 변수를 이용한 방법(0110)과 각 메서드를 타입별로 만들어
     // 형변환을 하지 않는 이점을 모두 취할 수 있는 문법이 "제네릭(generic)"이다.
     //
   }

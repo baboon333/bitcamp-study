@@ -8,7 +8,7 @@ import com.eomcs.generic.ex02.Member;
 class ObjectBox {
   Object value;
 
-  public Object get() {
+  public Object get() { // get의 리턴타입은 Object이다.
     return this.value;
   }
 
@@ -41,7 +41,7 @@ public class Exam0220 {
     // ObjectBox 객체에서 값 꺼내기
     // => 값을 꺼낼 때마다 형변환 해야 한다.
     //
-    Member v1 = (Member) b1.get();
+    Member v1 = (Member) b1.get(); // get의 리턴 타입은 Object이기 때문에 이걸 Member 레퍼런스에 담으려면 형변환해야 한다.
     System.out.println(v1);
 
     String v2 = (String) b2.get();

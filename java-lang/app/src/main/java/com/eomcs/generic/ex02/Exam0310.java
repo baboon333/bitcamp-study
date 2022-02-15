@@ -15,17 +15,22 @@ public class Exam0310 {
     map.put("aaa", "문자열");
     map.put(new Integer(100), new Member("홍길동", 20));
 
+    System.out.println(map.get("aaa"));
+    System.out.println(map.get(100));
+    System.out.println("-------------------------------------");
+
+
     // 위와 같이 제네릭 정보를 넘기지 않는 것 보다,
     // 차라리 다음과 같이 명확하게 Object 타입을 지정하는 것이 좋다. 
     // => 어떤 타입의 key와 어떤 타입의 value를 저장할 것인지
     //    다른 개발자에게 명확하게 알려주는 효과가 있기 때문에 다음을 권장한다.
-    HashMap<Object,Object> map2 = new HashMap<>();
+    HashMap<Object,Object> map2 = new HashMap<>(); // key도 object이고 value도 object이다. 
     map2.put("aaa", "문자열");
     map2.put(new Integer(100), new Member("홍길동", 20));
 
     // key: String
     // value: Member
-    HashMap<String,Member> map3 = new HashMap<>();
+    HashMap<String,Member> map3 = new HashMap<>(); // key는 보통 int아니면 String으로 한다.
     //    map3.put("aaa", "문자열"); // 컴파일 오류!
     //    map3.put(new Integer(100), new Member("홍길동", 20)); // 컴파일 오류!
     map3.put("aaa", new Member("홍길동", 20)); // OK!

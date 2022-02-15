@@ -8,14 +8,14 @@ public class Exam0510 {
 
   // 제네릭 배열 생성하기
 
-  // 예1) 제네릭의 타입 파라미터로 레퍼런스 배열을 생성할 수 없다.
+  // 예1) 제네릭의 타입 파라미터로 레퍼런스 배열을 생성할 수 없다. (중요)
   static <T> T[] create1() {
     T[] arr;
-    //    arr = new T[10]; // 컴파일 오류! new 명령어를 사용할 때 제네릭의 타입 파라미터를 사용할 수 없다.
+    //    arr = new T[10]; // 컴파일 오류! new 명령어를 사용할 때 제네릭의 타입 파라미터를 사용할 수 없다. 따라서 아래와 같이 복잡한 방법을 써야 한다.
     return null;
   }
 
-  // 예2) 견본 배열을 받아서 복제하는 방법을 사용한다.
+  // 예2) 배열을 직접 만들기 보단 견본 배열을 받아서 복제하는 방법을 사용한다.
   static <T> T[] create2(T[] arr) {
     // copyOf(original, newLength)
     // => 원래 배열(original)과 같은 타입의 배열을 배열크기(newLength)에 맞춰 새로 생성한다.
@@ -24,8 +24,8 @@ public class Exam0510 {
 
   // 예3) 배열의 타입 정보를 받아 생성하기
   @SuppressWarnings("unchecked")
-  static <T> T[] create3(Class<?> type) {
-    return (T[]) Array.newInstance(type, 10);
+  static <T> T[] create3(Class<?> type) { // Class<?> 아직 이거는 신경쓰지마! 안배움
+    return (T[]) Array.newInstance(type, 10); // newInstance 얘는 Object를 리턴하므로 형변환을 해줘야 한다.
   }
 
   // 예4) 견본 배열에서 타입 정보를 추출하여 배열을 생성하기
@@ -34,7 +34,7 @@ public class Exam0510 {
     Class<?> arrayTypeInfo = arr.getClass(); // 예) String[]
     System.out.println(arrayTypeInfo);
 
-    Class<?> arrayItemTypeInfo = arrayTypeInfo.getComponentType(); // 예) String
+    Class<?> arrayItemTypeInfo = arrayTypeInfo.getComponentType(); // 예) String  // 배열 항목정보를 꺼내서 배열을 만든다.
     System.out.println(arrayItemTypeInfo);
 
     return (T[]) Array.newInstance(arrayItemTypeInfo, 10);
@@ -50,13 +50,13 @@ public class Exam0510 {
     // 내부에서 생성할 배열 크기 보다 더 큰 배열을 파라미터로 넘긴다면?
     // copyOf() 그래도 새 크기에 맞춰 새 배열을 생성한다.
     String[] temp = new String[100];
-    String[] strs2 = create2(temp);
-    System.out.println(strs2.length);
-    System.out.println(temp == strs2);
+    String[] arr2 = create2(temp);
+    System.out.println(arr2.length);
+    System.out.println(temp == arr2);
 
     // 생성할 배열의 타입 정보를 넘긴다.
-    String[] strs3 = create3(Member.class);
-    System.out.println(strs3.length);
+    String[] arr3 = create3(String.class);
+    System.out.println(arr3.length);
 
     // 배열을 넘기면 배열의 항목 타입을 알아내어 새 배열을 만든다.
     String[] strs4 = create4(new String[0]);

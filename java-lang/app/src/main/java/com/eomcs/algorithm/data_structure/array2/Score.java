@@ -1,12 +1,12 @@
 package com.eomcs.algorithm.data_structure.array2;
 
 public class Score {
-  String name;
-  int kor;
-  int eng;
-  int math;
-  int sum;
-  float aver;
+  public String name;
+  public int kor;
+  public int eng;
+  public int math;
+  public int sum;
+  public float aver;
 
   public Score(String name, int kor, int eng, int math) {
     this.name = name;
@@ -15,11 +15,9 @@ public class Score {
     this.math = math;
     this.compute();
   }
+
   private void compute() {
     this.sum = this.kor + this.eng + this.math;
-    this.aver = this.sum / 
+    this.aver = this.sum / 3f;
   }
-
-
-
 }

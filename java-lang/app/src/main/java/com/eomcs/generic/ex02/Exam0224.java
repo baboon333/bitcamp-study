@@ -1,4 +1,4 @@
-// 제네릭(Generic) 문법 정리 - 제네릭 파라미터 wildcard(?)
+// 제네릭(Generic) 문법 정리 - 제네릭 파라미터 wildcard(?)// 아직 안함
 package com.eomcs.generic.ex02;
 
 import java.util.ArrayList;

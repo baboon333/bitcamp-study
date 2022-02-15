@@ -8,8 +8,8 @@ import java.util.Date;
 public class Exam0130 {
 
   // 제네릭을 이용하면 여러 타입을 모두 수용할 수 있는 메서드를 만들 수 있다.
-  //    <다루는 타입의 별명>  리턴타입 메서드명(다루는_타입_별명 파라미터, ...) {...}
-  //
+  //    <다루는_타입_별명> 다루는_타입_별명 메서드명(다루는_타입_별명 파라미터, ...) {...}
+  //    예) <What> What test(What obj) {...}
   // 다음 메서드를 해석하기
   // => echo() 메서드가 다루는 타입을 "What"라고 가정하자!
   // => echo()는 What라는 타입의 파라미터 값(객체주소)을 받고,
@@ -18,13 +18,13 @@ public class Exam0130 {
   // => 제네릭을 사용하면 특정 타입을 다루는 메서드 여러 개를 한 개의 메서드로 줄일 수 있다.
   // => 이때 "What"을 가리키는 용어로 "타입(이름을 받는) 파라미터"라고 부른다.
   //
-  static <What> What echo(What obj) {
+  static <What> What echo(What obj) { // <What> : 야 컴파일러 What은 클래스 아니다~ 타입 파라미터다~~ What은 넘어오는 값에 따라 결정되는 타입 파라미터다~
     return obj;
   }
 
   public static void main(String[] args) {
 
-    String obj1 = echo(new String("Hello"));
+    String obj1 = echo(new String("Hello")); // String 객체를 넘기면 리턴 타입은 String이다.
     Date obj2 = echo(new Date());
     Calendar obj3 = echo(Calendar.getInstance());
     File obj4 = echo(new File("okok"));

@@ -36,7 +36,7 @@ class A2<T,S,U> {
 public class Exam0310 {
 
   public static void main(String[] args) {
-    A<String,Integer,Member> obj = new A<>();
+    A<String,Integer,Member> obj = new A<>(); // T는 스트링이라고 하자. S는 인티져로 하자, U는 멤버로 하자! // <>안에 생략할 수 있으면 굳이 적지마
 
     obj.v1 = new String("Hello");
     obj.v2 = Integer.valueOf(100);

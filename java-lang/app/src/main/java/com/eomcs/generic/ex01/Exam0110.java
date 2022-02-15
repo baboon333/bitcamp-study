@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Exam0110 {
 
-  public static Object echo(Object obj) {
+  public static Object echo(Object obj) { // 메서드의 리턴타입은 Object이다. // Object의 다형적 변수를 이용한 방법
     return obj;
   }
 
@@ -20,8 +20,8 @@ public class Exam0110 {
     //    String obj1 = echo(new String("Hello")); // 컴파일 오류!
     String obj2 = (String) echo(new String("Hello"));
 
-    // 잘못된 형변환은 컴파일러는 속일 수 있을 지라도, runtime 에서는 오류를 발생시킨다.
-    //    Integer obj3 = (Integer) echo(new String("Hello")); // 실행 오류!
+    // 잘못된 형변환은 컴파일러는 속일 수 있을 지라도, runtime 에서는(JVM) 오류를 발생시킨다.
+    //    Integer obj3 = (Integer) echo(new String("Hello")); // 실행 오류! String 객체를 어떻게 Integer로 속여~~
 
     Date obj4 = (Date) echo(new Date());
 

@@ -21,7 +21,7 @@ public class Exam0240 {
 
     b1.set(new Member("홍길동", 20));
     b2.set("Hello");
-    b3.set(100);
+    b3.set(100); // 컴파일러가 내부적으로 int 100 걊을 integer 객체로 바꾼다. Integer.valueOf(100) // JVM은 컴파일러가 컴파일해준대로 실행해줄 뿐! 뭔가 코드를 바꿀 순 없다.
 
     // 제네릭을 사용하면 get() 메서드가 각 타입별로 존재하는 것처럼 사용할 수 있다.
     // => 즉 형변환 할 필요가 없다.

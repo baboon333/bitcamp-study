@@ -13,7 +13,7 @@ public class Exam0242 {
 
     // 제네릭 클래스를 사용할 때,
     // 타입 파라미터의 값을 빼면 경고가 뜬다.
-    // 내부적으로는 Object를 지정한다.
+    // 지정을 안해주면 내부적으로 Object를 지정한다.
     // 즉 다음 코드는 Box<Object> b5 = new Box<Object>() 와 같다.
     //
     Box b5 = new Box(); // 경고!
