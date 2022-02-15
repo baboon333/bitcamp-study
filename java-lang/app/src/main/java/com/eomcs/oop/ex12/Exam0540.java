@@ -99,7 +99,7 @@ public class Exam0540 {
     // 파라미터 타입: String, String ===> int, int
     // Calculator6 c6 = MyCalculator::plus; // 컴파일 오류!
 
-    // 파라미터 타입: Integer, Integer ===> int, int
+    // 파라미터 타입: Integer, Integer ===> int, int (오토언박싱)
     Calculator7 c7 = MyCalculator::plus; // OK
     //
     //    Calculator7 c7 = new Calculator7() {

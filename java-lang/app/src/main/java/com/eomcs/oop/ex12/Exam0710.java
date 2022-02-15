@@ -1,4 +1,4 @@
-// 메서드 레퍼런스 - 생성자 레퍼런스
+// 메서드 레퍼런스 - 생성자 레퍼런스 // 아직 안함!
 package com.eomcs.oop.ex12;
 
 import java.util.ArrayList;

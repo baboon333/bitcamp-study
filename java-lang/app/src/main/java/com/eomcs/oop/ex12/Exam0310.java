@@ -20,7 +20,7 @@ public class Exam0310 {
       }
     }
 
-    testPlayer(new MyPlayer());
+    testPlayer(new MyPlayer()); // MyPlayer는 Player의 구현체이니 가능
 
   }
 }

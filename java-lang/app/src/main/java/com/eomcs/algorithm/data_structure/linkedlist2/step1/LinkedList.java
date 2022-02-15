@@ -5,11 +5,11 @@ public class LinkedList {
   Node tail;
   int size;
 
-  public void add(Object value) {
+  public void add(Object value) { // 추가
     Node node = new Node(value);
 
     if (head == null) {
-      tail = head = node;
+      tail = head = node; // 첫 번째 노드라면 현재 주소를 tail과 head에 넣어라
     } else {
       node.prev = tail;
       tail.next = node;
@@ -19,7 +19,7 @@ public class LinkedList {
     size++;
   }
 
-  public void add(int index, Object value) {
+  public void add(int index, Object value) { // 삽입
     Node node = getNode(index);
 
     Node newNode = new Node(value);
@@ -53,7 +53,7 @@ public class LinkedList {
 
     if (size == 1) {
       head = tail = null;
-    } else if (node == head) {
+    } else if (node == head) { // 삭제하려는 노드가 하필 헤드이면 head는 다음 노드를 가리키게 한다.
       head = node.next;
     } else if (node == tail) {
       tail = node.prev;
@@ -86,7 +86,7 @@ public class LinkedList {
       throw new IndexOutOfBoundsException();
     }
 
-    Node node = head;
+    Node node = head; // 기준점 잡기
     int count = 0;
     while (count < index) {
       node = node.next;
