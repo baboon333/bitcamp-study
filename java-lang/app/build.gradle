@@ -11,7 +11,7 @@ plugins {
     id 'eclipse'
 }
 
-// 자바 소스를 컴파일 할 때 적용할 옵션
+// 자바 소스를 컴파일 할 때 적용할 옵션 // gradle에서 컴파일 할 때 필요한 설정
 tasks.withType(JavaCompile) {
     // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
     // $javac -encoding UTF-8 ..
@@ -52,7 +52,7 @@ eclipse {
 }
 */
 
-// eclipse 프로젝트 이름을 설정하기
+// eclipse 프로젝트 이름을 설정하기 // eclipse ide에서 build 할 때 필요한 정보
 eclipse {
     project {
         name = "java-lang"
@@ -107,7 +107,7 @@ dependencies {
 
   // Google JSON 라이브러리
   implementation 'com.google.code.gson:gson:2.8.9'
-  
+
   // jackson-databind JSON 라이브러리
   implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
 
