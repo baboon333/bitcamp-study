@@ -4,7 +4,7 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
 - 데이터베이스(database) = 스키마(schema)
 - 테이블(table)
 - 뷰(view)
-- 트리거(trigger=listener)
+- 트리거(trigger = listener)
   - 특정 조건에서 자동으로 호출되는 함수
   - 특정 조건? SQL 실행 전/후 등
   - OOP 디자인 패턴에서 옵저버에 해당한다.
@@ -80,7 +80,7 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
 > insert into test1(no, name) values(3, null);
 
 #### 기본값 지정하기
-입력 값을 생략하면 해당 컬럼에 지정된 기본값이 대신 입력된다.
+입력할 때 컬럼을 생략하면 지정된 기본값이 대신 입력된다.
 > create table test1(
     no int not null,
     name varchar(20) default 'noname',
@@ -216,9 +216,9 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 > insert into test1(c2) values('16:12:35');
 > insert into test1(c3) values('2022-2-21 16:5:3');
 > insert into test1(c1) values('2022-02-21 16:13:33'); /* 날짜 정보만 저장*/
-> insert into test1(c2) values('2022-02-21 16:13:33'); /* 시간 정보만 저장*/
-> insert into test1(c3) values('2022-02-21'); /* 시간 정보는 0을 설정된다.*/
-> insert into test1(c3) values('16:13:33'); /* 실행 오류!*/
+> insert into test1(c3) values('2022-02-21 16:13:3'); /* 시간 정보만 저장*/
+> insert into test1(c3) values('2022-02-21'); /*시간 정보는 0으로 설정된다*/
+> insert into test1(c3) values('16:13:33'); /*실행 오류!*/
 
 #### boolean
 - 보통 true, false를 의미하는 값을 저장할 때는 정수 1 또는 0으로 표현한다.
@@ -239,7 +239,7 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 > insert into test1(c1) values('1'); /* true */
 > insert into test1(c1) values('0'); /* false */
 
-> insert into test1(c2) values(1); /* true */
+> insert into test1(c2) values(1); /* true */ /*int로 하는 dbms들은 이렇게!*/
 > insert into test1(c2) values(0); /* false */
 
 > insert into test1(c3) values('Y'); /* error */
@@ -309,6 +309,7 @@ key column : 데이터를 구분할 때 사용하는 값
       DBMS는 PK 값을 변경하지 못하도록 통제한다.
     - 이렇게 변경될 수 있는 값인 경우, PK로 사용하지 말라.
     - 대신 회원 번호와 같은 임의의 키(인공 키)를 만들어 사용하는 것이 좋다.
+
 
 #### primary key
 - 테이블의 데이터를 구분할 때 사용하는 컬럼들이다.
@@ -380,7 +381,7 @@ key column : 데이터를 구분할 때 사용하는 값
 
 - 여러 개의 컬럼을 묶어서 PK로 사용하면 데이터를 다루기가 불편하다.
   즉 데이터를 찾을 때 마다 name과 age 값을 지정해야 한다.
-- 그래서 실무에서는 이런 경우 '학번'처럼 임의의 값을 저장하는 컬럼을 만들어 PK로 사용한다. (인공 키의 예!)
+- 그래서 실무에서는 이런 경우 '학번'처럼 임의의 값을 저장하는 컬럼을 만들어 PK로 사용한다. (인공 키의 예!) -> 임의의 일련번호를 만든다.
 > create table test1(
   no int primary key, /* 학번 */
   name varchar(20),
@@ -402,7 +403,7 @@ key column : 데이터를 구분할 때 사용하는 값
 > insert into test1(no,name,age,kor,eng,math) values(5,'c',20,81,81,81);
 
 - 위와 같은 경우를 대비해 준비된 문법이 unique이다.
-- PK는 아니지만 PK처럼 중복되어서는 안되는 컬럼을 지정할 때 사용한다.
+- PK는 아니지만 PK처럼 중복을 허락하지 않는 컬럼을 지정할 때 사용한다.
 - 그래서 PK를 대신해서 사용할 수 있는 key라고 해서 "대안키(alternate key)"라고 부른다.
 - 즉 대안키는 DBMS에서 unique 컬럼으로 지정한다.
 
@@ -415,7 +416,7 @@ key column : 데이터를 구분할 때 사용하는 값
   eng int,
   math int,
   constraint test1_uk unique (name, age)
-  );
+); /* uk는 unique를 줄여서 말하는 것! 이름과 나이도 검사하는 것. 같은 이름과 같은 나이를 입력하는건 안된다. 유니크는 키처럼 중복 허락을 하지 않는 것*/
 
 /* 다음과 같이 제약 조건을 모든 컬럼 선언 뒤에 놓을 수 있다. */
 > create table test1(
@@ -427,7 +428,7 @@ key column : 데이터를 구분할 때 사용하는 값
   math int,
   constraint primary key(no),
   constraint test1_uk unique (name, age)
-  );
+); /* 위 코드와 결과는 동일하다.*/
 
 - 입력 테스트:
 > insert into test1(no,name,age,kor,eng,math) values(1,'a',10,90,90,90);
@@ -453,8 +454,9 @@ key column : 데이터를 구분할 때 사용하는 값
   );
 
 > alter table test1
-    add constraint test1_pk primary key(no),
+    add constraint test1_pk primary key(no),  /*test1_pk : 제약조건 이름*/
     add constraint test1_uk unique (name, age);
+    /* 현업에서는 위 두 코드보다 이 코드를 가장 많이 쓴다. */
 
 
 ##### index
@@ -514,7 +516,7 @@ create table test1 (
 - 테이블에 컬럼 추가
 
 alter table test1
-  add column no int;
+  add column no int;  /*한 줄로 적어도 되지만 대부분 다음줄로 넘겨서 적는 걸 선호한다. 직관적으로 보기 위해서! test1을 변경할건데 int 타입의 no 컬럼을 추가하겠다.*/
 
 alter table test1
   add column age int;
@@ -535,7 +537,7 @@ alter table test1
 - 컬럼에 옵션 추가
 
 alter table test1
-  modify column name varchar(20) not null,
+  modify column name varchar(20) not null, /* 기존 컬럼을 바꾸는거니 add 대신 modify */
   modify column age int not null,
   modify column kor int not null,
   modify column eng int not null,
@@ -575,7 +577,7 @@ create table test1(
 - 단 반드시 key(primary key 나 unique)여야 한다.
 
 alter table test1
-  modify column no int not null auto_increment; /* 아직 no가 pk가 아니기 때문에 오류*/
+  modify column no int not null auto_increment; /* 아직 no가 pk가 아니기 때문에 오류*/ /*보통 실무에서는 이렇게 위에서 일반 테이블을 정의하고 추가적인 부분은 이렇게 따로 넣어주는다.*/
 
 alter table test1
   add constraint primary key (no); /* 일단 no를 pk로 지정한다.*/
@@ -595,9 +597,9 @@ insert into test1(no, name) values(1, 'xxx');
 /* auto-increment 컬럼의 값을 생략하면 마지막 값을 증가시켜서 입력한다.*/
 insert into test1(name) values('aaa');
 
-insert into test1(no, name) values(100, 'yyy');
+insert into test1(no, name) values(100, 'yyy'); /*중간에 건너뛸 수 있다.*/
 
-insert into test1(name) values('bbb'); /* no는 101이 입력된다.*/
+insert into test1(name) values('bbb'); /* no는 101이 입력된다. 마지막 값이 100이니!*/
 
 
 insert into test1(name) values('ccc'); /* no=102 */
@@ -606,9 +608,9 @@ insert into test1(name) values('ddd'); /* no=103 */
 /* 값을 삭제하더라도 auto-increment는 계속 앞으로 증가한다.*/
 delete from test1 where no=103;
 
-insert into test1(name) values('eee'); /* no=104 */
+insert into test1(name) values('eee'); /* no=104 -> 이미 103번은 생성되고 지워진 이후이니! */
 
-insert into test1(name) values('123456789012345678901234');
+insert into test1(name) values('123456789012345678901234'); /* 이름은 20자까지이기 때문에 */
 
 /* 다른 DBMS의 경우 입력 오류가 발생하더라도 번호는 자동 증가하기 때문에
  * 다음 값을 입력할 때는 증가된 값이 들어간다.

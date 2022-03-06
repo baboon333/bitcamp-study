@@ -30,9 +30,15 @@ insert into test1(name,class,working) values('ooo','java101','N');
 select * from 테이블;
 select * from test1;
 
-/* 특정 컬럼의 값만 조회할 때 => "프로젝션(projection)"이라 부른다.*/
-select 컬럼명,컬럼명 from 테이블;
+/* 특정 컬럼의 값만 조회할 때 => "프로젝션(projection)"이라 부른다. -> 용어 기억!! selection이라 안부르고 프로젝션이라 부른다~*/
+select 컬럼명, 컬럼명 from 테이블;
 select no, name, tel from test1;
+/*select
+      no,
+      name,
+      tel
+  from
+      test1;  실무에서는 보통 이렇게 띄어서 쓴다.*/
 
 /* 가상의 컬럼 값을 조회하기*/
 select no, concat(name,'(',class,')') from test1;
@@ -98,7 +104,7 @@ select no, name
 from test1
 where working='Y' and class='java100';
 
-/* 재직자가 아닌 사람만 조회하라!*/
+/* 재직자가 아닌 사람만 조회하라! not*/
 select no, name, class, working
 from test1
 where not working = 'Y';
@@ -111,7 +117,7 @@ select no, name, class, working
 from test1
 where working <> 'Y';
 
-/* 학생 번호가 짝수인 경우 전화 번호를 '1111'로 변경하라*/
+/* 학생 번호가 짝수인 경우(2로 나눈 나머지가 0인) 전화 번호를 '1111'로 변경하라*/
 update test1 set
     tel = '1111'
 where (no % 2) = 0;
@@ -134,7 +140,7 @@ where tel is not null;
 
 select *
 from test1
-where not tel is null;
+where not tel is null; /* not을 앞에 붙여도 된다. */
 
 /* 전화 번호가 없는 학생만 조회하라!*/
 /* => null인지 여부를 가릴 때는 = 연산자가 아닌 is 연산자를 사용해야 한다.*/
@@ -222,7 +228,7 @@ create table test1 (
   no int not null,
   title varchar(200) not null,
   content text,
-  regdt datetime not null
+  regdt datetime not null /*년월일시분초*/
 );
 
 alter table test1
@@ -240,7 +246,7 @@ insert into test1(title, regdt) values('hhhh', '2022-6-27');
 insert into test1(title, regdt) values('iiii', '2022-9-5');
 insert into test1(title, regdt) values('jjjj', '2022-10-12');
 insert into test1(title, regdt) values('kkkk', '2022-11-22');
-insert into test1(title, regdt) values('llll', '2022-11-24');
+  insert into test1(title, regdt) values('llll', '2022-11-24');
 insert into test1(title, regdt) values('mmmm', '2022-12-31');
 
 
@@ -249,7 +255,7 @@ insert into test1(title, regdt) values('mmmm', '2022-12-31');
 /* 특정 날짜의 게시글 찾기 */
 select *
 from test1
-where regdt = '2022-6-17';
+where regdt = '2017-6-17';
 
 /* 특정 기간의 게시글 조회 */
 select *
@@ -293,7 +299,7 @@ select regdt, date_format(regdt, '%M/%d/%y') from test1; /* September/07/17 */
 select regdt, date_format(regdt, '%W %w %a') from test1; /* Thursday 4 Thu */
 select regdt, date_format(regdt, '%M %b') from test1; /* September Sep */
 select now(), date_format(now(), '%p %h %H %l'); /* PM 01 13 1 */
-select now(), date_format(now(), '%i %s'); /* 05 45 */
+select now(), date_format(now(), '%i %s'); /* 05 45 분 초 */
 
 /* 문자열을 날짜 값으로 바꾸기 */
 select str_to_date('11/22/2022', '%m/%d/%Y');

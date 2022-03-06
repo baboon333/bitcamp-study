@@ -13,7 +13,7 @@ create table test1(
   no int primary key auto_increment,
   title varchar(255) not null,
   content text,
-  rdt datetime default now(),
+  rdt datetime default now(), /*now() : 함수를 호출했을 때 당시의 시분*/
   filepath1 varchar(255),
   filepath2 varchar(255),
   filepath3 varchar(255),
@@ -71,25 +71,25 @@ insert into test1(title) values('jjj');
 
 첨부파일 데이터 입력:
 
-insert into test2(filepath, bno) values('c:/download/a.gif', 1);
+insert into test2(filepath, bno) values('c:/download/a.gif', 1); /* 1번 게시글의 첨부파일 3개*/
 insert into test2(filepath, bno) values('c:/download/b.gif', 1);
 insert into test2(filepath, bno) values('c:/download/c.gif', 1);
-insert into test2(filepath, bno) values('c:/download/d.gif', 5);
+insert into test2(filepath, bno) values('c:/download/d.gif', 5); /* 5번 게시글의 첨부파일 2개*/
 insert into test2(filepath, bno) values('c:/download/e.gif', 5);
-insert into test2(filepath, bno) values('c:/download/f.gif', 10);
+insert into test2(filepath, bno) values('c:/download/f.gif', 10); /* 10번 게시글의 첨부파일 1개 */
 
 
 ## FK 제약 조건이 없을 때
 
 ### 문제점 1
 - 첨부파일 데이터를 입력할 때 존재하지 않는 게시물 번호가 들어 갈 수 있다.
-- 그러면 첨부파일 데이터는 무효한 데이타 된다.
+- 그러면 첨부파일 데이터는 무효한 데이터가 된다.
 
 insert into test2(filepath, bno) values('c:/download/x.gif', 100);
 
 ### 문제점 2
 - 첨부 파일이 있는 게시물을 삭제할 때,
-  해당 게시물을 참조하는 첨부파일 데이터는 무효한 데이터가 된다.
+- 해당 게시물을 참조하는 첨부파일 데이터는 무효한 데이터가 된다. /*쓰레기 데이터가 생긴다*/
 
 delete from test1 where no=1;
 
@@ -106,7 +106,7 @@ delete from test1 where no=1;
 
 ## FK(foreign key) 제약 조건 설정
 - 다른 테이블의 데이터와 연관된 데이터를 저장할 때 무효한 데이터가 입력되지 않도록 제어하는 문법이다.
-- 다른 테이블의 데이터가 참조하는 데이터를 임의의 지우지 못하도록 제어하는 문법이다.
+- 다른 테이블의 데이터가 참조하는 데이터를 임의로 지우지 못하도록 제어하는 문법이다.
 - 그래서 데이터의 무결성(data integrity; 결함이 없는 상태)을 유지하게 도와주는 문법이다.
 
 
@@ -120,7 +120,7 @@ alter table 테이블명
 delete from test2;
 
 alter table test2
-    add constraint test2_bno_fk foreign key (bno) references test1(no);
+    add constraint test2_bno_fk foreign key (bno) references test1(no); /* test1번 테이블의 no를 bno로 참조한다?*/
 
 
 위와 같이 test2 테이블에 FK 제약 조건을 건 다음에 데이터를 입력해보자!
