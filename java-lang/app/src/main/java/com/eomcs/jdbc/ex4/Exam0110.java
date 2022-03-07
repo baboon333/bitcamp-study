@@ -12,7 +12,7 @@ public class Exam0110 {
   public static void main(String[] args) throws Exception {
     String title = null;
     String contents = null;
-    ArrayList<String> files = new ArrayList<>();
+    ArrayList<String> files = new ArrayList<>(); // 첨부파일은 files에 담는다.
 
     try (Scanner keyScan = new Scanner(System.in)) {
 
@@ -34,7 +34,7 @@ public class Exam0110 {
     }
 
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
 
         // 게시글 입력 처리 객체
         PreparedStatement boardStmt = con.prepareStatement(
@@ -54,7 +54,7 @@ public class Exam0110 {
       int fileCount = 0;
       for (String filename : files) {
         fileStmt.setString(1, filename);
-        fileStmt.setInt(2, /* 어? 앞에서 입력한 게시글의 번호가 뭐지? */ 0);
+        fileStmt.setInt(2, /* 어? 앞에서 입력한 게시글의 번호가 뭐지? */ 0); // 게시글 번호가 0번이 아니잖아!
         // 첨부파일 테이블에 데이터를 입력하려면,
         // 게시글 테이블의 게시글 번호를 알아야 한다.
         // 문제는 바로 위에서 입력한 게시글의 PK 값이 자동 생성되는 컬럼이기 때문에
