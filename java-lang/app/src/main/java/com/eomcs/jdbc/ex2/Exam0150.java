@@ -24,15 +24,15 @@ public class Exam0150 {
     }
 
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement()) {
 
       // delete 문장은 executeUpdate()를 사용하여 서버에 전달한다.
-      // => 게시글 첨부 파일 삭제
+      // => 게시글 첨부 파일 삭제 -> 주석으로 막아서 확인해봐
       stmt.executeUpdate(
           "delete from x_board_file where board_id = " + no);
 
-      // => 게시글 삭제
+      // => 게시글 삭제 -> 자식테이블의 데이터를 먼저 삭제하고 부모테이블의 데이터를 삭제해야지 삭제된다.
       int count = stmt.executeUpdate(
           "delete from x_board where board_id = " + no);
 

@@ -28,10 +28,10 @@ public class Exam0130 {
     }
 
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
-            "select * from x_board where board_id = " + no)) {
+            "select * from x_board where board_id = " + no)) { // board_id는 pk이기 때문에 있든지 없든지 둘 중 하나! 따라서 밑에서 while문을 돌면 안되고 if문! 딱 한번만!
 
       if (rs.next()) {
         // 레코드에서 컬럼 값을 꺼낼 때 컬럼 번호를 지정하는 것 보다
