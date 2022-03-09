@@ -71,7 +71,7 @@ public class Exam0220 {
       int count = boardStmt.executeUpdate();
       System.out.printf("%d 개 게시글 입력 성공!\n", count);
 
-      ResultSet keyRS = boardStmt.getGeneratedKeys();
+      ResultSet keyRS = boardStmt.getGeneratedKeys(); // 게시글의 pk를 가지고 와서
       keyRS.next(); // PK가 들어있는 레코드를 한 개 가져온다.
       int boardId = keyRS.getInt(1); // 레코드에서 컬럼 값을 꺼낸다.
 
@@ -92,8 +92,8 @@ public class Exam0220 {
       // DBMS에게 작업 결과를 실제 테이블에 적용하라고 요청한다.
       con.commit();
       // 데이터를 변경하는 모든 작업은(insert|update|delete)
-      // DBMS의 임시 테이블에 보관된다.
-      // 연결이 끊어지면 임시 테이블에 보관된 데이터는 버려진다.
+      // DBMS의 임시 데이터베이스에 보관된다.
+      // 연결이 끊어지면 임시 데이터베이스에 보관된 데이터는 버려진다.
       // 따라서 연결을 끊기 전에 작업한 내용을 적용하고 싶다면,
       // 반드시 commit을 요청해야 한다.
       //
@@ -115,7 +115,7 @@ public class Exam0220 {
       // 결론,
       // => 예외가 발생하면 rollback()을 명시적으로 호출하라!!!!!!
     }
-  }
+  } // => 여기서 rollback 안해도 됐던 이유는 커넥션 객체를 닫으면서 자동으로 작업 결과가 삭제되었기 때문이다. 
 }
 
 
