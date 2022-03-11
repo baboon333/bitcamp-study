@@ -8,13 +8,13 @@ public interface BookDao {
 
   Object[] findAll();
 
-  void insert(Book book);
+  void insert(Book book) throws Exception;
 
   Book findByNo(int no);
 
-  int update(int no, Book book);
+  int update(int no, Book book) throws Exception;
 
-  int delete(int no);
+  int delete(int no) throws Exception;
 }
 
 
