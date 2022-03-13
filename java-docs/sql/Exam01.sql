@@ -616,7 +616,7 @@ insert into test1(name) values('123456789012345678901234'); /* 이름은 20자�
  * 다음 값을 입력할 때는 증가된 값이 들어간다.
  * 그러나 MySQL(MariaDB)는 증가되지 않는다.
  */
-insert into test1(name) values('fff'); /* no=? */
+insert into test1(name) values('fff'); /* no=105 */
 
 
 ## 뷰(view)
