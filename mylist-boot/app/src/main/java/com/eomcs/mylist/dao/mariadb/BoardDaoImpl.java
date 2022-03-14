@@ -17,6 +17,7 @@ public class BoardDaoImpl implements BoardDao {
 
   @Autowired
   SqlSessionFactory sqlSessionFactory; // => SqlSessionFactory : Mybatis에서 제공하는 SQL 실행 도구를 만들어주는 객체
+
   public BoardDaoImpl() {
     System.out.println("JdbcBoardDao 객체 생성!");
   }
