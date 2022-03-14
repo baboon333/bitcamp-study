@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,10 +44,17 @@ public class App {
   }
 
   // Mybatis 객체 준비
+  @Bean
   public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
     SqlSessionFactoryBean sqlSessionFactoryBean =  new SqlSessionFactoryBean(); // SqlSessionFactoryBean은 sqlSessionFactory의 구현체이다.
-    sqlSessionFactoryBean.setDataSource(dataSource); // DB 커넥션 풀을 주입한다.
-    sqlSessionFactoryBean.setMapperLocations(Resources.get);
+
+    // 1) SQL을 실행할 때 사용할 DB 커넥션풀을 주입한다. 
+    sqlSessionFactoryBean.setDataSource(dataSource);
+
+    // 2) SQL 문이 들어 있는 파일의 위치를 설정한다.
+    PathMatchingResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
+    sqlSessionFactoryBean.setMapperLocations(resourceResolver.getResources("classpath:com/eomcs/mylist/dao/*.xml")); // 어느 폴더에 xml 파일이 있는지 지정해줌
+
     return sqlSessionFactoryBean.getObject();
   }
 
