@@ -1,6 +1,8 @@
 package com.eomcs.mylist;
 
 import javax.sql.DataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -38,6 +40,14 @@ public class App {
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
+  }
+
+  // Mybatis 객체 준비
+  public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+    SqlSessionFactoryBean sqlSessionFactoryBean =  new SqlSessionFactoryBean(); // SqlSessionFactoryBean은 sqlSessionFactory의 구현체이다.
+    sqlSessionFactoryBean.setDataSource(dataSource); // DB 커넥션 풀을 주입한다.
+    sqlSessionFactoryBean.setMapperLocations(Resources.get);
+    return sqlSessionFactoryBean.getObject();
   }
 
   public static void main(String[] args) {
