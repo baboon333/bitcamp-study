@@ -1,62 +1,15 @@
 package com.eomcs.mylist;
 
-import javax.sql.DataSource;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
 public class App {
-
-  // Spring 프레임워크(IoC = 객체풀)에서 객체를 생성한 후 보관하도록 만드는 방법
-  @Bean
-  // => 스프링 부트를 시작할 때 다음 메서드를 호출하게 만든다.
-  // => 이 메서드가 리턴한 값은 스프링 부트의 객체풀(object pool)에 보관한다.
-  //
-  public DataSource dataSource(
-      @Value("${spring.datasource.driver-class-name}") String driverClassName, // 파라미터로 받음
-      @Value("${spring.datasource.url}") String url,
-      @Value("${spring.datasource.username}") String username,
-      @Value("${spring.datasource.password}") String password) {
-
-    try {
-      DriverManagerDataSource connectionPool = new DriverManagerDataSource();
-      connectionPool.setDriverClassName("org.mariadb.jdbc.Driver"); // 어느 드라이버를 쓸건지
-      connectionPool.setUrl("jdbc:mariadb://localhost:3306/studydb"); // jdbc url은 어떻게 되는지
-      connectionPool.setUsername("study");
-      connectionPool.setPassword("1111");
-
-      return connectionPool;
-
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  // Mybatis 객체 준비
-  @Bean
-  public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-    SqlSessionFactoryBean sqlSessionFactoryBean =  new SqlSessionFactoryBean(); // SqlSessionFactoryBean은 sqlSessionFactory의 구현체이다.
-
-    // 1) SQL을 실행할 때 사용할 DB 커넥션풀을 주입한다. 
-    sqlSessionFactoryBean.setDataSource(dataSource);
-
-    // 2) SQL 문이 들어 있는 파일의 위치를 설정한다.
-    PathMatchingResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
-    sqlSessionFactoryBean.setMapperLocations(resourceResolver.getResources("classpath:com/eomcs/mylist/dao/*.xml")); // 어느 폴더에 xml 파일이 있는지 지정해줌
-
-    return sqlSessionFactoryBean.getObject();
-  }
 
   public static void main(String[] args) {
     SpringApplication.run(App.class, args);   // springApplication 클래스의 run 메서드를 호출하는 것! App.class에서 .class는 확장자가 아니라 APP이라는 클래스의(자바에서 제공하는) 내장변수임! class 변수에는 해당 클래스의 정보가 들어가있다. //App이라는 클래스는 SpringApplication이라는 외부 라이브러리를 사용하는 것! ctrl 누른채로 SpringApplication 클릭하면 이 위치로 간다! 
