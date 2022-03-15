@@ -7,7 +7,7 @@ import com.eomcs.mylist.dao.TodoDao;
 import com.eomcs.mylist.domain.Todo;
 
 @RestController 
-public class TodoController {
+public class TodoController4 {
 
   @Autowired
   TodoDao todoDao;
@@ -25,23 +25,23 @@ public class TodoController {
 
 
   @RequestMapping("/todo/update")
-  public Object update(int no, Todo todo) throws Exception {
-    Todo old = todoDao.findByNo(no);
+  public Object update(int index, Todo todo) throws Exception {
+    Todo old = todoDao.findByNo(index);
     if (old == null) {
       return 0;
     }
-    todo.setDone(old.isDone());
-    return todoDao.update(no, todo);
+    todo.setDone(old.isDone()); // 기존의 체크 정보를 그대로 가져가야 한다.
+    return todoDao.update(index, todo);
   }
 
   @RequestMapping("/todo/check")
-  public Object check(int no, boolean done) throws Exception {
-    return todoDao.updateDone(no, done);
+  public Object check(int index, boolean done) throws Exception {
+    return todoDao.updateDone(index, done);
   }
 
   @RequestMapping("/todo/delete")
-  public Object delete(int no) throws Exception {
-    return todoDao.delete(no);
+  public Object delete(int index) throws Exception {
+    return todoDao.delete(index);
   }
 
 }

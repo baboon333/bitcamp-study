@@ -9,9 +9,9 @@
 <h1>연락처 상세</h1>
 
 <form>
-이메일*: <input id="x-email" type="text" readonly><br>  <!--readonly 추가! readonly 속성은 값은 의미가 없다. 이 속성이 있냐없냐가 중요하다. 예를 들어 readonly="false" 이런건 아무 상관 없음 그래도 readonly만 적용-->
 이름*: <input id="x-name" type="text"><br>
 전화*: <input id="x-tel" type="text"><br>
+이메일*: <input id="x-email" type="text"><br>
 회사: <input id="x-company" type="text"><br>
 별표(*) 항목은 필수 입력입니다.<br>
 <button id="x-update-btn" type="button">변경</button>
@@ -21,59 +21,59 @@
 
 <script type="text/javascript">
 
-  //1)URL에서 쿼리스트링(query string)을 추출한다.
+  // 1) URL에서 쿼리스트링(query string)을 추출한다.
   var arr = location.href.split("?");
   console.log(arr);
 
   if (arr.length == 1) {
-    alert("요청 형식이 올바르지 않습니다")
-    throw "URL 형식 오류!";      //throw 하면 이 script 태그 자체를 나간다!!! 그리고 js 특성상 오류 나면 그 script 태그를 나가고 다음 script 태그로 간다
+    alert("요청 형식이 옳바르지 않습니다.")
+    throw "URL 형식 오류!";
   }
 
   var qs = arr[1];
+  console.log(qs);
 
-//  2) 쿼리 스트링에서 email 값을 추출한다.
+  // 2) 쿼리 스트링에서 email 값을 추출한다.
   var params = new URLSearchParams(qs);
-  var email = params.get("email")
+  var no = params.get("no");
 
-
-  if (email == null) {
-    alert("이메일 값이 없습니다.");
+  if (no == null) {
+    alert("해당 번호의 연락처가 없습니다.");
     throw "파라미터 오류!";
   }
-    console.log(email);
+  console.log(no);
 
-    var xName = document.querySelector("#x-name");
-    var xEmail = document.querySelector("#x-email");
-    var xTel = document.querySelector("#x-tel");
-    var xCompany = document.querySelector("#x-company");
+  var xName = document.querySelector("#x-name");
+  var xEmail = document.querySelector("#x-email");
+  var xTel = document.querySelector("#x-tel");
+  var xCompany = document.querySelector("#x-company");
 
-    // 3) 서버에서 데이터 가져오기
-    fetch(`/contact/get?email=${email}`)//이걸 실행한 후
-      .then(function(response) {  //이 함수를 호출해줘
-        return response.json();  //서버에서 받은 데이터는 JSON문자열이니까 파싱해서 JS객체로 만들어줘! //서버에서 받은 json 형식의 문자열을 js 객체로 전환하여 다룬다.
-      })
-      .then(function(contact) { //파싱이 끝나면 다음 메소드 호출할 때 넘겨줘
-        //4) 연락처 상세 정보를 화면에 출력한다.
-        xName.value = contact.name;
-        xEmail.value = contact.email;
-        xTel.value = contact.tel;
-        xCompany.value = contact.company;
-      });
+  // 3) 서버에서 데이터 가져오기
+  fetch(`/contact/get?no=${no}`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(contact) {
+      // 4) 연락처 상세 정보를 화면에 출력한다.
+      xName.value = contact.name;
+      xEmail.value = contact.email;
+      xTel.value = contact.tel;
+      xCompany.value = contact.company;
+    });
 
   document.querySelector("#x-update-btn").onclick = function() {
-    if (xName.value =="" || xTel.value == "") {    //이메일은 무주건 있어야 하니 지워줌
-      window.alert("필수 입력 항목이 비어 있습니다.")
+    if (xName.value == "" || xTel.value == "") {
+      window.alert("필수 입력 항목이 비어 있습니다.");
       return;
     }
 
-    fetch(`/contact/update?name=${xName.value}&email=${xEmail.value}&tel=${xTel.value}&company=${xCompany.value}`)
-      .then(function(response){
+    fetch(`/contact/update?no=${no}&name=${xName.value}&email=${xEmail.value}&tel=${xTel.value}&company=${xCompany.value}`)
+      .then(function(response) {
         return response.text();
       })
       .then(function(text) {
         console.log(text);
-        location.href = "index.html"
+        location.href = "index.html";
       });
   };
 
@@ -82,19 +82,17 @@
   };
 
   document.querySelector("#x-delete-btn").onclick = function() {
-    fetch(`/contact/delete?email=${email}`)  //쿼리스트링
-    .then(function(response) {
-      return response.json();  // 넘어온 0과 1을 js의 숫자로 바꿔준거!
-    })
-    .then(function(result) {
-      location.href = "index.html"
-    });
+    fetch(`/contact/delete?no=${no}`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        console.log(result);
+        location.href = "index.html";
+      });
   };
 
-  //연락처 삭제 구현
-  //- delete()
-  //- 삭제 버튼 추가 및 리스너를 등록한다.
-
 </script>
+
 </body>
 </html>
