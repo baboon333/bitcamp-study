@@ -205,9 +205,9 @@ gradle-app.setting
 *.exe
 node_modules/
 temp/
+package-lock.json
 Debug/
 Release/
 html-exam/
-package-lock.json
 # Ignore Gradle build output directory
 build
