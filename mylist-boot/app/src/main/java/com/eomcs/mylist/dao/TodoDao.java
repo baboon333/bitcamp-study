@@ -1,4 +1,4 @@
-package com.eomcs.mylist.dao;
+/*package com.eomcs.mylist.dao;
 
 import java.util.List;
 import com.eomcs.mylist.domain.Todo;
@@ -19,6 +19,7 @@ public interface TodoDao {
 
   int delete(int no);
 }
+ */
 
 
 

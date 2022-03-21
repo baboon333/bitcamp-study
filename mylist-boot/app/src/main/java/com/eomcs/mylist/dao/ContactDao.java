@@ -24,7 +24,7 @@ public interface ContactDao {
 
   int delete(int no);
 
-  List<ContactTel> findByContactNo(int contactNo);
+  List<ContactTel> findTelByContactNo(int contactNo);
 
   int insertTel(ContactTel tel);
 
@@ -32,6 +32,7 @@ public interface ContactDao {
 
   int deleteTel(int telNo);
 
+  int deleteTelByContactNo(int contactNo);
 }
 
 

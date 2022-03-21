@@ -8,10 +8,14 @@ public class ContactTel {
 
   public ContactTel() {}
 
-  public ContactTel(int contactNo, int telTypeNo, String tel) {
-    this.contactNo = contactNo;
+  public ContactTel(int telTypeNo, String tel) {
     this.telTypeNo = telTypeNo;
     this.tel = tel;
+  }
+
+  public ContactTel(int contactNo, int telTypeNo, String tel) {
+    this(telTypeNo, tel); // 만약에 이 3개의 파라미터가 들어오면서 객체 필드를 설정하는데 telTypeNo, tel은 중복되니 다른 생성자에서 넣자!
+    this.contactNo = contactNo;
   }
 
   @Override

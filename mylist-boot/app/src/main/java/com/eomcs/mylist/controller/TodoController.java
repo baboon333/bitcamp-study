@@ -1,4 +1,4 @@
-package com.eomcs.mylist.controller;
+/*package com.eomcs.mylist.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +45,8 @@ public class TodoController {
   }
 
 }
+
+ */
 
 
 

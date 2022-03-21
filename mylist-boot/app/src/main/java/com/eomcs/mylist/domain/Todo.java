@@ -1,4 +1,4 @@
-package com.eomcs.mylist.domain;
+/*package com.eomcs.mylist.domain;
 
 public class Todo {
   int no;
@@ -31,3 +31,4 @@ public class Todo {
 
 
 }
+ */
