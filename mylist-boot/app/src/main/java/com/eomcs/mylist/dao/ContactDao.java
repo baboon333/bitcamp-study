@@ -2,6 +2,7 @@ package com.eomcs.mylist.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import com.eomcs.mylist.domain.Contact;
 import com.eomcs.mylist.domain.ContactTel;
 
@@ -27,6 +28,8 @@ public interface ContactDao {
   List<ContactTel> findTelByContactNo(int contactNo);
 
   int insertTel(ContactTel tel);
+
+  int insertTels(@Param("contactNo") int contactNo, @Param("tels") List<ContactTel> tels); // contactNo & tels: sql mapper에서 사용할 이름
 
   int updateTel(ContactTel tel);
 
