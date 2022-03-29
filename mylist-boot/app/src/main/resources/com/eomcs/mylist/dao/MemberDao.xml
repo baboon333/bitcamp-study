@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!--
+  namespace => 인터페이스의 패키지 이름과 namespace의 이름이 일치해야 한다.
+  -->
+<mapper namespace="com.eomcs.mylist.dao.MemberDao">
+
+<!-- 테이블의 컬럼과 객체 필드를 연결한다. -->
+<resultMap type="board" id="boardMap">
+  <id column="board_no" property="no"/> <!-- 이 컬럼의 값은 이런 이름을 가진 필드에 저장하고 -->
+  <result column="title" property="title"/>
+  <result column="content" property="content"/>
+  <result column="created_date" property="createdDate"/>
+  <result column=" view_count" property="viewCount"/>  
+</resultMap>
+
+  
+  <insert id="insert" parameterType="member">
+    insert into ml_Member(name,email,password,regist_date) 
+    values(#{name},#{email},#{password})
+  </insert>
+
+  
+
+  
+</mapper>
+

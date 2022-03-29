@@ -103,8 +103,7 @@ public class BookController {
           .body(resource); // 응답 콘텐트를 생성한 후 리턴한다.
 
     } catch (Exception e) {
-      //e.printStackTrace();
-      System.out.println("요청한 파일이 없습니다!");
+      e.printStackTrace();
       return null;
     }
   }
@@ -123,7 +122,7 @@ public class BookController {
 
       // 파일을 지정된 폴더에 저장한다.
       File photoFile = new File("./upload/book/" + filename); // App 클래스를 실행하는 프로젝트 폴더
-      file.transferTo(photoFile.getCanonicalFile()); // 프로젝트 폴더의 전체 경로를 전달한다.
+      file.transferTo(photoFile.getCanonicalFile()); // 프로젝트 폴더의 전체 경로(절대경로)를 전달한다. 상대 경로를 주니 file을 못찾아 에러가 난다.
 
       // 썸네일 이미지 파일 생성
       Thumbnails.of(photoFile)
@@ -141,6 +140,3 @@ public class BookController {
 
 
 }
-
-
-
