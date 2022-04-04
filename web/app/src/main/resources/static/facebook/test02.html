@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>페이스북 로그인</title>
 </head>
 <body>
 <h1>페이스북 로그인2</h1>
@@ -17,11 +17,11 @@
 // - 웹브라우저는 당연히 동적으로 생성된 script 태그를 실행할 것이다.
 
 (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
+  var js, fjs = d.getElementsByTagName(s)[0]; // d = document & s : 'script'
+  if (d.getElementById(id)) {return;}  // 해당 아이디가 있으면 취소해버려~ 중복해서 만들지 말라구~
+  js = d.createElement(s); js.id = id; // 스크립트 태그(<script>)를 만들어서 js라 하자. 그리고 스크립트 태그의 id를  파라미터로 들어온 id 값을 js의 id로 하자
+  js.src = "https://connect.facebook.net/en_US/sdk.js"; // <script> 태그의 src를 이걸로 하자
+  fjs.parentNode.insertBefore(js, fjs); // body 밑에 insert 하라
 }(document, 'script', 'facebook-jssdk'));
 
 console.log('OK!');

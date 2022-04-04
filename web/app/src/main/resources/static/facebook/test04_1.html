@@ -2,37 +2,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>페이스북 로그인</title>
 </head>
 <body>
 <h1>페이스북 로그인</h1>
 
-<fb:login-button scope="public_profile,email" 
-                 onlogin="checkLoginState();">
-</fb:login-button>
+<fb:login-button scope="public_profile,email"></fb:login-button> <!-- fb : 페이스북에서 만든 태그임! 그래서 아래 xfml 페이스북 마크업 랭귀지를 쓸 수 있게 한 것! -->
 
 <script type="text/javascript">
 // 페이스북 로그인 버튼을 화면에 붙인다.
 // => 로그인 버튼을 누르면 페이스북 사이트의 로그인 페이지가 출력된다.
-// => 그 페이지에서 로그인을 수행한 후 onlogin에 등록한 코드가 실행된다.
-//    즉 checkLoginState() 함수가 실행된다.
-function checkLoginState() {
-    console.log("로그인을 수행했음!");
-}
 
-window.fbAsyncInit = function() {
+window.fbAsyncInit = function() { // api 설정하는 함수를 먼저 등록한다.
   console.log("window.fbAsyncInit() 호출됨!");
   FB.init({
-    appId      : '1130286854106486', // 개발자가 등록한 앱 ID
+    appId      : '815310272760018', // 개발자가 등록한 앱 ID
     cookie     : true,  
     xfbml      : true,  
-    version    : 'v9.0' 
+    version    : 'v13.0' 
   });
   //FB.AppEvents.logPageView();
 };
 
 
-(function(d, s, id) {
+(function(d, s, id) { // js 라이브러리를 가져오는 함수를 실행한다.
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;

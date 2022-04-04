@@ -1,10 +1,9 @@
-<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="com.eomcs.mylist.dao.ToDao">
+  
+<mapper namespace="com.eomcs.mylist.dao.TodoDao">
 
   <resultMap type="todo" id="todoMap">
     <id column="todo_no" property="no"/>
@@ -15,54 +14,59 @@
   <select id="countAll" resultType="int">
     select count(*) from ml_todo
   </select>
-
+  
   <select id="findAll" resultMap="todoMap">
     select 
       todo_no,
       title,
       done
     from 
-      ml_todo
+      ml_todo 
     order by 
-      todo_no desc
+      title asc
   </select>
   
   <insert id="insert" parameterType="todo">
-    insert into ml_todo(title,done) 
-    values(#{title},#{done})
+    insert into ml_todo(title) 
+    values(#{title})
   </insert>
   
-  <select id="findByNo" resultMap="todoMap" parameterType="todo">
+  <select id="findByNo" resultMap="todoMap" parameterType="int">
     select 
       todo_no,
       title,
       done
     from 
-      ml_todo
+      ml_todo 
     where 
       todo_no=#{no}
   </select>
-  
+
   <update id="update" parameterType="todo">
     update ml_todo set 
-      title=#{title}, 
-      done=#{done}
+      title=#{title}
     where 
       todo_no=#{no}
   </update>
   
-  <update id="updateDone" parameterType="todo">
+  <update id="updateDone">
     update ml_todo set 
-      title=#{title}, 
       done=#{done}
     where 
       todo_no=#{no}
   </update>
-  
+
   <delete id="delete" parameterType="int">
-    delete from ml_todo
+    delete from ml_todo 
     where todo_no=#{no}
   </delete>
-  
+
 </mapper>
--->
+
+
+
+
+
+
+
+

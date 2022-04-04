@@ -1,25 +1,27 @@
-/*package com.eomcs.mylist.dao;
+package com.eomcs.mylist.dao;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import com.eomcs.mylist.domain.Todo;
 
+@Mapper
 public interface TodoDao {
 
   int countAll();
 
   List<Todo> findAll();
 
-  void insert(Todo todo);
+  int insert(Todo todo);
 
   Todo findByNo(int no);
 
-  int update(int no, Todo todo);
+  int update(Todo todo);
 
-  int updateDone(int no, boolean done);
+  int updateDone(@Param("no") int no, @Param("done") boolean done);
 
   int delete(int no);
 }
- */
 
 
 

@@ -29,7 +29,7 @@ public interface ContactDao {
 
   int insertTel(ContactTel tel);
 
-  int insertTels(@Param("contactNo") int contactNo, @Param("tels") List<ContactTel> tels); // contactNo & tels: sql mapper에서 사용할 이름
+  int insertTels(@Param("contactNo") int contactNo, @Param("tels") List<ContactTel> tels);
 
   int updateTel(ContactTel tel);
 

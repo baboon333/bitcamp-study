@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>페이스북 로그인</title>
 </head>
 <body>
 <h1>페이스북 로그인</h1>
@@ -11,13 +11,13 @@
 // 페이스북 자바스크립트 SDK 파일을 가져온 후에 호출될 함수를 등록한다.
 // => 즉 sdk.js 파일을 실행할 때 이 함수를 찾아 호출한다.
 // => 이 함수는 페이스북 API를 사용하기 전에 준비하는 작업을 수행한다.
-window.fbAsyncInit = function() {
+window.fbAsyncInit = function() { // 함수를 정의해서 fbAsyncInit란 이름으로 저장한다. fbAsyncInit를 호출하는 이유? 서버에 로그인하기 전에 앱id가 뭔지 버전이 뭔지 설정하기 위해서
   console.log("window.fbAsyncInit() 호출됨!");
-  FB.init({
-    appId      : '1130286854106486', // 개발자가 등록한 앱 ID
+  FB.init({ // 초기화시키는 일을 한다.
+    appId      : '815310272760018', // 개발자가 등록한 앱 ID // 각자의 앱 ID를 복사해 와야함.
     cookie     : true,  
-    xfbml      : true,  
-    version    : 'v9.0' 
+    xfbml      : true,  // facebook markup language
+    version    : 'v13.0' 
   });
   FB.AppEvents.logPageView();
 };
@@ -28,9 +28,9 @@ console.log("window.fbAsyncInit() 함수를 등록했음!");
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
   js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  js.src = "https://connect.facebook.net/en_US/sdk.js"; // sdk.js 파일 안에 위의 fbAsyncInit 함수를 호출하는 코드가 들어있다. 이 문장을 실행하면서 sdk.js 파일을 다운받으니!
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+}(document, 'script', 'facebook-jssdk')); // 얘는 함수를 정의하자마자 호출하는 문법(익명함수 정의 + 즉시호출)
 	
 console.log("<script> 태그 추가 및 sdk.js 로딩!");
 

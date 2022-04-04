@@ -60,7 +60,7 @@
 
   <insert id="insert" parameterType="Board">
     insert into ml_board(title,content,writer) 
-    values(#{title},#{content},#{writer.no}) <!-- writer는 객체이기 때문에 writer 객체 안에 들어있는 no -->
+    values(#{title},#{content},#{writer.no})
   </insert>
 
   <update id="update" parameterType="Board">
