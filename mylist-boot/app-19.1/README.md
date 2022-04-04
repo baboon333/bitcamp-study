@@ -21,7 +21,7 @@
 
 ### 3단계 - 사이드바를 추가한다.
 
-- static/.html 생성
+- static/sidebar.html 생성
 - static/index.html 변경
   - sidebar.html 을 삽입
 
