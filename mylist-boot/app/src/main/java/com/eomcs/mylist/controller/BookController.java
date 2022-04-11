@@ -44,9 +44,9 @@ public class BookController {
       return new ResultMap().setStatus(SUCCESS);
 
     } catch (Exception e) {
-      StringWriter out = new StringWriter();
-      e.printStackTrace(new PrintWriter(out));
-      log.error(out.toString());
+      StringWriter out = new StringWriter(); // 입출력 스트림
+      e.printStackTrace(new PrintWriter(out)); // printStackTrace가 에러메시지를 출력하는데 PrintWriter를 이용하고(한번 감싸줘야 한다) 얘는 결국 StringWriter를 출력한다.
+      log.error(out.toString()); // 출력했으면 toString을 통해서 꺼내서 log를 남겨라
 
       return new ResultMap().setStatus(FAIL);
     }
