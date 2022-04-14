@@ -18,7 +18,7 @@ public class BoardDeleteServlet extends HttpServlet {
   BoardService boardService;
 
   @Override
-  public void init() throws ServletException {
+  public void init() throws ServletException { // 서비스 객체 준비
     // BoardService 객체를 웹애플리케이션 보관소에서 꺼낸다.
     ServletContext 웹애플리케이션보관소 = this.getServletContext();
     boardService = (BoardService) 웹애플리케이션보관소.getAttribute("boardService");
@@ -28,21 +28,14 @@ public class BoardDeleteServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    try {
-      Board board = new Board();
-      board.setNo(Integer.parseInt(req.getParameter("no")));
+    Board board = new Board();
+    board.setNo(Integer.parseInt(req.getParameter("no")));
 
-      Member loginUser = (Member) req.getSession().getAttribute("loginUser");
-      board.setWriter(loginUser);
+    Member loginUser = (Member) req.getSession().getAttribute("loginUser"); // 세션에서 member 정보를 가져온다
+    board.setWriter(loginUser);
 
-      boardService.delete(board);
+    boardService.delete(board);
 
-      resp.sendRedirect("list");
-
-    } catch (Exception e) {
-      req.setAttribute("exception", e);
-      // 포워드 하기 전에 출력한 콘텐트가 있다면 모두 버리고 다른 서블릿에게 책임을 위임한다.
-      req.getRequestDispatcher("/error").forward(req, resp);
-    }
+    resp.sendRedirect("list"); // 삭제가 되었으면 list로 돌아가라
   }
 }

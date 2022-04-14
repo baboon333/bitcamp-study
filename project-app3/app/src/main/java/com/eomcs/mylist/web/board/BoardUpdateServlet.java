@@ -28,21 +28,23 @@ public class BoardUpdateServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    // 클라이언트가 보낸 문자열이 UTF-8로 인코딩 되어 있음을 설정한다.
-    // 이 설정이 된 후에 getParameter() 호출해야 한다.
-    // 그래야만 UTF-8 한글이 UTF-16 한글로 온전히 변환될 수 있다.
-    req.setCharacterEncoding("UTF-8"); // 요청한 데이터가 utf-8이라고 알려줘야 한다.
+    try {
+      Board board = new Board();
+      board.setNo(Integer.parseInt(req.getParameter("no")));
+      board.setTitle(req.getParameter("title"));
+      board.setContent(req.getParameter("content"));
 
-    Board board = new Board();
-    board.setNo(Integer.parseInt(req.getParameter("no"))); // 파라미터에서 no로 넘어온 값을 int로 바꿔 저장하라
-    board.setTitle(req.getParameter("title"));
-    board.setContent(req.getParameter("content"));
+      Member loginUser = (Member) req.getSession().getAttribute("loginUser");
+      board.setWriter(loginUser);
 
-    Member loginUser = (Member) req.getSession().getAttribute("loginUser"); // 요청에 대해서 세션을 얻는데 거기서 loginUser라는 이름으로 저장된 member 객체를 꺼낼 것이다
-    board.setWriter(loginUser); // 멤버 객체를 setWriter에 담을 것이다.
+      boardService.update(board);
 
-    boardService.update(board);
+      resp.sendRedirect("list"); // 게시물 목록 페이지를 다시 요청하라고 클라이언트에게 명령한다.
 
-    resp.sendRedirect("list"); // 같은 board 밑에 list로 가라! 게시물 목록 페이지를 다시 요청하라고 클라이언트에게 명령한다.
+    } catch (Exception e) {
+      req.setAttribute("exception", e);
+      // 포워드 하기 전에 출력한 콘텐트가 있다면 모두 버리고 다른 서블릿에게 책임을 위임한다.
+      req.getRequestDispatcher("/error").forward(req, resp);
+    }
   } 
 }
