@@ -22,7 +22,7 @@
 
 <div id="content">
 <h1>게시글</h1>
-<a href="add">새 게시글</a>
+<a href="form.jsp">새 게시글</a>
 <table id="x-board-table" border="1">
 <thead>
   <tr>
@@ -41,7 +41,7 @@ for (Board board : boards) {
 %>
   <tr>
     <td><%=board.getNo()%></td>
-    <td><a href='detail?no=<%=board.getNo()%>'><%=board.getTitle()%></a></td>
+    <td><a href='view.jsp?no=<%=board.getNo()%>'><%=board.getTitle()%></a></td>
     <td><%=board.getWriter().getName()%></td>
     <td><%=board.getViewCount()%></td>
     <td><%=board.getCreatedDate()%></td>
