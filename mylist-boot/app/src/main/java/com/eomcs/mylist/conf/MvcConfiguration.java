@@ -1,6 +1,5 @@
 package com.eomcs.mylist.conf;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +15,7 @@ import com.eomcs.mylist.interceptor.AuthInterceptor;
 public class MvcConfiguration implements WebMvcConfigurer {
 
   private static final Logger log = LoggerFactory.getLogger(MvcConfiguration.class);
+
   // WebMvcConfigurer 인터페이스
   // => 이 규칙에 따라 메서드를 작성하면 
   //    스프링부트는 해당 메소드를 호출하여 그 메서드가 요구하는대로 설정한다.
@@ -24,6 +24,7 @@ public class MvcConfiguration implements WebMvcConfigurer {
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     log.debug("MvcConfiguration.addInterceptors() 호출됨!");
+
     // 이 메서드가 정의되어 있다면, 
     // 스프링부트는 이 메서드를 호출하여 추가할 인터셉터의 정보를 InterceptorRegistry로 받는다.
     registry.addInterceptor(new AuthInterceptor())

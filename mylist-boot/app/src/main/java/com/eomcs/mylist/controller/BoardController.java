@@ -15,8 +15,8 @@ import com.eomcs.mylist.service.BoardService;
 @RestController 
 public class BoardController {
 
-  //log를 출력하는 도구 준비
-  private static final Logger log = LoggerFactory.getLogger(BoardController.class); // Logger: 인터페이스이다. 따라서 팩토리 메서드로 만든다. // BoardController class 이름으로 log를 남기겠다. // 내부적으로만 사용하니 private으로 만든다. 교체하지 못하게 final로 만들어라. static : 클래스가 로딩될 때 만들어질거야
+  // log를 출력하는 도구 준비
+  private static final Logger log = LoggerFactory.getLogger(BoardController.class);
 
   @Autowired
   BoardService boardService;
@@ -28,16 +28,15 @@ public class BoardController {
     log.info("info.....");
     log.debug("debug.....");
     log.trace("trace.....");
-    log.info("게시물 목록 조회!"); // 이 메시지를 개발자는 볼 필요 없고 운영자는 볼 필요 있을 때 info로 하라
+
+    log.info("게실물 목록 조회!");
     return new ResultMap().setStatus(SUCCESS).setData(boardService.list());
   }
 
   @RequestMapping("/board/add")
   public Object add(Board board, HttpSession session) {
-    // System.out.println("BoardController.add() 호출됨!");
     log.info("게시글 등록!"); // 운영자가 확인하기를 원하는 정보
     log.debug(board.toString()); // 개발자가 확인하기를 원하는 정보
-
 
     Member member = (Member) session.getAttribute("loginUser");
     board.setWriter(member);

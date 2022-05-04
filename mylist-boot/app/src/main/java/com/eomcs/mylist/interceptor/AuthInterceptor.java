@@ -19,7 +19,7 @@ public class AuthInterceptor implements HandlerInterceptor {
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
-    log.trace("preHandle() 호출됨!"); // trace 모드가 아닌 이상 이 메시지가 콘솔에 출력이 안된다.
+    log.trace("preHandle() 호출됨!");
 
     // 로그인 여부 검사
     HttpSession session = request.getSession();

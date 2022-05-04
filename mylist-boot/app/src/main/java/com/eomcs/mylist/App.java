@@ -1,5 +1,7 @@
 package com.eomcs.mylist;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,20 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class App {
 
+  private static final Logger log = LoggerFactory.getLogger(App.class);
+
   public static void main(String[] args) {
     SpringApplication.run(App.class, args);
   }
 
-  //@Bean
+  //  @Bean
   public CommandLineRunner commandLineRunner(ApplicationContext beanContainer) {
     return args -> {
 
-      System.out.println("빈 컨테이너가 생성한 객체(빈 컨테이너에 들어 있는 객체):");
+      log.debug("빈 컨테이너가 생성한 객체(빈 컨테이너에 들어 있는 객체):");
 
       String[] beanNames = beanContainer.getBeanDefinitionNames();
       for (int i = 0; i < beanNames.length; i++) {
         Object bean = beanContainer.getBean(beanNames[i]);
-        System.out.printf("----> %03d: %s\n", i + 1, bean.getClass().getName());
+        log.debug("{} ----> {}\n", beanNames[i], bean.getClass().getName());
       }
 
     };
